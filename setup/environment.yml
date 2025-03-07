@@ -1,0 +1,15 @@
+name: nm_swe
+channels:
+  - defaults
+dependencies:
+  - seaborn
+  - jupyter
+  - pandas
+  - jupyterhub
+  - rioxarray
+  - xarray
+  - numpy
+  - geopandas
+  - python=3.12
+  - rasterio
+  - matplotlib
