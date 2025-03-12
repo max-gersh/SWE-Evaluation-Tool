@@ -32,13 +32,13 @@ print("the maximum raster value is: ", np.nanmax(data.values))
 
 # Plot the raster data
 f, ax = plt.subplots(figsize=(10, 6))
-data.plot(cmap="Greys_r",
+data.plot(cmap="Blues",
                  ax=ax)
 ax.set_title("SNODAS SWE " + date)
-ax.set_axis_off()
+#ax.set_axis_off()
 plt.show()
 
-## read shapeifles
+## read shapefiles
 OSE = gpd.read_file("data/Shapefiles/OSE_Basin_Designations/SubBasins_Dissolve.shp")
 OSE = OSE.to_crs(4326)
 OSE.crs
@@ -64,18 +64,27 @@ OSE['SubBasin'].unique()
 OSE = OSE.loc[OSE['SubBasin'] != 'San Juan River Basin']
 
 
-## clip raster to HUC8 extent
+## clip raster to HUC6 extent
 bbox = HUC6.total_bounds
 clipped_data = data.rio.clip_box(*bbox)
 
 # Plot the raster data
+clipped_data.attrs["long_name"] = "SWE [mm]"
+
 f, ax = plt.subplots()
 clipped_data.plot(cmap="Blues",
                  ax=ax)
+#plt.colorbar(label='SWE (mm)')
 HUC6.plot(color='None',
                     edgecolor='grey',
                     linewidth=1,
                     ax=ax)
+## add polygon labels
+for idx, row in HUC6.iterrows():
+    centroid = row.geometry.centroid
+    ax.text(centroid.x, centroid.y, row["Name"],
+            fontsize=7, color="black", ha="center", va="center")
+
 '''
 ## plot with filled polygons
 OSE.plot(column='SubBasin',  
@@ -89,23 +98,27 @@ OSE.plot(column='SubBasin',
 ## plot with outlined polygons
 ## dotted lines so overlapping boundaries are visible
 OSE.plot(column='SubBasin',  
-         cmap='Reds', 
+         cmap='turbo', 
          facecolor='none', 
          edgecolor=None, 
          linewidth=0.8,  
-         legend=True,  
+         legend=True,
+         legend_kwds={'fontsize': 8},
          ax=ax,
          alpha=1,
          linestyle="-.")
 
 
-
 ax.set_title("SNODAS SWE " + date)
-ax.set_axis_off()
+ax.set_axis_on()
+ax.set_xlabel("Longitude")
+ax.set_ylabel("Latitude")
+#ax.set_axis_off()
 legend = ax.get_legend()
 if legend:
-    legend.set_bbox_to_anchor((0.5, -0.2)) # move legend below plot
+    legend.set_bbox_to_anchor((0.5, -0.3)) # move legend below plot
     legend.set_loc("center")
+    
 
 plt.show()
 
