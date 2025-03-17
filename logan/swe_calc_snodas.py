@@ -65,7 +65,7 @@ HUC8.plot(color='None',
 plt.show()
 
 ###################################################
-
+'''
 ## latitude longitude raster
 ## for loop to calculate swe for each HUC8 basin
 cols = ['HUC8 Subbasin', 'Volume (AF)']
@@ -92,24 +92,26 @@ for i in range(len(HUC8.index)):
     
 swe_df = pd.DataFrame(data_lat_lon, columns=cols)
 swe_df
+'''
 
 ####################################################3
 
 ## AEA rasters (EPSG: 5070)
 ## SWE calc with reprojection
-aea_crs = "EPSG:5070"
+#aea_crs = "EPSG:5070"
+utm_crs = "EPSG:26913"
 data_reprojected = clipped_data.rio.reproject(
-    aea_crs, 
+    utm_crs, 
     resampling=rio.enums.Resampling.bilinear)  
 
-HUC8_aea = HUC8.to_crs(5070)
-
+#HUC8_aea = HUC8.to_crs(5070)
+HUC8_utm = HUC8.to_crs(26913)
 
 ## plot clipped raster extent
 f, ax = plt.subplots()
 data_reprojected.plot(cmap="Blues",
                  ax=ax)
-HUC8_aea.plot(color='None',
+HUC8_utm.plot(color='None',
                     edgecolor='red',
                     linewidth=1,
                     ax=ax)
@@ -118,34 +120,34 @@ plt.show()
 ## for loop to calculate swe for each HUC8 basin
 cols_aea = ['HUC8 Subbasin', 'Reproj Volume (AF)']
 data_aea = []
-for i in range(len(HUC8_aea.index)):
+for i in range(len(HUC8_utm.index)):
     ## clip AEA raster to polygon 1
-    poly_clip_aea = data_reprojected.rio.clip([HUC8_aea.iloc[i].geometry], HUC8_aea.crs)
+    poly_clip_utm = data_reprojected.rio.clip([HUC8_utm.iloc[i].geometry], HUC8_utm.crs)
     
     ## plot clipped polygon
     f, ax = plt.subplots()
-    poly_clip_aea.plot(cmap="Blues",
+    poly_clip_utm.plot(cmap="Blues",
                      ax=ax)
     plt.show()
     
     
-    pixel_size_x, pixel_size_y = poly_clip_aea.rio.resolution()
+    pixel_size_x, pixel_size_y = poly_clip_utm.rio.resolution()
     pixel_area = abs(pixel_size_x * pixel_size_y)
     
-    swe_volume_reproj = (np.nansum(poly_clip_aea.values) / 1000) * pixel_area
+    swe_volume_reproj = (np.nansum(poly_clip_utm.values) / 1000) * pixel_area
     swe_volume_reproj
     
     swe_volume_reproj_af = round(swe_volume_reproj * 0.000810714)
     swe_volume_reproj_af 
     
-    data_aea.append([HUC8_aea.iloc[i].Name, swe_volume_reproj_af])
+    data_aea.append([HUC8_utm.iloc[i].Name, swe_volume_reproj_af])
     
 swe_df_aea = pd.DataFrame(data_aea, columns=cols_aea)
 swe_df_aea
 
 
 ## 
-swe_data_full = pd.concat([swe_df, swe_df_aea['Reproj Volume (AF)']],
+swe_data_full = pd.concat([swe_df, swe_df_utm['Reproj Volume (AF)']],
                           axis = 1)
 
 

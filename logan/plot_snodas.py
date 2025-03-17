@@ -14,9 +14,10 @@ import rioxarray as rxr
 import matplotlib.pyplot as plt
 from glob import glob
 import re
+import matplotlib.colors as mcolors
 
 ## set date
-date = "20230216"
+date = "20250310"
 
 ## read raster file
 snodas_file = "data/SNODAS/SNODAS_SWE_" + date + ".tif"
@@ -56,27 +57,41 @@ list(HUC6.columns.values)
 HUC6['Name'].unique()
 
 ## select first 3 rows
-HUC6 = HUC6.head(3)
+HUC6_polys = ['Rio Grande Headwaters', 'Upper Rio Grande',
+       'Rio Grande-Elephant Butte']
+HUC6 = HUC6[HUC6['Name'].isin(HUC6_polys)]
+#HUC6 = HUC6.head(3)
 HUC6['Name'].unique()
 
 ## select OSE polygons of interest
 OSE['SubBasin'].unique()
 OSE = OSE.loc[OSE['SubBasin'] != 'San Juan River Basin']
-
+OSE['SubBasin'].unique()
 
 ## clip raster to HUC6 extent
 bbox = HUC6.total_bounds
+bbox = bbox + np.array([-1,-0.5,1,0.5])
 clipped_data = data.rio.clip_box(*bbox)
+
+## get min and max values
+print("the minimum raster value is: ", np.nanmin(clipped_data.values))
+print("the maximum raster value is: ", np.nanmax(clipped_data.values))
+
 
 # Plot the raster data
 clipped_data.attrs["long_name"] = "SWE [mm]"
 
+## manually assign OSE colors
+custom_colors = ["green", "orange", "red", "blue"]
+custom_cmap = mcolors.ListedColormap(custom_colors)
+
+## plot
 f, ax = plt.subplots()
 clipped_data.plot(cmap="Blues",
                  ax=ax)
 #plt.colorbar(label='SWE (mm)')
 HUC6.plot(color='None',
-                    edgecolor='grey',
+                    edgecolor='black',
                     linewidth=1,
                     ax=ax)
 ## add polygon labels
@@ -97,8 +112,10 @@ OSE.plot(column='SubBasin',
 '''
 ## plot with outlined polygons
 ## dotted lines so overlapping boundaries are visible
+
 OSE.plot(column='SubBasin',  
-         cmap='turbo', 
+         #cmap='turbo',
+         cmap = custom_cmap,
          facecolor='none', 
          edgecolor=None, 
          linewidth=0.8,  
@@ -107,6 +124,7 @@ OSE.plot(column='SubBasin',
          ax=ax,
          alpha=1,
          linestyle="-.")
+
 
 
 ax.set_title("SNODAS SWE " + date)
