@@ -13,3 +13,15 @@ dependencies:
   - python=3.12
   - rasterio
   - matplotlib
+  - requests
+  - tarfile
+  - gzip
+  - shutil
+  - osgeo
+  - calendar
+  - datetime
+  - os
+  - contextily
+  - shapely
+  - pathlib
+  - reportlab
