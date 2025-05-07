@@ -36,6 +36,16 @@ Note: Data is usually uploaded to https://noaadata.apps.nsidc.org/NOAA/G02158/ma
 date = "20250507" # for manual date setting
 #date = datetime.today().strftime('%Y%m%d') # get today's date
 ```
-2. `notebooks/plot_snodas.ipynb`
-This notebook generates plots for SWE and change in SWE since the last report for the entire study area and each HUC6 basin. 
+This code also needs to be modified in the other two notebooks to generate figures and tables for a different day.   
+
+2. `notebooks/plot_snodas.ipynb`  
+This notebook generates plots for SWE and change in SWE since the last report for the entire study area and each HUC6 basin.
+New report directories are also created for saving figures, tables, and csvs. Figures are saved to `reports/YYYY-MM-DD/figures`.
+
 3. `notebooks/swe_tables_snodas.ipynb`
+This notebook generates tables for SWE mean, median, volume, and volume change for HUC6 basin, OSE basins, and by elevation band. Elevation band bar plots are also generated for each HUC6 basin.
+  - Tables are saved to `reports/YYYY-MM-DD/pdfs` and opened with Microsoft Word for generating weekly reports.
+  - Elevation bar plots are saved to `reports/YYYY-MM-DD/figures`.
+  - Tables are saved as csv's to `reports/YYYY-MM-DD/csvs` and used for SWE difference calculations. 
+
+
