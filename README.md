@@ -31,7 +31,7 @@ The current system uses three jupyter notebooks in the `notebooks` directory for
 
 1. `notebooks/snodas_download.ipynb`  
 This notebook downloads the masked SNODAS data for the current day and saves the SWE file as a .tif in the folder `data/SNODAS/`.  
-Note: Data is usually uploaded to https://noaadata.apps.nsidc.org/NOAA/G02158/masked/ at 13:00 UTC (7:00 AM MST) so this notebook needs to be run after this time. To download data for a day other than the current date, the code in the first cell after the packages import can be modified:
+Note: Data is uploaded daily to https://noaadata.apps.nsidc.org/NOAA/G02158/masked/ at 13:00 UTC (7:00 AM MST) (sometimes later) so this notebook needs to be run after this time. To download data for a day other than the current date, the code in the first cell after the packages import can be modified:
 ```
 date = "20250507" # for manual date setting
 #date = datetime.today().strftime('%Y%m%d') # get today's date
