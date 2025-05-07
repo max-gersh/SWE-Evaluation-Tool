@@ -24,7 +24,12 @@ conda activate nm_swe
 ```
 conda env list
 ```
-5. Select nm_swe kernel for running jupyter notebooks.
+5. Select nm_swe kernel for running jupyter notebooks. If nm_swe kernel does not show up in kernel list when using VS Code run the following lines the in the terminal:
+```
+pip install ipykernel
+python -m ipykernel install --user --name nm_swe --display-name "nm_swe"    
+```
+After this, "nm_swe" should appear in the list of kernel (may need to restart VS Code first).
 
 ## Running the SWE Analysis Code
 The current system uses three jupyter notebooks in the `notebooks` directory for downloading, plotting and generating tables. Run all cells in each of the three notebooks in the following order:
