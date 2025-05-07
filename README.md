@@ -29,11 +29,13 @@ conda env list
 ## Running the SWE Analysis Code
 The current system uses three jupyter notebooks in the `notebooks` directory for downloading, plotting and generating tables. Run all cells in each of the three notebooks in the following order:
 
-1. `notebooks/snodas_donwload.ipynb`
-This notebook downloads the masked SNODAS data for the current day and saves the SWE file as a .tif in the folder `data/SNODAS/'.
+1. `notebooks/snodas_download.ipynb`  
+This notebook downloads the masked SNODAS data for the current day and saves the SWE file as a .tif in the folder `data/SNODAS/'.  
 Note: Data is usually uploaded to https://noaadata.apps.nsidc.org/NOAA/G02158/masked/ at 13:00 UTC (7:00 AM MST) so this notebook needs to be run after this time. To download data for a day other than the current date, the code in the first cell after the packages import can be modified:
 ```
-#date = "20250507" # for manual date setting
-date = datetime.today().strftime('%Y%m%d') # get today's date
+date = "20250507" # for manual date setting
+#date = datetime.today().strftime('%Y%m%d') # get today's date
 ```
-2. 
+2. `notebooks/plot_snodas.ipynb`
+This notebook generates plots for SWE and change in SWE since the last report for the entire study area and each HUC6 basin. 
+3. `notebooks/swe_tables_snodas.ipynb`
