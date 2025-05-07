@@ -30,7 +30,7 @@ conda env list
 The current system uses three jupyter notebooks in the `notebooks` directory for downloading, plotting and generating tables. Run all cells in each of the three notebooks in the following order:
 
 1. `notebooks/snodas_download.ipynb`  
-This notebook downloads the masked SNODAS data for the current day and saves the SWE file as a .tif in the folder `data/SNODAS/'.  
+This notebook downloads the masked SNODAS data for the current day and saves the SWE file as a .tif in the folder `data/SNODAS/`.  
 Note: Data is usually uploaded to https://noaadata.apps.nsidc.org/NOAA/G02158/masked/ at 13:00 UTC (7:00 AM MST) so this notebook needs to be run after this time. To download data for a day other than the current date, the code in the first cell after the packages import can be modified:
 ```
 date = "20250507" # for manual date setting
@@ -48,4 +48,5 @@ This notebook generates tables for SWE mean, median, volume, and volume change f
   - Elevation bar plots are saved to `reports/YYYY-MM-DD/figures`.
   - Tables are saved as csv's to `reports/YYYY-MM-DD/csvs` and used for SWE difference calculations. 
 
-
+## Note on SWE difference calculation
+The current system for calculating SWE change since the previous report for plots and tables uses the SNODAS .tif file in the `data/SNODAS` folder and csvs in the `reports` folder with the maximum date in their file names. When the code is run each week, the tifs and csvs are saved to these folders to be used for the difference calculation of the next report. This will be need to be updated to organize files by water year since no previous data will have downloaded for the first report of each water year.    
