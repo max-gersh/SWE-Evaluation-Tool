@@ -14,13 +14,7 @@ dependencies:
   - rasterio
   - matplotlib
   - requests
-  - tarfile
-  - gzip
-  - shutil
-  - osgeo
-  - calendar
-  - datetime
-  - os
+  - gdal
   - contextily
   - shapely
   - pathlib
