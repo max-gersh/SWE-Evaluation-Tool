@@ -14,6 +14,10 @@ git clone https://github.com/RittgerLabGroup/nm_swe.git
 ```
 conda env create -f setup/environment.yml
 ```
+To install the conda environment to a specified location use:
+```
+conda env create -f setup/environment.yml --prefix /full/path/to/env/nm_swe
+```
 This will install all required packages (~3GB).  
 
 3. Activate the new environment: 
