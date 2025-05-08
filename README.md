@@ -3,7 +3,7 @@ Analysis, figures and tables for NM OSE SWE reports
 This repository is used to generate weekly snow water equivalent (SWE) reports for the northern Rio Grande River Basin in Colorado and New Mexico. Code is included to download SNODAS SWE estimates from https://noaadata.apps.nsidc.org/NOAA/G02158/ and generate summary figures and tables. Future updates will include additonal SWE products including UA/SWANN (https://climate.arizona.edu/data/UA_SWE/) and CU SWE. 
 
 ## Setup
-This system uses the python programming language. You will need to create a conda environment with the required packages. All of the following commands should be run in a terminal (powershell on windows) or the terminal inside of your code editor (tested on Visual Studio Code for windows).
+This system uses the python programming language. You will need to create a conda environment with the required packages. All of the following commands should be run in a terminal (powershell on windows) or the terminal inside of your code editor (tested on Visual Studio Code and JupyterLab for windows).
 
 1. Clone the repository from GitHub to your desired local directory:
 ```
@@ -28,12 +28,12 @@ conda activate nm_swe
 ```
 conda env list
 ```
-5. Select nm_swe kernel for running jupyter notebooks. If nm_swe kernel does not show up in kernel list when using VS Code run the following lines the in the terminal:
+5. Select nm_swe kernel for running jupyter notebooks. If nm_swe kernel does not show up in kernel list in VSCode or JupyterLab run the following lines the in the terminal:
 ```
 pip install ipykernel
 python -m ipykernel install --user --name nm_swe --display-name "nm_swe"    
 ```
-After this, "nm_swe" should appear in the list of kernel (may need to restart VS Code first).
+After this, "nm_swe" should appear in the list of kernel (may need to restart VSCode/JupyterLab first).
 
 ## Running the SWE Analysis Code
 The current system uses three jupyter notebooks in the `notebooks` directory for downloading, plotting and generating tables. Run all cells in each of the three notebooks in the following order:
