@@ -61,3 +61,10 @@ This notebook generates tables for SWE mean, median, volume, and volume change f
 The current system for calculating SWE change since the previous report for plots and tables uses the SNODAS .tif file in the `data/SNODAS` folder and csvs in the `reports` folder with the maximum date in their file names. When the code is run each week, the tifs and csvs are saved to these folders to be used for the difference calculation of the next report. The file structure will need to be updated to organize files by water year since no previous data will have been downloaded for the first report of each water year.    
 
 Example csvs, figures, and pdf tables are included for 2025-05-06 in `reports/2025-05-06`. By default SWE difference will be calculated from this date.  
+
+## Instruction for setting up the Climate Data Store (CDS) API for downloading ERA5 data
+1. Create account at https://cds.climate.copernicus.eu/ and log in.
+2. Click on name in top right corner then "Your Profile."
+3. Scroll down to "API key" section and copy the 2 lines for "url" and "key."
+4. Create a text file called ".cdsapi" in your home directory (on windows this is usually C:\Users\username) and paste the 2 lines.
+
