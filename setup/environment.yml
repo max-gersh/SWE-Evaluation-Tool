@@ -19,3 +19,6 @@ dependencies:
   - shapely
   - pathlib
   - reportlab
+  - cdsapi
+  - cftime
+  - netcdf4
