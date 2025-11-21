@@ -145,7 +145,9 @@ def load_uaswe(date: str, reproject: bool, filter: bool):
 
         # convert to inches
         ua_swe_inches = ua_swe_utm.where(ua_swe_utm>=0) / 1000 * 3.2808 * 12
-        ua_swe_inches = ua_swe_inches.where(ua_swe_inches > 1, np.nan)
+
+        if filter == True:
+            ua_swe_inches = ua_swe_inches.where(ua_swe_inches > 1, np.nan)
         
         ua_swe_inches = ua_swe_inches.rio.write_crs(ua_swe_utm.rio.crs) # add crs
 
