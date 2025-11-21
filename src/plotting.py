@@ -32,7 +32,7 @@ OSE = shapefiles['OSE']
 state_boundaries = shapefiles['state_boundaries']
 nm_cities = shapefiles['nm_cities']
 
-def get_max_value(snodas, cu_swe, ua_swe, era5, average):
+def get_max_value(snodas, cu_swe, ua_swe, average):
     bounds = huc6.total_bounds
     xpad = 100000
     ypad_top = 100000
@@ -43,18 +43,18 @@ def get_max_value(snodas, cu_swe, ua_swe, era5, average):
     clipped_snodas = snodas.where(snodas>=0).rio.clip_box(*bounds_padded) 
     clipped_cu_swe = cu_swe.where(cu_swe>=0).rio.clip_box(*bounds_padded) 
     clipped_ua_swe = ua_swe.where(ua_swe>=0).rio.clip_box(*bounds_padded) 
-    clipped_era5 = era5.where(era5>=0).rio.clip_box(*bounds_padded) 
+    #clipped_era5 = era5.where(era5>=0).rio.clip_box(*bounds_padded) 
     clipped_average = average.where(average>=0).rio.clip_box(*bounds_padded) 
 
     # get 98th percent for each raster
     perc_max_snodas = np.nanpercentile(clipped_snodas, 98)
     perc_max_cu_swe = np.nanpercentile(clipped_cu_swe, 98)
     perc_max_ua_swe = np.nanpercentile(clipped_ua_swe, 98)
-    perc_max_era5 = np.nanpercentile(clipped_era5, 98)
+    #perc_max_era5 = np.nanpercentile(clipped_era5, 98)
     perc_max_average = np.nanpercentile(clipped_average, 98)
 
     # get max value
-    max_swe_val = np.max([perc_max_snodas, perc_max_cu_swe, perc_max_ua_swe, perc_max_era5, 
+    max_swe_val = np.max([perc_max_snodas, perc_max_cu_swe, perc_max_ua_swe, 
                           perc_max_average])
     
     return(max_swe_val)
@@ -173,6 +173,7 @@ def plot_study_area(data, data_source, date, max_value_cbar):
         legend.set_loc("center")
 
     #plt.show()
-    out_file = BASE_DIR / 'figs_for_Max' / f'figure1_{data_source}_{date}.png'
+    out_dir_date = datetime.strptime(date, "%Y%m%d").strftime("%Y-%m-%d")
+    out_file = BASE_DIR / "reports" / out_dir_date / "figures" / f'overview_map_{data_source}_{date}.png'
     plt.savefig(out_file, dpi=300, bbox_inches='tight')
     plt.close()
