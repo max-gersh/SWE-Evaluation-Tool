@@ -62,13 +62,13 @@ cu_swe_utm = src.reproject.load_cuswe(date, reproject=True, filter=True)
 #era5_utm = src.reproject.load_era5(date, reproject=True, filter=True)
 
 # save UTM pkl objects
-with open(str(pkl_dir / f'snodas_utm_{date}.pkl'), "wb") as f:
+with open(str(pkl_dir / f'SNODAS_utm_{date}.pkl'), "wb") as f:
     pickle.dump(snodas_utm, f, protocol=-1)
 
-with open(str(pkl_dir / f'ua_swe_utm_{date}.pkl'), "wb") as f:
+with open(str(pkl_dir / f'UA_SWE_utm_{date}.pkl'), "wb") as f:
     pickle.dump(ua_swe_utm, f, protocol=-1)
 
-with open(str(pkl_dir / f'cu_swe_utm_{date}.pkl'), "wb") as f:
+with open(str(pkl_dir / f'CU_SWE_utm_{date}.pkl'), "wb") as f:
     pickle.dump(cu_swe_utm, f, protocol=-1)
 
 #with open(str(pkl_dir / f'era5_utm_{date}.pkl'), "wb") as f:
@@ -99,15 +99,15 @@ del(ua_swe_1km, cu_swe_1km, raster_list)
 
 # calculate avg and std dev and mask by valid count
 average = raster_stack.mean(dim="layer", skipna=True)
-average = average.where(valid_count >= 3)
-with open(str(pkl_dir / f'average_{date}.pkl'), "wb") as f:
+average = average.where(valid_count >= 2)
+with open(str(pkl_dir / f'Average_utm_{date}.pkl'), "wb") as f:
     pickle.dump(average, f, protocol=-1)
 
 #std_dev = raster_stack.std(dim="layer", skipna = True)
 #std_dev = std_dev.where(valid_count >= 3)
 del(raster_stack)
 
-## create study area overview plots
+## generate study area overview plots
 max_value_cbar = src.plotting.get_max_value(snodas = snodas_utm, cu_swe = cu_swe_utm, ua_swe = ua_swe_utm,
                             average = average)
 
@@ -123,6 +123,20 @@ src.plotting.plot_study_area(data = average, data_source = "Average",
                             date = date, max_value_cbar = max_value_cbar)
 #src.plotting.plot_study_area(data = std_dev, data_source = "Std_Dev",
 #                            date = date, max_value_cbar = max_value_cbar)
+
+
+if date_last_report != 'NA':
+    ## generate study area difference plots
+    src.plotting.plot_study_area_diff(raster_current = snodas_utm, data_source = "SNODAS",
+                                date = date, last_report_date = date_last_report)
+    src.plotting.plot_study_area_diff(raster_current = ua_swe_utm, data_source = "UA_SWE",
+                                date = date, last_report_date = date_last_report)
+    src.plotting.plot_study_area_diff(raster_current = cu_swe_utm, data_source = "CU_SWE",
+                                date = date, last_report_date = date_last_report)
+    #src.plotting.plot_study_area(data = era5_utm, data_source = "ERA5",
+    #                            date = date, max_value_cbar = max_value_cbar)
+    src.plotting.plot_study_area_diff(raster_current = average, data_source = "Average",
+                                date = date, last_report_date = date_last_report)
 
 
 #############################################################################
@@ -147,42 +161,73 @@ table1_cu_swe = src.tables_graphs.generate_table1(raster=cu_swe_utm_unfilt,
 #table1_era5 = src.tables_graphs.generate_table1(era5_utm_unfilt)
 
 ## generate ensemble table
+vals_table1 = np.vstack([
+    table1_snodas['Estimated Volume (af)'].values,
+    table1_ua_swe['Estimated Volume (af)'].values,
+    table1_cu_swe['Estimated Volume (af)'].values
+])
+
+sources = np.array(['SNODAS', 'UA_SWE', 'CU_SWE'])
+
+# ensemble mean
 table1_ensemble_mean = np.mean([table1_snodas['Estimated Volume (af)'], table1_ua_swe['Estimated Volume (af)'], 
                          table1_cu_swe['Estimated Volume (af)']], 
                          axis=0)
+# ensemble median
 table1_ensemble_median = np.median([table1_snodas['Estimated Volume (af)'], table1_ua_swe['Estimated Volume (af)'], 
                          table1_cu_swe['Estimated Volume (af)']], 
                          axis=0)
+'''
 table1_ensemble_std = np.std([table1_snodas['Estimated Volume (af)'], table1_ua_swe['Estimated Volume (af)'], 
                          table1_cu_swe['Estimated Volume (af)']], 
                          axis=0)
-table1_ensemble_min = np.min([table1_snodas['Estimated Volume (af)'], table1_ua_swe['Estimated Volume (af)'], 
-                         table1_cu_swe['Estimated Volume (af)']], 
-                         axis=0)
-table1_ensemble_max = np.max([table1_snodas['Estimated Volume (af)'], table1_ua_swe['Estimated Volume (af)'], 
-                         table1_cu_swe['Estimated Volume (af)']], 
-                         axis=0)
+'''
 
+# numeric min 
+table1_ensemble_min = np.nanmin(vals_table1, axis=0)
+
+# index of dataset producing the min
+min_idx = np.nanargmin(vals_table1, axis=0)
+
+# formatted string with source
+table1_ensemble_min_str = [
+    f"{v:,.0f} ({s})"
+    for v, s in zip(table1_ensemble_min, sources[min_idx])
+]
+
+# numeric max
+table1_ensemble_max = np.nanmax(vals_table1, axis=0)
+
+# index of dataset producing the min
+max_idx = np.nanargmax(vals_table1, axis=0)
+
+# formatted string with source
+table1_ensemble_max_str = [
+    f"{v:,.0f} ({s})"
+    for v, s in zip(table1_ensemble_max, sources[max_idx])
+]
+
+# create ensemble dataframe
 table1_ensemble = pd.DataFrame({'HUC6 Basin': table1_snodas['HUC6 Basin'],
                                 'HUC8 Basin': table1_snodas['HUC8 Subbasin'],
                                 'Ensemble Mean Vol. (af)': table1_ensemble_mean,
                                 'Ensemble Median Vol (af)': table1_ensemble_median,
-                                'Ensemble SD Vol. (af)': table1_ensemble_std,
-                                'Ensemble Min. Vol. (af)': table1_ensemble_min,
-                                'Ensemble Max. Vol. (af)': table1_ensemble_max})
+                                #'Ensemble SD Vol. (af)': table1_ensemble_std,
+                                'Ensemble Min. Vol. (af)': table1_ensemble_min_str,
+                                'Ensemble Max. Vol. (af)': table1_ensemble_max_str})
 table1_ensemble.to_csv(BASE_DIR / 'reports' / date_formatted / 'csvs' / f'table1_Ensemble_{date}.csv')
 
 # save table 1 pdfs
 src.tables_graphs.table1_reportlab(table1_snodas, data_source="SNODAS",
-                                   date=date)
+                                   date=date, last_report_date=date_last_report)
 src.tables_graphs.table1_reportlab(table1_ua_swe, data_source="UA_SWE",
-                                   date=date)
+                                   date=date, last_report_date=date_last_report)
 src.tables_graphs.table1_reportlab(table1_cu_swe, data_source="CU_SWE",
-                                   date=date)
+                                   date=date, last_report_date=date_last_report)
 #src.tables_graphs.table1_reportlab(table1_era5, data_source="ERA5",
 #                                   date=date)
 src.tables_graphs.table1_reportlab(table1_ensemble, data_source="Ensemble",
-                                   date=date)
+                                   date=date, last_report_date=date_last_report)
 
 
 #######################################################################
@@ -196,41 +241,71 @@ table2_cu_swe = src.tables_graphs.generate_table2(raster=cu_swe_utm_unfilt,
                                                   data_source="CU_SWE", date=date)
 
 ## generate ensemble table
+vals_table2 = np.vstack([
+    table2_snodas['Estimated Volume (af)'].values,
+    table2_ua_swe['Estimated Volume (af)'].values,
+    table2_cu_swe['Estimated Volume (af)'].values
+])
+
+sources = np.array(['SNODAS', 'UA_SWE', 'CU_SWE'])
+
+# ensemble mean
 table2_ensemble_mean = np.mean([table2_snodas['Estimated Volume (af)'], table2_ua_swe['Estimated Volume (af)'], 
                          table2_cu_swe['Estimated Volume (af)']], 
                          axis=0)
+
+# ensemble median
 table2_ensemble_median = np.median([table2_snodas['Estimated Volume (af)'], table2_ua_swe['Estimated Volume (af)'], 
                          table2_cu_swe['Estimated Volume (af)']], 
                          axis=0)
+'''
 table2_ensemble_std = np.std([table2_snodas['Estimated Volume (af)'], table2_ua_swe['Estimated Volume (af)'], 
                          table2_cu_swe['Estimated Volume (af)']], 
                          axis=0)
-table2_ensemble_min = np.min([table2_snodas['Estimated Volume (af)'], table2_ua_swe['Estimated Volume (af)'], 
-                         table2_cu_swe['Estimated Volume (af)']], 
-                         axis=0)
-table2_ensemble_max = np.max([table2_snodas['Estimated Volume (af)'], table2_ua_swe['Estimated Volume (af)'], 
-                         table2_cu_swe['Estimated Volume (af)']], 
-                         axis=0)
+'''
+# numeric min 
+table2_ensemble_min = np.nanmin(vals_table2, axis=0)
 
+# index of dataset producing the min
+min_idx = np.nanargmin(vals_table2, axis=0)
+
+# formatted string with source
+table2_ensemble_min_str = [
+    f"{v:,.0f} ({s})"
+    for v, s in zip(table2_ensemble_min, sources[min_idx])
+]
+
+# numeric max
+table2_ensemble_max = np.nanmax(vals_table2, axis=0)
+# index of dataset producing the min
+max_idx = np.nanargmax(vals_table2, axis=0)
+
+# formatted string with source
+table2_ensemble_max_str = [
+    f"{v:,.0f} ({s})"
+    for v, s in zip(table2_ensemble_max, sources[max_idx])
+]
+
+# create ensemble dataframe
 table2_ensemble = pd.DataFrame({'OSE Grouping': table2_snodas['OSE Grouping'],
                                 'HUC8 Basin': table2_snodas['HUC8 Subbasin'],
                                 'Ensemble Mean Vol. (af)': table2_ensemble_mean,
                                 'Ensemble Median Vol (af)': table2_ensemble_median,
-                                'Ensemble SD Vol. (af)': table2_ensemble_std,
-                                'Ensemble Min. Vol. (af)': table2_ensemble_min,
-                                'Ensemble Max. Vol. (af)': table2_ensemble_max})
+                                #'Ensemble SD Vol. (af)': table2_ensemble_std,
+                                'Ensemble Min. Vol. (af)': table2_ensemble_min_str,
+                                'Ensemble Max. Vol. (af)': table2_ensemble_max_str})
 table2_ensemble.to_csv(BASE_DIR / 'reports' / date_formatted / 'csvs' / f'table2_Ensemble_{date}.csv')
 
 
 # save table 2 pdfs
 src.tables_graphs.table2_reportlab(table2_snodas, data_source="SNODAS",
-                                   date=date)
+                                   date=date, last_report_date=date_last_report)
 src.tables_graphs.table2_reportlab(table2_ua_swe, data_source="UA_SWE",
-                                   date=date)
+                                   date=date, last_report_date=date_last_report)
 src.tables_graphs.table2_reportlab(table2_cu_swe, data_source="CU_SWE",
-                                   date=date)
+                                   date=date, last_report_date=date_last_report)
 src.tables_graphs.table2_reportlab(table2_ensemble, data_source="Ensemble",
-                                   date=date)
+                                   date=date, last_report_date=date_last_report)
 
 ###################################################################3
 
@@ -249,11 +324,11 @@ table3_cu_swe = src.tables_graphs.generate_table3(raster=cu_swe_utm_unfilt,
 
 # save table 3 pdfs
 src.tables_graphs.table3_reportlab(table3_snodas, data_source="SNODAS",
-                                   date=date)
+                                   date=date, last_report_date=date_last_report)
 src.tables_graphs.table3_reportlab(table3_ua_swe, data_source="UA_SWE",
-                                   date=date)
+                                   date=date, last_report_date=date_last_report)
 src.tables_graphs.table3_reportlab(table3_cu_swe, data_source="CU_SWE",
-                                   date=date)
+                                   date=date, last_report_date=date_last_report)
 
 ## table 3 for plots
 table3_snodas_plotting = src.tables_graphs.generate_table3(raster=snodas_utm_unfilt,
@@ -266,7 +341,8 @@ table3_cu_swe_plotting = src.tables_graphs.generate_table3(raster=cu_swe_utm_unf
                                                   data_source="CU_SWE", date=date,
                                                   band_width=250, save_csv=False)
 
-## generate elevation plots
+## generate elevation plots 
+## FIXME! Need to add condition to not generate plot if zero snow
 src.tables_graphs.elevation_plots(snodas_table=table3_snodas_plotting,
                                   ua_swe_table=table3_ua_swe_plotting,
                                   cu_swe_table=table3_cu_swe_plotting,
