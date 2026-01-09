@@ -56,6 +56,6 @@ def last_report_date(date):
     if len(report_dates_filtered) > 0:
         max_date = max(report_dates_filtered).strftime("%Y-%m-%d")
     else: 
-        max_date = np.nan    
+        max_date = "NA"   
 
     return(max_date)
