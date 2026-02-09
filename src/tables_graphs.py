@@ -63,6 +63,9 @@ def swe_stat_calc(raster, shapefile_gdf):
     ## loop through each polygon in shapefile and append statistics to swe_df list
     for idx, basin in shapefile_gdf.iterrows():
         swe_basin = raster.rio.clip([basin.geometry])
+
+        # Remove fill values 
+        swe_basin = swe_basin.where(swe_basin >= 0)
         
         '''
         ## plot clipped polygon
@@ -102,7 +105,7 @@ def swe_stat_calc(raster, shapefile_gdf):
 #########################################################################
 
 ## function to generate table 1 csv
-def generate_table1(raster, data_source, date):
+def generate_table1(raster, data_source, date, last_report_date):
     ## huc8 stats calculation
     huc8_stats = swe_stat_calc(raster, huc8)
     huc8_stats = huc8_stats.rename(columns={'name': 'HUC8 Subbasin'}) 
@@ -127,9 +130,23 @@ def generate_table1(raster, data_source, date):
                             7, 8, 9, 10, 11, 12, 
                             13, 14, 15, 16, 17, 20]).reset_index().drop(columns= ['index'])
     
+    ## calculate volume difference since last report
+    if last_report_date != 'NA':
+        last_report_date_unformatted = datetime.strptime(last_report_date, "%Y-%m-%d").strftime("%Y%m%d")
+        last_report_csv = pd.read_csv(BASE_DIR / 'reports' / last_report_date / 'csv_tables' / f'table1_{data_source}_{last_report_date_unformatted}.csv' )
+
+        ## calculate volume difference
+        vol_diff = (table1['Estimated Volume (af)'] - last_report_csv['Estimated Volume (af)'])
+        #vol_diff = vol_diff.apply(lambda x: f"{x:,}")
+
+        ## new column name
+        col_name_diff = f'Volume Change since {last_report_date} (af)'
+        table1[col_name_diff] = vol_diff
+
+    
     # save table as csv
     csv_dir_date = datetime.strptime(date, "%Y%m%d").strftime("%Y-%m-%d")
-    csv_filename = BASE_DIR / 'reports' / csv_dir_date / "csvs" / f'table1_{data_source}_{date}.csv'
+    csv_filename = BASE_DIR / 'reports' / csv_dir_date / "csv_tables" / f'table1_{data_source}_{date}.csv'
     table1.to_csv(csv_filename, index=False)
 
     return(table1)
@@ -138,32 +155,44 @@ def generate_table1(raster, data_source, date):
 def table1_reportlab(table1, data_source, date, last_report_date):
     table1 = table1.copy()
 
-    if last_report_date != 'NA':
-        last_report_date_unformatted = datetime.strptime(last_report_date, "%Y-%m-%d").strftime("%Y%m%d")
-        last_report_csv = pd.read_csv(BASE_DIR / 'reports' / last_report_date / 'csvs' / f'table1_{data_source}_{last_report_date_unformatted}.csv' )
-
-        ## calculate volume difference since last report
-        if data_source == "Ensemble":
-            vol_diff = (table1['Ensemble Mean Vol. (af)'] - last_report_csv['Ensemble Mean Vol. (af)']).round().astype(int)
-            vol_diff = vol_diff.apply(lambda x: f"{x:,}")
-        else:
-            vol_diff = (table1['Estimated Volume (af)'] - last_report_csv['Estimated Volume (af)']).round().astype(int)
-            vol_diff = vol_diff.apply(lambda x: f"{x:,}")
-
-        ## new column name
-        col_name_diff = f'Volume Change since {last_report_date} (af)'
-        table1[col_name_diff] = vol_diff
 
     if data_source == "Ensemble":
-        cols_round = ['Ensemble Mean Vol. (af)', 'Ensemble Median Vol (af)',
+        cols_round = ['Ensemble Mean Vol. (af)', 'Ensemble Median Vol. (af)',
                       'Ensemble Min. Vol. (af)',
                       'Ensemble Max. Vol. (af)']    
         table1[cols_round] = table1[cols_round].map(lambda x: f'{x:,.0f}' if isinstance(x, (int, float)) else x)
+
+        if last_report_date != 'NA':
+            table1[f'Mean Vol. Change since {last_report_date} (af)'] = table1[f'Mean Vol. Change since {last_report_date} (af)'].map(lambda x: f'{x:,.0f}' if isinstance(x, (int, float)) else x)
+            table1[f'Median Vol. Change since {last_report_date} (af)'] = table1[f'Median Vol. Change since {last_report_date} (af)'].map(lambda x: f'{x:,.0f}' if isinstance(x, (int, float)) else x)
+
+        # add data source to min and max columns if at least one is non-zero
+        min_source_count = table1['Min. Source'].str.split(',').str.len() # count sources per row
+        min_mask = min_source_count < 3 # row-wise mask
+        # apply only where condition is met
+        table1.loc[min_mask, 'Ensemble Min. Vol. (af)'] = (
+            table1.loc[min_mask, 'Ensemble Min. Vol. (af)'].astype(str)
+            + ' ('
+            + table1.loc[min_mask, 'Min. Source']
+            + ')'
+        )
+
+        table1.loc[min_mask, 'Ensemble Max. Vol. (af)'] = (
+            table1.loc[min_mask, 'Ensemble Max. Vol. (af)'].astype(str)
+            + ' ('
+            + table1.loc[min_mask, 'Max. Source']
+            + ')'
+        )
+        table1.drop(['Min. Source', 'Max. Source'], axis=1, inplace=True)
+
 
     else:    
         cols_round = ['Median SWE (in.)', 'Mean SWE (in.)']
         table1[cols_round] = table1[cols_round].map(lambda x: f'{x:,.1f}' if isinstance(x, (int, float)) else x)
         table1['Estimated Volume (af)'] = table1['Estimated Volume (af)'].map(lambda x: f'{x:,.0f}' if isinstance(x, (int, float)) else x)
+
+        if last_report_date != 'NA':
+            table1[f'Volume Change since {last_report_date} (af)'] = table1[f'Volume Change since {last_report_date} (af)'].map(lambda x: f'{x:,.0f}' if isinstance(x, (int, float)) else x)
 
     ## remove duplicate HUC6 labels
     table1['HUC6 Basin'] = table1.groupby('HUC6 Basin')['HUC6 Basin'].transform(lambda x: x.where(x.index == x.index[0], ""))
@@ -171,7 +200,7 @@ def table1_reportlab(table1, data_source, date, last_report_date):
     ## export to pdf
     # PDF filename
     pdf_dir_date = datetime.strptime(date, "%Y%m%d").strftime("%Y-%m-%d")
-    pdf_filename = BASE_DIR / 'reports' / pdf_dir_date / "pdfs" / f'table1_{data_source}_{date}.pdf'
+    pdf_filename = BASE_DIR / 'reports' / pdf_dir_date / "pdf_tables" / f'table1_{data_source}_{date}.pdf'
     pdf_filename = str(pdf_filename)
 
     # Create empty PDF
@@ -180,11 +209,26 @@ def table1_reportlab(table1, data_source, date, last_report_date):
 
     # Convert dataframe to list of lists (including column headers)
     columns = table1.columns.tolist()
+
+    # line breaks for volume columns
+    for i, col in enumerate(columns):
+        if 'Ensemble Mean Vol.' in col:
+            columns[i] = col.replace('Mean ', 'Mean\n')
+        if 'Ensemble Median Vol.' in col:
+            columns[i] = col.replace('Median ', 'Median\n')
+
     columns[-1] = columns[-1].replace("Change", "Change\n")
+    if data_source == "Ensemble":
+        columns[-2] = columns[-2].replace("Change", "Change\n")
     table_data = [columns] + table1.values.tolist()
 
     # Create Table
-    col_widths = [100] * len(table1.columns) # adjust column width
+    col_widths = []
+    for col in table1.columns:
+        if 'Ensemble Mean Vol.' in col or 'Ensemble Median Vol.' in col:
+            col_widths.append(75)   # narrower
+        else:
+            col_widths.append(100)
     table = Table(table_data, colWidths = col_widths)
 
     # Add style to Table
@@ -223,7 +267,7 @@ def table1_reportlab(table1, data_source, date, last_report_date):
 
 
 ## generate table 2
-def generate_table2(raster, data_source, date):
+def generate_table2(raster, data_source, date, last_report_date):
     huc8_ose_polys = ['Rio Grande Headwaters', 'Saguache',
                     'Conejos', 'San Luis',
                     'Alamosa-Trinchera', 'Upper Rio Grande']
@@ -261,9 +305,22 @@ def generate_table2(raster, data_source, date):
                             3, 4, 5, 8,
                             7, 6]).reset_index().drop(columns= ['index'])
     
+    ## calculate volume change since last report
+    if last_report_date != 'NA':
+        last_report_date_unformatted = datetime.strptime(last_report_date, "%Y-%m-%d").strftime("%Y%m%d")
+        last_report_csv = pd.read_csv(BASE_DIR / 'reports' / last_report_date / 'csv_tables' / f'table2_{data_source}_{last_report_date_unformatted}.csv' )
+
+        ## calculate volume difference
+        vol_diff = (table2['Estimated Volume (af)'] - last_report_csv['Estimated Volume (af)'])
+        #vol_diff = vol_diff.apply(lambda x: f"{x:,}")
+
+        ## new column name
+        col_name_diff = f'Volume Change since {last_report_date} (af)'
+        table2[col_name_diff] = vol_diff
+    
     # save table as csv
     csv_dir_date = datetime.strptime(date, "%Y%m%d").strftime("%Y-%m-%d")
-    csv_filename = BASE_DIR / 'reports' / csv_dir_date / "csvs" / f'table2_{data_source}_{date}.csv'
+    csv_filename = BASE_DIR / 'reports' / csv_dir_date / "csv_tables" / f'table2_{data_source}_{date}.csv'
     table2.to_csv(csv_filename, index=False)
 
     return(table2)
@@ -274,32 +331,43 @@ def generate_table2(raster, data_source, date):
 def table2_reportlab(table2, data_source, date, last_report_date):
     table2 = table2.copy()
 
-    if last_report_date != 'NA':
-        last_report_date_unformatted = datetime.strptime(last_report_date, "%Y-%m-%d").strftime("%Y%m%d")
-        last_report_csv = pd.read_csv(BASE_DIR / 'reports' / last_report_date / 'csvs' / f'table2_{data_source}_{last_report_date_unformatted}.csv' )
-
-        ## calculate volume difference since last report
-        if data_source == "Ensemble":
-            vol_diff = (table2['Ensemble Mean Vol. (af)'] - last_report_csv['Ensemble Mean Vol. (af)']).round().astype(int)
-            vol_diff = vol_diff.apply(lambda x: f"{x:,}")
-        else:
-            vol_diff = (table2['Estimated Volume (af)'] - last_report_csv['Estimated Volume (af)']).round().astype(int)
-            vol_diff = vol_diff.apply(lambda x: f"{x:,}")
-
-        ## new column name
-        col_name_diff = f'Volume Change since {last_report_date} (af)'
-        table2[col_name_diff] = vol_diff
 
     if data_source == "Ensemble":
-        cols_round = ['Ensemble Mean Vol. (af)', 'Ensemble Median Vol (af)',
+        cols_round = ['Ensemble Mean Vol. (af)', 'Ensemble Median Vol. (af)',
                       'Ensemble Min. Vol. (af)',
                       'Ensemble Max. Vol. (af)']    
         table2[cols_round] = table2[cols_round].map(lambda x: f'{x:,.0f}' if isinstance(x, (int, float)) else x)
+
+        if last_report_date != 'NA':
+            table2[f'Mean Vol. Change since {last_report_date} (af)'] = table2[f'Mean Vol. Change since {last_report_date} (af)'].map(lambda x: f'{x:,.0f}' if isinstance(x, (int, float)) else x)
+            table2[f'Median Vol. Change since {last_report_date} (af)'] = table2[f'Median Vol. Change since {last_report_date} (af)'].map(lambda x: f'{x:,.0f}' if isinstance(x, (int, float)) else x)
+
+        # add data source to min and max columns if at least one is non-zero
+        min_source_count = table2['Min. Source'].str.split(',').str.len() # count sources per row
+        min_mask = min_source_count < 3 # row-wise mask
+        # apply only where condition is met
+        table2.loc[min_mask, 'Ensemble Min. Vol. (af)'] = (
+            table2.loc[min_mask, 'Ensemble Min. Vol. (af)'].astype(str)
+            + ' ('
+            + table2.loc[min_mask, 'Min. Source']
+            + ')'
+        )
+
+        table2.loc[min_mask, 'Ensemble Max. Vol. (af)'] = (
+            table2.loc[min_mask, 'Ensemble Max. Vol. (af)'].astype(str)
+            + ' ('
+            + table2.loc[min_mask, 'Max. Source']
+            + ')'
+        )
+        table2.drop(['Min. Source', 'Max. Source'], axis=1, inplace=True)
 
     else:    
         cols_round = ['Median SWE (in.)', 'Mean SWE (in.)']
         table2[cols_round] = table2[cols_round].map(lambda x: f'{x:,.1f}' if isinstance(x, (int, float)) else x)
         table2['Estimated Volume (af)'] = table2['Estimated Volume (af)'].map(lambda x: f'{x:,.0f}' if isinstance(x, (int, float)) else x)
+
+        if last_report_date != 'NA':
+            table2[f'Volume Change since {last_report_date} (af)'] = table2[f'Volume Change since {last_report_date} (af)'].map(lambda x: f'{x:,.0f}' if isinstance(x, (int, float)) else x)
 
     ## remove duplicate HUC6 labels
     table2['OSE Grouping'] = table2.groupby('OSE Grouping')['OSE Grouping'].transform(lambda x: x.where(x.index == x.index[0], ""))
@@ -307,7 +375,7 @@ def table2_reportlab(table2, data_source, date, last_report_date):
     ## export to pdf
     # PDF filename
     pdf_dir_date = datetime.strptime(date, "%Y%m%d").strftime("%Y-%m-%d")
-    pdf_filename = BASE_DIR / 'reports' / pdf_dir_date / "pdfs" / f'table2_{data_source}_{date}.pdf'
+    pdf_filename = BASE_DIR / 'reports' / pdf_dir_date / "pdf_tables" / f'table2_{data_source}_{date}.pdf'
     pdf_filename = str(pdf_filename)
 
     # Create empty PDF
@@ -316,11 +384,27 @@ def table2_reportlab(table2, data_source, date, last_report_date):
 
     # Convert dataframe to list of lists (including column headers)
     columns = table2.columns.tolist()
+
+    # line breaks for volume columns
+    for i, col in enumerate(columns):
+        if 'Ensemble Mean Vol.' in col:
+            columns[i] = col.replace('Mean ', 'Mean\n')
+        if 'Ensemble Median Vol.' in col:
+            columns[i] = col.replace('Median ', 'Median\n')
+
     columns[-1] = columns[-1].replace("Change", "Change\n")
+    if data_source == "Ensemble":
+        columns[-2] = columns[-2].replace("Change", "Change\n")
     table_data = [columns] + table2.values.tolist()
 
     # Create Table
-    col_widths = [100] * len(table2.columns) # adjust column width
+    col_widths = []
+    for col in table2.columns:
+        if 'Ensemble Mean Vol.' in col or 'Ensemble Median Vol.' in col:
+            col_widths.append(75)   # narrower
+        else:
+            col_widths.append(100)
+
     table = Table(table_data, colWidths = col_widths)
 
     # Add style to Table
@@ -360,7 +444,7 @@ def table2_reportlab(table2, data_source, date, last_report_date):
 
 
 ## generate table 3 (elevation band) csv
-def generate_table3(raster, data_source, date, band_width, save_csv):
+def generate_table3(raster, data_source, date, band_width, save_csv, last_report_date, calc_diff):
     bounds = huc8.geometry.total_bounds
     raster_clipped = raster.rio.clip_box(*bounds)
 
@@ -385,6 +469,9 @@ def generate_table3(raster, data_source, date, band_width, save_csv):
 
     for idx, basin in huc8.iterrows():
         swe_basin = swe_ds.rio.clip([basin.geometry])
+
+        # Remove fill values 
+        swe_basin = swe_basin.where(swe_basin >= 0)
         '''
         f, ax = plt.subplots()
         swe_basin.elevation.plot(cmap="terrain",
@@ -417,46 +504,77 @@ def generate_table3(raster, data_source, date, band_width, save_csv):
     ## convert list to dataframe
     table3 = pd.DataFrame(swe_elev_df, columns=cols_swe_elev)
 
+    ## calculate volume change since last report
+    if last_report_date != 'NA' and calc_diff:
+        last_report_date_unformatted = datetime.strptime(last_report_date, "%Y-%m-%d").strftime("%Y%m%d")
+        last_report_csv = pd.read_csv(BASE_DIR / 'reports' / last_report_date / 'csv_tables' / f'table3_{data_source}_{last_report_date_unformatted}.csv' )
+
+        ## calculate volume difference since last report
+        vol_diff = (table3['Estimated Volume (af)'] - last_report_csv['Estimated Volume (af)'])
+        #vol_diff = vol_diff.apply(lambda x: f"{x:,}")
+
+        ## new column name
+        col_name_diff = f'Volume Change since {last_report_date} (af)'
+        table3[col_name_diff] = vol_diff
+
     # save table as csv if save csv flag equals True
     if save_csv:
         csv_dir_date = datetime.strptime(date, "%Y%m%d").strftime("%Y-%m-%d")
-        csv_filename = BASE_DIR / 'reports' / csv_dir_date / "csvs" / f'table3_{data_source}_{date}.csv'
+        csv_filename = BASE_DIR / 'reports' / csv_dir_date / "csv_tables" / f'table3_{data_source}_{date}.csv'
         table3.to_csv(csv_filename, index=False)
 
     return(table3)
 
 
 
-## function to generate table 2 reportlab pdf
+## function to generate table 3 reportlab pdf
 def table3_reportlab(table3, data_source, date, last_report_date):
     table3 = table3.copy()
 
-    if last_report_date != 'NA':
-        last_report_date_unformatted = datetime.strptime(last_report_date, "%Y-%m-%d").strftime("%Y%m%d")
-        last_report_csv = pd.read_csv(BASE_DIR / 'reports' / last_report_date / 'csvs' / f'table3_{data_source}_{last_report_date_unformatted}.csv' )
-
-        ## calculate volume difference since last report
-        if data_source == "Ensemble":
-            vol_diff = (table3['Ensemble Mean Vol. (af)'] - last_report_csv['Ensemble Mean Vol. (af)']).round().astype(int)
-            vol_diff = vol_diff.apply(lambda x: f"{x:,}")
-        else:
-            vol_diff = (table3['Estimated Volume (af)'] - last_report_csv['Estimated Volume (af)']).round().astype(int)
-            vol_diff = vol_diff.apply(lambda x: f"{x:,}")
-
-        ## new column name
-        col_name_diff = f'Volume Change since {last_report_date} (af)'
-        table3[col_name_diff] = vol_diff
 
     if data_source == "Ensemble":
-        cols_round = ['Ensemble Mean Vol. (af)', 'Ensemble Median Vol (af)',
+        cols_round = ['Ensemble Mean Vol. (af)', 'Ensemble Median Vol. (af)',
                       'Ensemble Min. Vol. (af)',
                       'Ensemble Max. Vol. (af)']    
         table3[cols_round] = table3[cols_round].map(lambda x: f'{x:,.0f}' if isinstance(x, (int, float)) else x)
+
+        if last_report_date != 'NA':
+            table3[f'Mean Vol. Change since {last_report_date} (af)'] = table3[f'Mean Vol. Change since {last_report_date} (af)'].map(lambda x: f'{x:,.0f}' if isinstance(x, (int, float)) else x)
+            table3[f'Median Vol. Change since {last_report_date} (af)'] = table3[f'Median Vol. Change since {last_report_date} (af)'].map(lambda x: f'{x:,.0f}' if isinstance(x, (int, float)) else x)
+
+        # add data source to min and max columns if at least one is non-zero
+        min_source_count = table3['Min. Source'].str.split(',').str.len() # count sources per row
+        min_mask = (
+            (min_source_count < 3)
+            & ~(
+                (table3['Ensemble Min. Vol. (af)'] == '0')
+                & (table3['Ensemble Max. Vol. (af)'] == '0')
+            )
+        )
+        # apply only where condition is met
+        table3.loc[min_mask, 'Ensemble Min. Vol. (af)'] = (
+            table3.loc[min_mask, 'Ensemble Min. Vol. (af)'].astype(str)
+            + ' ('
+            + table3.loc[min_mask, 'Min. Source']
+            + ')'
+        )
+
+        table3.loc[min_mask, 'Ensemble Max. Vol. (af)'] = (
+            table3.loc[min_mask, 'Ensemble Max. Vol. (af)'].astype(str)
+            + ' ('
+            + table3.loc[min_mask, 'Max. Source']
+            + ')'
+        )
+        table3.drop(['Min. Source', 'Max. Source'], axis=1, inplace=True)
 
     else:    
         cols_round = ['Median SWE (in.)', 'Mean SWE (in.)']
         table3[cols_round] = table3[cols_round].map(lambda x: f'{x:,.1f}' if isinstance(x, (int, float)) else x)
         table3['Estimated Volume (af)'] = table3['Estimated Volume (af)'].map(lambda x: f'{x:,.0f}' if isinstance(x, (int, float)) else x)
+
+        if last_report_date != 'NA':
+            table3[f'Volume Change since {last_report_date} (af)'] = table3[f'Volume Change since {last_report_date} (af)'].map(lambda x: f'{x:,.0f}' if isinstance(x, (int, float)) else x)
+
 
     ## remove duplicate HUC6 and HUC8 labels
     table3['HUC6 Basin'] = table3.groupby('HUC6 Basin')['HUC6 Basin'].transform(lambda x: x.where(x.index == x.index[0], ""))
@@ -466,7 +584,7 @@ def table3_reportlab(table3, data_source, date, last_report_date):
     # PDF filename
     # PDF filename
     pdf_dir_date = datetime.strptime(date, "%Y%m%d").strftime("%Y-%m-%d")
-    pdf_filename = BASE_DIR / 'reports' / pdf_dir_date / "pdfs" / f'table3_{data_source}_{date}.pdf'
+    pdf_filename = BASE_DIR / 'reports' / pdf_dir_date / "pdf_tables" / f'table3_{data_source}_{date}.pdf'
     pdf_filename = str(pdf_filename)
 
     # Create empty PDF document
@@ -475,11 +593,28 @@ def table3_reportlab(table3, data_source, date, last_report_date):
 
     # Convert dataframe to list of lists (including column headers)
     columns = table3.columns.tolist()
+
+    for i, col in enumerate(columns):
+        if 'Ensemble Mean Vol.' in col:
+            columns[i] = col.replace('Mean ', 'Mean\n')
+        if 'Ensemble Median Vol.' in col:
+            columns[i] = col.replace('Median ', 'Median\n')
+
     columns[-1] = columns[-1].replace("Change", "Change\n")
+    if last_report_date != 'NA':
+        columns[-2] = columns[-2].replace("Change", "Change\n")
     table_data = [columns] + table3.values.tolist()
 
     # Create Table
-    col_widths = [100] * len(table3.columns) # adjust column width
+    col_widths = []
+    for col in table3.columns:
+        if 'Ensemble Mean Vol.' in col or 'Ensemble Median Vol.' in col:
+            col_widths.append(75)   # narrower
+        elif 'Elevation Band' in col or 'Change' in col:
+            col_widths.append(80)
+        else:
+            col_widths.append(96)
+
     table = Table(table_data, colWidths = col_widths)
 
     # Add style to Table
