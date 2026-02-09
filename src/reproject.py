@@ -112,7 +112,7 @@ def load_snodas(date: str, filter: bool):
     # convert to inches
     snodas_inches = snodas_utm.where(snodas_utm>=0) / 1000 * 3.2808 * 12
     if filter == True:
-        snodas_inches = snodas_inches.where(snodas_inches > 1, np.nan)
+        snodas_inches = snodas_inches.where(snodas_inches > 0, np.nan)
 
     print(f'Done loading SNODAS for {date}.')
 
@@ -147,7 +147,7 @@ def load_uaswe(date: str, reproject: bool, filter: bool):
         ua_swe_inches = ua_swe_utm.where(ua_swe_utm>=0) / 1000 * 3.2808 * 12
 
         if filter == True:
-            ua_swe_inches = ua_swe_inches.where(ua_swe_inches > 1, np.nan)
+            ua_swe_inches = ua_swe_inches.where(ua_swe_inches > 0, np.nan)
         
         ua_swe_inches = ua_swe_inches.rio.write_crs(ua_swe_utm.rio.crs) # add crs
 
@@ -159,7 +159,7 @@ def load_uaswe(date: str, reproject: bool, filter: bool):
         # convert to inches
         ua_swe_inches = ua_swe.where(ua_swe>=0) / 1000 * 3.2808 * 12
         if filter == True:
-            ua_swe_inches = ua_swe_inches.where(ua_swe_inches > 1, np.nan)
+            ua_swe_inches = ua_swe_inches.where(ua_swe_inches > 0, np.nan)
 
         ua_swe_inches = ua_swe_inches.rio.write_crs(ua_swe.rio.crs) # add crs
 
@@ -200,7 +200,7 @@ def load_cuswe(date: str, reproject: bool, filter: bool):
         print(f'Done loading CU SWE for date {date}.')
 
     if filter == True:
-        cu_swe_inches = cu_swe_inches.where(cu_swe_inches > 1, np.nan)    
+        cu_swe_inches = cu_swe_inches.where(cu_swe_inches > 0, np.nan)    
 
     return(cu_swe_inches)
 
@@ -243,7 +243,7 @@ def load_era5(date: str, reproject: bool, filter: bool):
         print(f'Done loading ERA5 for date {date}.')    
 
     if filter == True:
-        era5_inches = era5_inches.where(era5_inches > 1, np.nan)
+        era5_inches = era5_inches.where(era5_inches > 0, np.nan)
 
     return(era5_inches)
 
