@@ -8,7 +8,7 @@ from datetime import datetime
 import os
 from pathlib import Path
 import re
-import cdsapi
+#import cdsapi # used for era5 download
 
 from src import BASE_DIR
 
@@ -45,6 +45,7 @@ def download_snodas(date: str):
 
         ## set snodas directory for download
         snodas_dir = BASE_DIR / "data" / "SNODAS"
+        snodas_dir.mkdir(parents=True, exist_ok=True)
 
 
         ## download file from SNODAS website
@@ -126,13 +127,15 @@ def download_uaswe(date: str):
     Returns:
     No return value.
     """
-    file_path = BASE_DIR / "data" / "UA_SWE" / f'UA_SWE_{date}.nc'
+    ua_swe_dir = BASE_DIR / "data" / "UA_SWE"
+    file_path = ua_swe_dir / f'UA_SWE_{date}.nc'
     if file_path.is_file():
         print(f'File {file_path} already downloaded.')
         
     
     else:
         print(f'Downloading UA SWE data for date {date}...')
+        ua_swe_dir.mkdir(parents=True, exist_ok=True)
 
         year = date[0:4]
         month = date[4:6]
@@ -160,9 +163,6 @@ def download_uaswe(date: str):
 
         ## set full ua swe url
         full_url = f"{url}/{matching_file[0]}"
-
-        ## set ua swe directory for download
-        ua_swe_dir = BASE_DIR / "data" / "UA_SWE"
 
         r = requests.get(full_url)
         r.raise_for_status()
