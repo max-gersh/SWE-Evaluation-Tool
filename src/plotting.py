@@ -370,7 +370,7 @@ def plot_study_area_diff(raster_current, data_source, date, last_report_date):
 
     
     ## save plot
-    out_file = BASE_DIR / "reports" / report_date_formatted / "figures" / f'difference_map_{data_source}_{date}.png'
+    out_file = BASE_DIR / "reports" / report_date_formatted / "figures" / f'overview_difference_map_{data_source}_{date}.png'
     plt.savefig(out_file, dpi=300, bbox_inches='tight')
     plt.close()
 
