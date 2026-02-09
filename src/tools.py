@@ -18,7 +18,7 @@ def create_report_dirs(report_date):
     """   
     report_date_formatted = datetime.strptime(report_date, "%Y%m%d").strftime("%Y-%m-%d")
     base = BASE_DIR / "reports" / report_date_formatted # base path for report
-    subdirs = ['csvs', 'figures', 'pdfs', 'pkl']
+    subdirs = ['csv_tables', 'figures', 'pdf_tables', 'pkl']
     for i in range(len(subdirs)):
         folder = Path(base / subdirs[i])
         folder.mkdir(parents=True, exist_ok=True)
@@ -51,7 +51,8 @@ def last_report_date(date):
     report_dates = [datetime.strptime(d, "%Y-%m-%d").date() for d in report_dirs] # convert to date objects
     
     ## get dates less than current date
-    report_dates_filtered = [d for d in report_dates if d < current_date]
+    report_dates_current_wy = [d for d in report_dates if (d >= wy_start and d <= wy_end)]
+    report_dates_filtered = [d for d in report_dates_current_wy if d < current_date]
     ## get max date, convert to string
     if len(report_dates_filtered) > 0:
         max_date = max(report_dates_filtered).strftime("%Y-%m-%d")
