@@ -1,6 +1,6 @@
 # nm_swe
 Analysis, figures and tables for NM OSE SWE reports  
-This repository is used to generate weekly snow water equivalent (SWE) reports for the northern Rio Grande River Basin in Colorado and New Mexico. Code is included to download SNODAS SWE estimates from https://noaadata.apps.nsidc.org/NOAA/G02158/ and generate summary figures and tables. Future updates will include additonal SWE products including UA/SWANN (https://climate.arizona.edu/data/UA_SWE/) and CU SWE. 
+This repository is used to generate weekly snow water equivalent (SWE) reports for the northern Rio Grande River Basin in Colorado and New Mexico. Code is included to download SNODAS SWE (https://noaadata.apps.nsidc.org/NOAA/G02158/), UA/SWANN (https://climate.arizona.edu/data/UA_SWE/), CU SWE (manual download from onedrive) and generate summary figures and tables.
 
 ## Setup
 This system uses the python programming language. You will need to create a conda environment with the required packages. All of the following commands should be run in a terminal (powershell on windows) or the terminal inside of your code editor (tested on Visual Studio Code and JupyterLab for windows).
@@ -28,39 +28,21 @@ conda activate nm_swe
 ```
 conda env list
 ```
-5. Select nm_swe kernel for running jupyter notebooks. If nm_swe kernel does not show up in kernel list in VSCode or JupyterLab run the following lines the in the terminal:
-```
-pip install ipykernel
-python -m ipykernel install --user --name nm_swe --display-name "nm_swe"    
-```
-After this, "nm_swe" should appear in the list of kernel (may need to restart VSCode/JupyterLab first).
+5. Select nm_swe as the default python interpreter in VS code:
+  Ctrl + Shift + P (Command + Shift + P on Mac) > Python: Select Interpreter > Choose 'nm_swe'
 
-## Running the SWE Analysis Code
-The current system uses three jupyter notebooks in the `notebooks` directory for downloading, plotting and generating tables. Run all cells in each of the three notebooks in the following order:
+  Now when you run python scripts the nm_swe conda environment will be used. 
 
-1. `notebooks/snodas_download.ipynb`  
-This notebook downloads the masked SNODAS data for the current day and saves the SWE file as a .tif in the folder `data/SNODAS/`.  
-Note: Data is uploaded daily to https://noaadata.apps.nsidc.org/NOAA/G02158/masked/ at 13:00 UTC (7:00 AM MST) (sometimes later) so this notebook needs to be run after this time. To download data for a day other than the current date, the code in the first cell after the packages import can be modified:
-```
-date = "20250507" # for manual date setting
-#date = datetime.today().strftime('%Y%m%d') # get today's date
-```
-This code also needs to be modified in the other two notebooks to generate figures and tables for a different day.   
 
-2. `notebooks/plot_snodas.ipynb`  
-This notebook generates plots for SWE and change in SWE since the last report for the entire study area and each HUC6 basin.
-New report directories are also created for saving figures, tables, and csvs. Figures are saved to `reports/YYYY-MM-DD/figures`.
+## Running the SWE Evaluation Tool Code
+To run the SWEET code, the user simply needs to run the python file `generate_report.py` with minor modifications.
 
-3. `notebooks/swe_tables_snodas.ipynb`
-This notebook generates tables for SWE mean, median, volume, and volume change for HUC6 basin, OSE basins, and by elevation band. Elevation band bar plots are also generated for each HUC6 basin.
-  - Tables are saved to `reports/YYYY-MM-DD/pdfs` and opened with Microsoft Word for generating weekly reports.
-  - Elevation bar plots are saved to `reports/YYYY-MM-DD/figures`.
-  - Tables are saved as csv's to `reports/YYYY-MM-DD/csvs` and used for SWE difference calculations. 
+The steps are as follows:
+1. Download latest CU SWE raster from onedrive folder and save to 'data' folder with filename 'data/CU_SWE/YYYYMMDD_raster.tif'.
+2. Change date on line 26 of `generate_report.py` and save file. CU SWE data must exist for this date.
+3. Run `generate_report.py`. 
 
-## Note on SWE difference calculation
-The current system for calculating SWE change since the previous report for plots and tables uses the SNODAS .tif file in the `data/SNODAS` folder and csvs in the `reports` folder with the maximum date in their file names. When the code is run each week, the tifs and csvs are saved to these folders to be used for the difference calculation of the next report. The file structure will need to be updated to organize files by water year since no previous data will have been downloaded for the first report of each water year.    
 
-Example csvs, figures, and pdf tables are included for 2025-05-06 in `reports/2025-05-06`. By default SWE difference will be calculated from this date.  
 
 ## Instruction for setting up the Climate Data Store (CDS) API for downloading ERA5 data
 1. Create account at https://cds.climate.copernicus.eu/ and log in.
