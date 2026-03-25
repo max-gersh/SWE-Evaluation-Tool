@@ -38,7 +38,7 @@ conda env list
 To run the SWEET code, the user simply needs to run the python file `generate_report.py` with minor modifications.
 
 The steps are as follows:
-1. Download latest CU SWE raster from onedrive folder and save to 'data' folder with filename 'data/CU_SWE/YYYYMMDD_raster.tif'.
+1. Download latest CU SWE raster from onedrive folder and save to `data` folder with filename format `data/CU_SWE/YYYYMMDD_raster.tif`.
 2. Change date on line 26 of `generate_report.py` and save file. CU SWE data must exist for this date.
 3. Run `generate_report.py`. 
 
