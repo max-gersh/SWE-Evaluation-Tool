@@ -1,4 +1,4 @@
-# nm_swe
+# SWE Evaluation Tool (SWEET)
 Analysis, figures and tables for NM OSE SWE reports  
 This repository is used to generate weekly snow water equivalent (SWE) reports for the northern Rio Grande River Basin in Colorado and New Mexico. Code is included to download SNODAS SWE (https://noaadata.apps.nsidc.org/NOAA/G02158/), UA/SWANN (https://climate.arizona.edu/data/UA_SWE/), CU SWE (manual download from onedrive) and generate summary figures and tables.
 
@@ -9,6 +9,10 @@ This system uses the python programming language. You will need to create a cond
 ```
 cd directory_name
 git clone https://github.com/RittgerLabGroup/nm_swe.git
+```
+3. Add conda-forge to list of channels.
+```
+conda config --add channels conda-forge
 ```
 2. Create the nm_swe conda environment from the `environment.yml` file:
 ```
@@ -40,7 +44,14 @@ To run the SWEET code, the user simply needs to run the python file `generate_re
 The steps are as follows:
 1. Download latest CU SWE raster from onedrive folder and save to `data` folder with filename format `data/CU_SWE/YYYYMMDD_raster.tif`.
 2. Change date on line 26 of `generate_report.py` and save file. CU SWE data must exist for this date.
-3. Run `generate_report.py`. 
+3. Run `generate_report.py`.
+
+
+## Output Files:
+1. reports/YYYY-MM-DD/figures: Overview and difference maps, SWE by elevation density plots.
+2. reports/YYYY-MM-DD/pdf_tables: SWE summary tables for each product and ensemble.
+3. reports/YYYY-MM-DD/csv_tables: SWE summary tables in CSV format for analysis.
+4. reports/YYYY-MM-DD/pkl: pkl files used for creating SWE difference maps. 
 
 
 
