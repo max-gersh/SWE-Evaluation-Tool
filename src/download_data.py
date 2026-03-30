@@ -30,7 +30,7 @@ def download_snodas(date: str):
 
     file_path = BASE_DIR / "data" / "SNODAS" / f'SNODAS_SWE_{date}.tif'
     if file_path.is_file():
-        print(f'File {file_path} already donwnloaded.')
+        print(f'File {file_path} already downloaded.')
         
     
     else:
