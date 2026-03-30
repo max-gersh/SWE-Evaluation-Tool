@@ -49,4 +49,3 @@ The steps are as follows:
 2. Click on name in top right corner then "Your Profile."
 3. Scroll down to "API key" section and copy the 2 lines for "url" and "key."
 4. Create a text file called ".cdsapi" in your home directory (on windows this is usually C:\Users\username) and paste the 2 lines.
-
