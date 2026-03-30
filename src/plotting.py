@@ -180,7 +180,7 @@ def plot_study_area(data, data_source, date, max_value_cbar):
 
     #plt.show()
     out_dir_date = datetime.strptime(date, "%Y%m%d").strftime("%Y-%m-%d")
-    out_file = BASE_DIR / "reports" / out_dir_date / "figures" / f'overview_map_{data_source}_{date}.png'
+    out_file = BASE_DIR / "reports" / out_dir_date / "figures" / 'swe_maps' / f'overview_map_{data_source}_{date}.png'
     plt.savefig(out_file, dpi=300, bbox_inches='tight')
     plt.close()
 
@@ -240,7 +240,7 @@ def plot_study_area(data, data_source, date, max_value_cbar):
         ax.text(1.05, 0.5, 'Credit: Institute of Arctic and Alpine Research', rotation=90, 
                 va='center', ha='center', transform=ax.transAxes, fontsize=8)
         #plt.show()
-        out_file_basin = BASE_DIR / "reports" / out_dir_date / "figures" / f'{basin['Name']}_map_{data_source}_{date}.png'
+        out_file_basin = BASE_DIR / "reports" / out_dir_date / "figures" / "swe_maps" / f'{basin['Name']}_map_{data_source}_{date}.png'
         plt.savefig(out_file_basin, dpi=300, bbox_inches='tight')
         plt.close()
 
@@ -268,7 +268,10 @@ def plot_study_area_diff(raster_current, data_source, date, last_report_date):
     
     ## create difference raster
     swe_diff = raster_current_clipped - raster_last_clipped
-    swe_diff = swe_diff.where(swe_diff != 0, np.nan)
+    #swe_diff = swe_diff.where(swe_diff != 0, np.nan)
+    ## mask only where BOTH inputs are zero
+    mask = (raster_current_clipped == 0) & (raster_last_clipped == 0)
+    swe_diff = swe_diff.where(~mask, np.nan)
 
     ## get min and max values for colorbar
     #swe_min = -np.nanmax(np.abs(swe_diff))
@@ -370,7 +373,7 @@ def plot_study_area_diff(raster_current, data_source, date, last_report_date):
 
     
     ## save plot
-    out_file = BASE_DIR / "reports" / report_date_formatted / "figures" / f'overview_difference_map_{data_source}_{date}.png'
+    out_file = BASE_DIR / "reports" / report_date_formatted / "figures" / "swe_difference_maps" / f'overview_difference_map_{data_source}_{date}.png'
     plt.savefig(out_file, dpi=300, bbox_inches='tight')
     plt.close()
 
@@ -385,8 +388,11 @@ def plot_study_area_diff(raster_current, data_source, date, last_report_date):
 
         # calculate SWE difference for basin
         swe_basin_diff = swe_basin - swe_basin_last
-        swe_basin_diff = swe_basin_diff.where(swe_basin_diff != 0, np.nan)
-        
+        #swe_basin_diff = swe_basin_diff.where(swe_basin_diff != 0, np.nan)
+        ## mask only where BOTH inputs are zero
+        mask = (swe_basin == 0) & (swe_basin_last == 0)
+        swe_basin_diff = swe_basin_diff.where(~mask, np.nan)
+
         # get min and max for colorbar
         p98 = np.nanpercentile(np.abs(swe_basin_diff), 98)
         swe_min = -p98
@@ -439,6 +445,6 @@ def plot_study_area_diff(raster_current, data_source, date, last_report_date):
         ax.text(1.05, 0.5, 'Credit: Institute of Arctic and Alpine Research', rotation=90, 
                 va='center', ha='center', transform=ax.transAxes, fontsize=8)
         #plt.show()
-        out_file_basin = BASE_DIR / "reports" / report_date_formatted / "figures" / f'{basin['Name']}_difference_map_{data_source}_{date}.png'
+        out_file_basin = BASE_DIR / "reports" / report_date_formatted / "figures" / "swe_difference_maps" / f'{basin['Name']}_difference_map_{data_source}_{date}.png'
         plt.savefig(out_file_basin, dpi=300, bbox_inches='tight')
         plt.close()
