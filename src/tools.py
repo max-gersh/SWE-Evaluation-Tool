@@ -24,6 +24,15 @@ def create_report_dirs(report_date):
         folder.mkdir(parents=True, exist_ok=True)
         print(f'Created directory: {folder}')
 
+    swe_diff_folder = Path(base / 'figures' / 'swe_difference_maps')
+    swe_folder = Path(base / 'figures' / 'swe_maps')
+
+    swe_diff_folder.mkdir(parents=True, exist_ok=True)
+    print(f'Created directory: {swe_diff_folder}')
+
+    swe_folder.mkdir(parents=True, exist_ok=True)
+    print(f'Created directory: {swe_folder}')
+
 
 def last_report_date(date):
     """
