@@ -694,7 +694,7 @@ def elevation_plots(snodas_table, ua_swe_table, cu_swe_table, date):
         ## get list of huc8 subbasins with 0 swe volume
         huc8_totals = table3_huc6.groupby(['HUC8 Subbasin'], sort = False)['Estimated Volume (af)'].sum()
         huc8_zero_volume = huc8_totals.loc[huc8_totals == 0].index.tolist()
-        print(huc8_zero_volume)
+        print(f'Basins with zero SWE volume: {huc8_zero_volume}')
 
         ## remove basins with zero volume from plots
         basins = [i for i in basins if i not in huc8_zero_volume]
@@ -707,31 +707,430 @@ def elevation_plots(snodas_table, ua_swe_table, cu_swe_table, date):
             cols = 3
         rows = math.ceil(n_basins / cols)
 
-        ## plot
-        fig, axes = plt.subplots(rows, cols, figsize=(16, 5 * rows), sharey=True)
-        axes = axes.flatten()
+        ## plot if at least on basin has positive SWE volume
+        if n_basins > 0:
+            fig, axes = plt.subplots(rows, cols, figsize=(16, 5 * rows), sharey=True)
+            axes = axes.flatten()
 
-        # loop through subbasins
-        for ax, basin in zip(axes, basins):
-            table3_basin = table3_huc6[table3_huc6['HUC8 Subbasin'] == basin]
+            # loop through subbasins
+            for ax, basin in zip(axes, basins):
+                table3_basin = table3_huc6[table3_huc6['HUC8 Subbasin'] == basin]
 
 
-            for data_source, group in table3_basin.groupby("data_source"):
-                ax.plot(group['Estimated Volume (af)'], group['Elevation Band (ft.)'], label=data_source)
+                for data_source, group in table3_basin.groupby("data_source"):
+                    ax.plot(group['Estimated Volume (af)'], group['Elevation Band (ft.)'], label=data_source)
 
-            ax.set_xlabel("SWE Volume (thousands of af)")
-            ax.set_ylabel("Elevation (ft.)")
-            ax.set_title(basin)
-            ax.legend()
+                ax.set_xlabel("SWE Volume (thousands of af)")
+                ax.set_ylabel("Elevation (ft.)")
+                ax.set_title(basin)
+                ax.legend()
 
-        # hide empty spaces if basins < rows*cols
-        for i in range(len(basins), len(axes)):
-            axes[i].set_visible(False)
+            # hide empty spaces if basins < rows*cols
+            for i in range(len(basins), len(axes)):
+                axes[i].set_visible(False)
 
-        fig.suptitle(f'{huc6_basin} HUC6 Basin')
-        plt.tight_layout(rect=[0, 0, 1, 0.98])
-        #plt.show()
-        png_dir_date = datetime.strptime(date, "%Y%m%d").strftime("%Y-%m-%d")
-        png_filename = BASE_DIR / 'reports' / png_dir_date / 'figures' / f'{huc6_basin}_elevation_{date}.png'
-        plt.savefig(png_filename, dpi=300, bbox_inches='tight')
-        plt.close()
+            if len(huc8_zero_volume) > 0:
+                label = "\n".join([f"- {item}" for item in huc8_zero_volume])
+                dummy_patch = mpatches.Patch(color='none', label=label)
+
+                legend2 = fig.legend(
+                    handles=[dummy_patch],
+                    loc="lower left",
+                    bbox_to_anchor=(0.82, 0.15),  # bottom-left inside figure
+                    fontsize=12,
+                    frameon=True,
+                    title="HUC8 Subbasins with 0\nSWE volume",
+                    handlelength=0
+                )
+
+                legend2.get_title().set_fontweight("bold")
+                legend2.get_title().set_fontsize(12)
+
+
+            fig.suptitle(f'{huc6_basin} HUC6 Basin')
+            plt.tight_layout(rect=[0, 0, 1, 0.98])
+            #plt.show()
+            png_dir_date = datetime.strptime(date, "%Y%m%d").strftime("%Y-%m-%d")
+            png_filename = BASE_DIR / 'reports' / png_dir_date / 'figures' / f'{huc6_basin}_elevation_{date}.png'
+            plt.savefig(png_filename, dpi=300, bbox_inches='tight')
+            plt.close()
+        
+        else:
+            print(f'Zero SWE volume in {huc6_basin}. Skipping...')
+
+
+##########################################################
+
+
+## generate ensemble tables
+def generate_ensemble_tables(
+    snodas_table,
+    ua_swe_table,
+    cu_swe_table,
+    table_num,
+    date,
+    last_report_date
+):
+    """
+    Generate ensemble table (1, 2, or 3).
+
+    Parameters
+    ----------
+    snodas_table : pd.DataFrame
+    ua_swe_table : pd.DataFrame
+    cu_swe_table : pd.DataFrame
+    table_num : int (1, 2, or 3)
+    date : str
+    last_report_date : str ('NA' or formatted date string)
+    """
+
+    sources = ["SNODAS", "UA_SWE", "CU_SWE"]
+
+    # --------------------------------------------------
+    # TABLE 3: Needs index alignment
+    # --------------------------------------------------
+    if table_num == 3:
+
+        idx_cols = ['HUC6 Basin', 'HUC8 Subbasin', 'Elevation Band (ft.)']
+
+        t_snodas = snodas_table.set_index(idx_cols)
+        t_ua = ua_swe_table.set_index(idx_cols)
+        t_cu = cu_swe_table.set_index(idx_cols)
+
+        base_idx = t_snodas.index
+        t_ua = t_ua.reindex(base_idx)
+        t_cu = t_cu.reindex(base_idx)
+
+        vals = np.vstack([
+            t_snodas['Estimated Volume (af)'].values,
+            t_ua['Estimated Volume (af)'].values,
+            t_cu['Estimated Volume (af)'].values
+        ])
+
+        ensemble_df = pd.DataFrame(index=base_idx).reset_index()
+
+    # --------------------------------------------------
+    # TABLE 1 & 2: No reindexing needed
+    # --------------------------------------------------
+    else:
+
+        vals = np.vstack([
+            snodas_table['Estimated Volume (af)'].values,
+            ua_swe_table['Estimated Volume (af)'].values,
+            cu_swe_table['Estimated Volume (af)'].values
+        ])
+
+        if table_num == 1:
+            ensemble_df = pd.DataFrame({
+                'HUC6 Basin': snodas_table['HUC6 Basin'],
+                'HUC8 Basin': snodas_table['HUC8 Subbasin'],
+            })
+
+        elif table_num == 2:
+            ensemble_df = pd.DataFrame({
+                'OSE Grouping': snodas_table['OSE Grouping'],
+                'HUC8 Basin': snodas_table['HUC8 Subbasin'],
+            })
+
+    # --------------------------------------------------
+    # Ensemble statistics
+    # --------------------------------------------------
+
+    ensemble_mean = np.nanmean(vals, axis=0)
+    ensemble_median = np.nanmedian(vals, axis=0)
+    ensemble_min = np.nanmin(vals, axis=0)
+    ensemble_max = np.nanmax(vals, axis=0)
+
+    # Identify min/max sources
+    min_idx = [
+        np.where(np.isclose(vals[:, j], ensemble_min[j], equal_nan=False))[0].tolist()
+        for j in range(vals.shape[1])
+    ]
+
+    max_idx = [
+        np.where(np.isclose(vals[:, j], ensemble_max[j], equal_nan=False))[0].tolist()
+        for j in range(vals.shape[1])
+    ]
+
+    min_sources = [", ".join(sources[i] for i in idxs) for idxs in min_idx]
+    max_sources = [", ".join(sources[i] for i in idxs) for idxs in max_idx]
+
+    # --------------------------------------------------
+    # Add statistics to dataframe
+    # --------------------------------------------------
+
+    ensemble_df['Ensemble Mean Vol. (af)'] = ensemble_mean
+    ensemble_df['Ensemble Median Vol. (af)'] = ensemble_median
+    ensemble_df['Ensemble Min. Vol. (af)'] = ensemble_min
+    ensemble_df['Ensemble Max. Vol. (af)'] = ensemble_max
+    ensemble_df['Min. Source'] = min_sources
+    ensemble_df['Max. Source'] = max_sources
+
+    # --------------------------------------------------
+    # Difference since last report
+    # --------------------------------------------------
+
+    if last_report_date != 'NA':
+        
+        date_last_report_unformatted = datetime.strptime(last_report_date, "%Y-%m-%d").strftime("%Y%m%d")
+        last_report_csv = pd.read_csv(
+            BASE_DIR / 'reports' / last_report_date / 'csv_tables' /
+            f'table{table_num}_Ensemble_{date_last_report_unformatted}.csv'
+        )
+
+        ensemble_df[f'Mean Vol. Change since {last_report_date} (af)'] = (
+            ensemble_df['Ensemble Mean Vol. (af)'].values -
+            last_report_csv['Ensemble Mean Vol. (af)'].values
+        )
+
+        ensemble_df[f'Median Vol. Change since {last_report_date} (af)'] = (
+            ensemble_df['Ensemble Median Vol. (af)'].values -
+            last_report_csv['Ensemble Median Vol. (af)'].values
+        )
+
+    # --------------------------------------------------
+    # Save CSV
+    # --------------------------------------------------
+
+    date_formatted = datetime.strptime(date, "%Y%m%d").strftime("%Y-%m-%d")
+    ensemble_df.to_csv(
+        BASE_DIR / 'reports' / date_formatted / 'csv_tables' /
+        f'table{table_num}_Ensemble_{date}.csv',
+        index=False
+    )
+
+    return ensemble_df
+
+
+###### Ensemble Tables old code #############
+
+'''
+sources = np.array(['SNODAS', 'UA_SWE', 'CU_SWE'])
+
+#### Table 1 ####
+
+## generate ensemble table
+vals_table1 = np.vstack([
+    table1_snodas['Estimated Volume (af)'].values,
+    table1_ua_swe['Estimated Volume (af)'].values,
+    table1_cu_swe['Estimated Volume (af)'].values
+])
+
+
+# ensemble mean
+table1_ensemble_mean = np.mean([table1_snodas['Estimated Volume (af)'], table1_ua_swe['Estimated Volume (af)'], 
+                         table1_cu_swe['Estimated Volume (af)']], 
+                         axis=0)
+# ensemble median
+table1_ensemble_median = np.median([table1_snodas['Estimated Volume (af)'], table1_ua_swe['Estimated Volume (af)'], 
+                         table1_cu_swe['Estimated Volume (af)']], 
+                         axis=0)
+
+# numeric min 
+table1_ensemble_min = np.nanmin(vals_table1, axis=0)
+
+# index of dataset producing the min
+min_idx = [
+    np.where(vals_table1[:, j] == table1_ensemble_min[j])[0].tolist()
+    for j in range(vals_table1.shape[1])
+]
+# min source
+min_sources_str = [
+    ", ".join(sources[i] for i in idxs)
+    for idxs in min_idx
+]
+
+# numeric max
+table1_ensemble_max = np.nanmax(vals_table1, axis=0)
+
+# index of dataset producing the max
+max_idx = [
+    np.where(vals_table1[:, j] == table1_ensemble_max[j])[0].tolist()
+    for j in range(vals_table1.shape[1])
+]
+# max source
+max_sources_str = [
+    ", ".join(sources[i] for i in idxs)
+    for idxs in max_idx
+]
+
+## difference calc
+if date_last_report != 'NA':
+    table1_last_report_csv = pd.read_csv(BASE_DIR / 'reports' / date_last_report / 'csv_tables' / f'table1_Ensemble_{date_last_report_unformatted}.csv' )
+
+    ## calculate volume difference
+    table1_mean_vol_diff = table1_ensemble_mean - table1_last_report_csv['Ensemble Mean Vol. (af)']
+    table1_median_vol_diff = table1_ensemble_median - table1_last_report_csv['Ensemble Median Vol. (af)']
+
+
+# create ensemble dataframe
+table1_data = {
+    'HUC6 Basin': table1_snodas['HUC6 Basin'],
+    'HUC8 Basin': table1_snodas['HUC8 Subbasin'],
+    'Ensemble Mean Vol. (af)': table1_ensemble_mean,
+    'Ensemble Median Vol. (af)': table1_ensemble_median,
+    'Ensemble Min. Vol. (af)': table1_ensemble_min,
+    'Ensemble Max. Vol. (af)': table1_ensemble_max,
+    'Min. Source': min_sources_str,
+    'Max. Source': max_sources_str,
+}
+
+# only add change columns if applicable
+if date_last_report != 'NA':
+    table1_data[f'Mean Vol. Change since {date_last_report} (af)'] = table1_mean_vol_diff
+    table1_data[f'Median Vol. Change since {date_last_report} (af)'] = table1_median_vol_diff
+
+table1_ensemble = pd.DataFrame(table1_data)
+table1_ensemble.to_csv(BASE_DIR / 'reports' / date_formatted / 'csv_tables' / f'table1_Ensemble_{date}.csv', index=False)
+
+
+#### Table 2 ####
+
+
+## generate ensemble table
+vals_table2 = np.vstack([
+    table2_snodas['Estimated Volume (af)'].values,
+    table2_ua_swe['Estimated Volume (af)'].values,
+    table2_cu_swe['Estimated Volume (af)'].values
+])
+
+# ensemble mean
+table2_ensemble_mean = np.mean([table2_snodas['Estimated Volume (af)'], table2_ua_swe['Estimated Volume (af)'], 
+                         table2_cu_swe['Estimated Volume (af)']], 
+                         axis=0)
+
+# ensemble median
+table2_ensemble_median = np.median([table2_snodas['Estimated Volume (af)'], table2_ua_swe['Estimated Volume (af)'], 
+                         table2_cu_swe['Estimated Volume (af)']], 
+                         axis=0)
+
+# numeric min 
+table2_ensemble_min = np.nanmin(vals_table2, axis=0)
+
+# index of dataset producing the min
+min_idx = [
+    np.where(vals_table2[:, j] == table2_ensemble_min[j])[0].tolist()
+    for j in range(vals_table2.shape[1])
+]
+# min source
+min_sources_str = [
+    ", ".join(sources[i] for i in idxs)
+    for idxs in min_idx
+]
+
+# numeric max
+table2_ensemble_max = np.nanmax(vals_table2, axis=0)
+
+# index of dataset producing the max
+max_idx = [
+    np.where(vals_table2[:, j] == table2_ensemble_max[j])[0].tolist()
+    for j in range(vals_table2.shape[1])
+]
+# max source
+max_sources_str = [
+    ", ".join(sources[i] for i in idxs)
+    for idxs in max_idx
+]
+
+## difference calc
+if date_last_report != 'NA':
+    table2_last_report_csv = pd.read_csv(BASE_DIR / 'reports' / date_last_report / 'csv_tables' / f'table2_Ensemble_{date_last_report_unformatted}.csv' )
+
+    ## calculate volume difference
+    table2_mean_vol_diff = table2_ensemble_mean - table2_last_report_csv['Ensemble Mean Vol. (af)']
+    table2_median_vol_diff = table2_ensemble_median - table2_last_report_csv['Ensemble Median Vol. (af)']
+
+
+# create ensemble dataframe
+table2_data = {
+    'OSE Grouping': table2_snodas['OSE Grouping'],
+    'HUC8 Basin': table2_snodas['HUC8 Subbasin'],
+    'Ensemble Mean Vol. (af)': table2_ensemble_mean,
+    'Ensemble Median Vol. (af)': table2_ensemble_median,
+    'Ensemble Min. Vol. (af)': table2_ensemble_min,
+    'Ensemble Max. Vol. (af)': table2_ensemble_max,
+    'Min. Source': min_sources_str,
+    'Max. Source': max_sources_str
+}
+
+# only add change columns if applicable
+if date_last_report != 'NA':
+    table2_data[f'Mean Vol. Change since {date_last_report} (af)'] = table2_mean_vol_diff
+    table2_data[f'Median Vol. Change since {date_last_report} (af)'] = table2_median_vol_diff
+
+table2_ensemble = pd.DataFrame(table2_data)
+table2_ensemble.to_csv(BASE_DIR / 'reports' / date_formatted / 'csv_tables' / f'table2_Ensemble_{date}.csv', index=False)
+
+
+
+#### Table 3 ####
+
+
+
+## generate ensemble table
+## dataframes have different numbers of rows (different resolutions)
+## need to index on elevation band, huc6, and huc8 basin to align dataframes
+idx_cols = ['HUC6 Basin', 'HUC8 Subbasin', 'Elevation Band (ft.)']
+
+t3_snodas = table3_snodas.set_index(idx_cols)
+t3_ua_swe = table3_ua_swe.set_index(idx_cols)
+t3_cu_swe = table3_cu_swe.set_index(idx_cols)
+
+# --- SNODAS DEFINES ORDER ---
+base_idx = t3_snodas.index
+
+t3_ua_swe = t3_ua_swe.reindex(base_idx)
+t3_cu_swe = t3_cu_swe.reindex(base_idx)
+
+## stack values
+vals_table3 = np.vstack([
+    t3_snodas['Estimated Volume (af)'].values,
+    t3_ua_swe['Estimated Volume (af)'].values,
+    t3_cu_swe['Estimated Volume (af)'].values
+])
+
+# ensemble statistics
+ensemble_mean = np.nanmean(vals_table3, axis=0)
+ensemble_median = np.nanmedian(vals_table3, axis=0)
+ensemble_min = np.nanmin(vals_table3, axis=0)
+ensemble_max = np.nanmax(vals_table3, axis=0)
+
+# get id of minimum value for each row
+min_idx = [
+    np.where(np.isclose(vals_table3[:, j], ensemble_min[j], equal_nan=False))[0].tolist()
+    for j in range(vals_table3.shape[1])
+]
+
+max_idx = [
+    np.where(np.isclose(vals_table3[:, j], ensemble_max[j], equal_nan=False))[0].tolist()
+    for j in range(vals_table3.shape[1])
+]
+
+min_sources = [", ".join(sources[i] for i in idxs) for idxs in min_idx]
+max_sources = [", ".join(sources[i] for i in idxs) for idxs in max_idx]
+
+## ensemble data frame - maintain order
+table3_ensemble = (
+    pd.DataFrame(index=base_idx)
+    .reset_index()
+)
+
+table3_ensemble['Ensemble Mean Vol. (af)'] = ensemble_mean
+table3_ensemble['Ensemble Median Vol. (af)'] = ensemble_median
+table3_ensemble['Ensemble Min. Vol. (af)'] = ensemble_min
+table3_ensemble['Ensemble Max. Vol. (af)'] = ensemble_max
+table3_ensemble['Min. Source'] = min_sources
+table3_ensemble['Max. Source'] = max_sources
+
+## difference calc since last report (if exists)
+if date_last_report != 'NA':
+
+    table3_last_report_csv = pd.read_csv(BASE_DIR / 'reports' / date_last_report / 'csv_tables' / f'table3_Ensemble_{date_last_report_unformatted}.csv')
+
+    table3_ensemble[f'Mean Vol. Change since {date_last_report} (af)'] = (table3_ensemble['Ensemble Mean Vol. (af)'].values - table3_last_report_csv['Ensemble Mean Vol. (af)'].values)
+
+    table3_ensemble[f'Median Vol. Change since {date_last_report} (af)'] = (table3_ensemble['Ensemble Median Vol. (af)'].values - table3_last_report_csv['Ensemble Median Vol. (af)'].values)
+
+## save csv
+table3_ensemble.to_csv(BASE_DIR / 'reports' / date_formatted / 'csv_tables' / f'table3_Ensemble_{date}.csv', index=False)
+'''
