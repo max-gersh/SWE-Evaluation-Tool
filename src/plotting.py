@@ -240,7 +240,7 @@ def plot_study_area(data, data_source, date, max_value_cbar):
         ax.text(1.05, 0.5, 'Credit: Institute of Arctic and Alpine Research', rotation=90, 
                 va='center', ha='center', transform=ax.transAxes, fontsize=8)
         #plt.show()
-        out_file_basin = BASE_DIR / "reports" / out_dir_date / "figures" / "swe_maps" / f'{basin['Name']}_map_{data_source}_{date}.png'
+        out_file_basin = BASE_DIR / "reports" / out_dir_date / "figures" / "swe_maps" / f"{basin['Name']}_map_{data_source}_{date}.png"
         plt.savefig(out_file_basin, dpi=300, bbox_inches='tight')
         plt.close()
 
@@ -445,6 +445,6 @@ def plot_study_area_diff(raster_current, data_source, date, last_report_date):
         ax.text(1.05, 0.5, 'Credit: Institute of Arctic and Alpine Research', rotation=90, 
                 va='center', ha='center', transform=ax.transAxes, fontsize=8)
         #plt.show()
-        out_file_basin = BASE_DIR / "reports" / report_date_formatted / "figures" / "swe_difference_maps" / f'{basin['Name']}_difference_map_{data_source}_{date}.png'
+        out_file_basin = BASE_DIR / "reports" / report_date_formatted / "figures" / "swe_difference_maps" / f"{basin['Name']}_difference_map_{data_source}_{date}.png"
         plt.savefig(out_file_basin, dpi=300, bbox_inches='tight')
         plt.close()
