@@ -171,6 +171,17 @@ table1_cu_swe = src.tables_graphs.generate_table1(raster=cu_swe_utm_unfilt,
                                                   last_report_date=date_last_report)
 #table1_era5 = src.tables_graphs.generate_table1(era5_utm_unfilt)
 
+# save table 1 pdfs
+src.tables_graphs.table1_reportlab(table1_snodas, data_source="SNODAS",
+                                   date=date, last_report_date=date_last_report)
+src.tables_graphs.table1_reportlab(table1_ua_swe, data_source="UA_SWE",
+                                   date=date, last_report_date=date_last_report)
+src.tables_graphs.table1_reportlab(table1_cu_swe, data_source="CU_SWE",
+                                   date=date, last_report_date=date_last_report)
+#src.tables_graphs.table1_reportlab(table1_era5, data_source="ERA5",
+#                                   date=date)
+
+
 
 #######################################################################
 
@@ -186,6 +197,17 @@ table2_ua_swe = src.tables_graphs.generate_table2(raster=ua_swe_utm_unfilt,
 table2_cu_swe = src.tables_graphs.generate_table2(raster=cu_swe_utm_unfilt,
                                                   data_source="CU_SWE", date=date,
                                                   last_report_date=date_last_report)
+
+# save table 2 pdfs
+src.tables_graphs.table2_reportlab(table2_snodas, data_source="SNODAS",
+                                   date=date, last_report_date=date_last_report)
+src.tables_graphs.table2_reportlab(table2_ua_swe, data_source="UA_SWE",
+                                   date=date, last_report_date=date_last_report)
+src.tables_graphs.table2_reportlab(table2_cu_swe, data_source="CU_SWE",
+                                   date=date, last_report_date=date_last_report)
+
+
+
 
 ###################################################################3
 
@@ -204,6 +226,15 @@ table3_cu_swe = src.tables_graphs.generate_table3(raster=cu_swe_utm_unfilt,
                                                   data_source="CU_SWE", date=date,
                                                   band_width=1000, save_csv=True,
                                                   last_report_date=date_last_report, calc_diff=True)
+
+# save table 3 pdfs
+src.tables_graphs.table3_reportlab(table3_snodas, data_source="SNODAS",
+                                   date=date, last_report_date=date_last_report)
+src.tables_graphs.table3_reportlab(table3_ua_swe, data_source="UA_SWE",
+                                   date=date, last_report_date=date_last_report)
+src.tables_graphs.table3_reportlab(table3_cu_swe, data_source="CU_SWE",
+                                   date=date, last_report_date=date_last_report)
+
 
 
 ## table 3 for elevation plots - band width set to 250 feet instead of 1000
@@ -231,9 +262,17 @@ src.tables_graphs.elevation_plots(snodas_table=table3_snodas_plotting,
 
 ## generate ensemble tables
 print(f"Generating ensemble tables for date: {date}")
-src.tables_graphs.generate_ensemble_tables(table1_snodas, table1_ua_swe, table1_cu_swe, 1, date, date_last_report)
-src.tables_graphs.generate_ensemble_tables(table2_snodas, table2_ua_swe, table2_cu_swe, 2, date, date_last_report)
-src.tables_graphs.generate_ensemble_tables(table3_snodas, table3_ua_swe, table3_cu_swe, 3, date, date_last_report)
+table1_ensemble = src.tables_graphs.generate_ensemble_tables(table1_snodas, table1_ua_swe, table1_cu_swe, 1, date, date_last_report)
+table2_ensemble = src.tables_graphs.generate_ensemble_tables(table2_snodas, table2_ua_swe, table2_cu_swe, 2, date, date_last_report)
+table3_ensemble = src.tables_graphs.generate_ensemble_tables(table3_snodas, table3_ua_swe, table3_cu_swe, 3, date, date_last_report)
+
+# save ensemble pdfs
+src.tables_graphs.table1_reportlab(table1_ensemble, data_source="Ensemble",
+                                   date=date, last_report_date=date_last_report)
+src.tables_graphs.table2_reportlab(table2_ensemble, data_source="Ensemble",
+                                   date=date, last_report_date=date_last_report)
+src.tables_graphs.table3_reportlab(table3_ensemble, data_source="Ensemble",
+                                   date=date, last_report_date=date_last_report)
 
 
 print(f"Done generating SWE figures and tables for date: {date}")
