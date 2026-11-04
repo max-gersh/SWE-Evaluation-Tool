@@ -1,0 +1,10 @@
+prefix=C:/Users/mgersh/nm_swe/nm_swe/Library
+libdir=C:/Users/mgersh/nm_swe/nm_swe/Library/lib
+includedir=C:/Users/mgersh/nm_swe/nm_swe/Library/include
+
+Name: poppler
+Description: PDF rendering library
+Version: 24.09.0
+
+Libs: -L${libdir} -lpoppler
+Cflags: -I${includedir}/poppler

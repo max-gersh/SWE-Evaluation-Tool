@@ -1,0 +1,149 @@
+{
+  "name": "tblib",
+  "version": "3.0.0",
+  "build": "pyhd8ed1ab_1",
+  "build_number": 1,
+  "channel": "https://conda.anaconda.org/conda-forge/noarch",
+  "subdir": "noarch",
+  "fn": "tblib-3.0.0-pyhd8ed1ab_1.conda",
+  "md5": "60ce69f73f3e75b21f1c27b1b471320c",
+  "url": "https://conda.anaconda.org/conda-forge/noarch/tblib-3.0.0-pyhd8ed1ab_1.conda",
+  "sha256": "6869cd2e043426d30c84d0ff6619f176b39728f9c75dc95dca89db994548bb8a",
+  "depends": [
+    "python >=3.9"
+  ],
+  "constrains": [],
+  "noarch": "python",
+  "license": "BSD-2-Clause",
+  "package_type": "noarch_python",
+  "timestamp": 1733842487151,
+  "size": 17421,
+  "requested_spec": "conda-forge/noarch::tblib==3.0.0=pyhd8ed1ab_1",
+  "package_tarball_full_path": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\tblib-3.0.0-pyhd8ed1ab_1.conda",
+  "extracted_package_dir": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\tblib-3.0.0-pyhd8ed1ab_1",
+  "files": [
+    "Lib/site-packages/tblib-3.0.0.dist-info/AUTHORS.rst",
+    "Lib/site-packages/tblib-3.0.0.dist-info/INSTALLER",
+    "Lib/site-packages/tblib-3.0.0.dist-info/LICENSE",
+    "Lib/site-packages/tblib-3.0.0.dist-info/METADATA",
+    "Lib/site-packages/tblib-3.0.0.dist-info/RECORD",
+    "Lib/site-packages/tblib-3.0.0.dist-info/REQUESTED",
+    "Lib/site-packages/tblib-3.0.0.dist-info/WHEEL",
+    "Lib/site-packages/tblib-3.0.0.dist-info/direct_url.json",
+    "Lib/site-packages/tblib-3.0.0.dist-info/top_level.txt",
+    "Lib/site-packages/tblib/__init__.py",
+    "Lib/site-packages/tblib/decorators.py",
+    "Lib/site-packages/tblib/pickling_support.py",
+    "Lib/site-packages/tblib/__pycache__/__init__.cpython-312.pyc",
+    "Lib/site-packages/tblib/__pycache__/decorators.cpython-312.pyc",
+    "Lib/site-packages/tblib/__pycache__/pickling_support.cpython-312.pyc"
+  ],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": [
+      {
+        "_path": "site-packages/tblib-3.0.0.dist-info/AUTHORS.rst",
+        "path_type": "hardlink",
+        "sha256": "767284937072216af5af908be73da48ba7ff22a4e603d9832d084fa23ed4b4be",
+        "size_in_bytes": 588,
+        "sha256_in_prefix": "767284937072216af5af908be73da48ba7ff22a4e603d9832d084fa23ed4b4be"
+      },
+      {
+        "_path": "site-packages/tblib-3.0.0.dist-info/INSTALLER",
+        "path_type": "hardlink",
+        "sha256": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "size_in_bytes": 5,
+        "sha256_in_prefix": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8"
+      },
+      {
+        "_path": "site-packages/tblib-3.0.0.dist-info/LICENSE",
+        "path_type": "hardlink",
+        "sha256": "185a963fa8236d2831a8d7268f4ac4d428fdfbb6ce68412a6ce1e530f617c2d4",
+        "size_in_bytes": 1330,
+        "sha256_in_prefix": "185a963fa8236d2831a8d7268f4ac4d428fdfbb6ce68412a6ce1e530f617c2d4"
+      },
+      {
+        "_path": "site-packages/tblib-3.0.0.dist-info/METADATA",
+        "path_type": "hardlink",
+        "sha256": "162d4297f5ca45d6a0973fa9a72fd030a5e397e7b31ba19d79276448cd0d2a5e",
+        "size_in_bytes": 25530,
+        "sha256_in_prefix": "162d4297f5ca45d6a0973fa9a72fd030a5e397e7b31ba19d79276448cd0d2a5e"
+      },
+      {
+        "_path": "site-packages/tblib-3.0.0.dist-info/RECORD",
+        "path_type": "hardlink",
+        "sha256": "76f49909516874c7ee928bec38a33a245bba755bed0f8c5b3063397f09d7ee07",
+        "size_in_bytes": 1117,
+        "sha256_in_prefix": "76f49909516874c7ee928bec38a33a245bba755bed0f8c5b3063397f09d7ee07"
+      },
+      {
+        "_path": "site-packages/tblib-3.0.0.dist-info/REQUESTED",
+        "path_type": "hardlink",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_in_bytes": 0,
+        "sha256_in_prefix": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "_path": "site-packages/tblib-3.0.0.dist-info/WHEEL",
+        "path_type": "hardlink",
+        "sha256": "3d9504c5d7fbd548bfb28ebb417a724ae1ed0a2dfe277c2f1783912ba93f4bc5",
+        "size_in_bytes": 91,
+        "sha256_in_prefix": "3d9504c5d7fbd548bfb28ebb417a724ae1ed0a2dfe277c2f1783912ba93f4bc5"
+      },
+      {
+        "_path": "site-packages/tblib-3.0.0.dist-info/direct_url.json",
+        "path_type": "hardlink",
+        "sha256": "81162a25d878df44eab3787d49ff56dc50b132d43abf02d4a4dcb98a2ba36eac",
+        "size_in_bytes": 101,
+        "sha256_in_prefix": "81162a25d878df44eab3787d49ff56dc50b132d43abf02d4a4dcb98a2ba36eac"
+      },
+      {
+        "_path": "site-packages/tblib-3.0.0.dist-info/top_level.txt",
+        "path_type": "hardlink",
+        "sha256": "6af9f512fa824d48b4be04514e9917456ceca9fd7a5cce898f531873682b3993",
+        "size_in_bytes": 6,
+        "sha256_in_prefix": "6af9f512fa824d48b4be04514e9917456ceca9fd7a5cce898f531873682b3993"
+      },
+      {
+        "_path": "site-packages/tblib/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "e5287e5f73043956a4453566a218cfc9c5d0fdb52892645c67c406f0fd618f99",
+        "size_in_bytes": 8234,
+        "sha256_in_prefix": "e5287e5f73043956a4453566a218cfc9c5d0fdb52892645c67c406f0fd618f99"
+      },
+      {
+        "_path": "site-packages/tblib/decorators.py",
+        "path_type": "hardlink",
+        "sha256": "480848936125b9f290298c1abb87e439831a16c5e9766d8e2237aa415a603a56",
+        "size_in_bytes": 1068,
+        "sha256_in_prefix": "480848936125b9f290298c1abb87e439831a16c5e9766d8e2237aa415a603a56"
+      },
+      {
+        "_path": "site-packages/tblib/pickling_support.py",
+        "path_type": "hardlink",
+        "sha256": "1459ed3b8762ea0b3eed5d05b041470a0861935d190485fc4f35a0764ee0311e",
+        "size_in_bytes": 4420,
+        "sha256_in_prefix": "1459ed3b8762ea0b3eed5d05b041470a0861935d190485fc4f35a0764ee0311e"
+      },
+      {
+        "_path": "Lib/site-packages/tblib/__pycache__/__init__.cpython-312.pyc",
+        "path_type": "pyc_file",
+        "size_in_bytes": 10061
+      },
+      {
+        "_path": "Lib/site-packages/tblib/__pycache__/decorators.cpython-312.pyc",
+        "path_type": "pyc_file",
+        "size_in_bytes": 2168
+      },
+      {
+        "_path": "Lib/site-packages/tblib/__pycache__/pickling_support.cpython-312.pyc",
+        "path_type": "pyc_file",
+        "size_in_bytes": 4587
+      }
+    ]
+  },
+  "link": {
+    "source": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\tblib-3.0.0-pyhd8ed1ab_1",
+    "type": 1
+  }
+}

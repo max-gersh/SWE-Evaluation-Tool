@@ -1,0 +1,49 @@
+{
+  "name": "ca-certificates",
+  "version": "2025.1.31",
+  "build": "h56e8100_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/win-64",
+  "subdir": "win-64",
+  "fn": "ca-certificates-2025.1.31-h56e8100_0.conda",
+  "md5": "5304a31607974dfc2110dfbb662ed092",
+  "url": "https://conda.anaconda.org/conda-forge/win-64/ca-certificates-2025.1.31-h56e8100_0.conda",
+  "sha256": "1bedccdf25a3bd782d6b0e57ddd97cdcda5501716009f2de4479a779221df155",
+  "arch": "x86_64",
+  "platform": "win32",
+  "depends": [],
+  "constrains": [],
+  "license": "ISC",
+  "timestamp": 1738298232550,
+  "size": 158690,
+  "requested_spec": "conda-forge/win-64::ca-certificates==2025.1.31=h56e8100_0",
+  "package_tarball_full_path": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\ca-certificates-2025.1.31-h56e8100_0.conda",
+  "extracted_package_dir": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\ca-certificates-2025.1.31-h56e8100_0",
+  "files": [
+    "Library/ssl/cacert.pem",
+    "Library/ssl/cert.pem"
+  ],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": [
+      {
+        "_path": "Library/ssl/cacert.pem",
+        "path_type": "hardlink",
+        "sha256": "c55b21f907f7f86d48add093552fb5651749ff5f860508ccbb423d6c1fbd80c7",
+        "size_in_bytes": 297255,
+        "sha256_in_prefix": "c55b21f907f7f86d48add093552fb5651749ff5f860508ccbb423d6c1fbd80c7"
+      },
+      {
+        "_path": "Library/ssl/cert.pem",
+        "path_type": "hardlink",
+        "sha256": "c55b21f907f7f86d48add093552fb5651749ff5f860508ccbb423d6c1fbd80c7",
+        "size_in_bytes": 297255,
+        "sha256_in_prefix": "c55b21f907f7f86d48add093552fb5651749ff5f860508ccbb423d6c1fbd80c7"
+      }
+    ]
+  },
+  "link": {
+    "source": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\ca-certificates-2025.1.31-h56e8100_0",
+    "type": 1
+  }
+}

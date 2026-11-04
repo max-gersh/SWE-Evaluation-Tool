@@ -1,0 +1,48 @@
+{
+  "name": "libexpat",
+  "version": "2.6.4",
+  "build": "he0c23c2_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/win-64",
+  "subdir": "win-64",
+  "fn": "libexpat-2.6.4-he0c23c2_0.conda",
+  "md5": "eb383771c680aa792feb529eaf9df82f",
+  "url": "https://conda.anaconda.org/conda-forge/win-64/libexpat-2.6.4-he0c23c2_0.conda",
+  "sha256": "0c0447bf20d1013d5603499de93a16b6faa92d7ead870d96305c0f065b6a5a12",
+  "arch": "x86_64",
+  "platform": "win32",
+  "depends": [
+    "ucrt >=10.0.20348.0",
+    "vc >=14.2,<15",
+    "vc14_runtime >=14.29.30139"
+  ],
+  "constrains": [
+    "expat 2.6.4.*"
+  ],
+  "license": "MIT",
+  "license_family": "MIT",
+  "timestamp": 1730967442102,
+  "size": 139068,
+  "requested_spec": "conda-forge/win-64::libexpat==2.6.4=he0c23c2_0",
+  "package_tarball_full_path": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\libexpat-2.6.4-he0c23c2_0.conda",
+  "extracted_package_dir": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\libexpat-2.6.4-he0c23c2_0",
+  "files": [
+    "Library/bin/libexpat.dll"
+  ],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": [
+      {
+        "_path": "Library/bin/libexpat.dll",
+        "path_type": "hardlink",
+        "sha256": "41a919f32fbc8b88a50e4089a0613b405c5f8032b896594b60cb42ba8143866f",
+        "size_in_bytes": 402432,
+        "sha256_in_prefix": "41a919f32fbc8b88a50e4089a0613b405c5f8032b896594b60cb42ba8143866f"
+      }
+    ]
+  },
+  "link": {
+    "source": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\libexpat-2.6.4-he0c23c2_0",
+    "type": 1
+  }
+}

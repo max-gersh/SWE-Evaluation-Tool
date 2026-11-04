@@ -709,7 +709,7 @@ def elevation_plots(snodas_table, ua_swe_table, cu_swe_table, date):
 
         ## plot if at least on basin has positive SWE volume
         if n_basins > 0:
-            fig, axes = plt.subplots(rows, cols, figsize=(16, 5 * rows), sharey=True)
+            fig, axes = plt.subplots(rows, cols, figsize=(16, 5 * rows), sharey=True, squeeze=False)
             axes = axes.flatten()
 
             # loop through subbasins

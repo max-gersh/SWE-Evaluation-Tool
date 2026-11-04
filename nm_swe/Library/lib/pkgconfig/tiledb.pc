@@ -1,0 +1,14 @@
+prefix="C:/Users/mgersh/nm_swe/nm_swe/Library"
+exec_prefix="${prefix}"
+libdir="${prefix}/lib"
+includedir="${prefix}/include/tiledb"
+
+Name: TileDB
+Description: The Storage Engine for Data Science
+URL: https://github.com/TileDB-Inc/TileDB
+Version: 2.3.3
+Requires: 
+Requires.private: 
+Cflags: -I"${includedir}"
+Libs: -L"${libdir}" -ltiledb
+Libs.private: -L"${libdir}" -ltiledb 

@@ -1,0 +1,40 @@
+{
+  "name": "geopandas",
+  "version": "0.14.2",
+  "build": "py312haa95532_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/win-64",
+  "subdir": "win-64",
+  "fn": "geopandas-0.14.2-py312haa95532_0.conda",
+  "md5": "fa2d4e6965487bb614deaebf76c7de29",
+  "url": "https://repo.anaconda.com/pkgs/main/win-64/geopandas-0.14.2-py312haa95532_0.conda",
+  "sha256": "d0ca1934786eba1cf8ea62b8399498db3ed5578698c3cdf4c7f578fcbd41b12a",
+  "arch": "x86_64",
+  "platform": "win32",
+  "depends": [
+    "folium",
+    "geopandas-base 0.14.2 py312haa95532_0",
+    "mapclassify >=2.4.0",
+    "matplotlib-base >=3.5.0",
+    "python >=3.12,<3.13.0a0",
+    "rtree >=0.9",
+    "xyzservices"
+  ],
+  "constrains": [],
+  "license": "BSD-3-Clause",
+  "license_family": "BSD",
+  "timestamp": 1704929228544,
+  "size": 7866,
+  "requested_spec": "pkgs/main/win-64::geopandas==0.14.2=py312haa95532_0",
+  "package_tarball_full_path": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\geopandas-0.14.2-py312haa95532_0.conda",
+  "extracted_package_dir": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\geopandas-0.14.2-py312haa95532_0",
+  "files": [],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": []
+  },
+  "link": {
+    "source": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\geopandas-0.14.2-py312haa95532_0",
+    "type": 1
+  }
+}

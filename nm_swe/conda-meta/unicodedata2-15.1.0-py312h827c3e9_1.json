@@ -1,0 +1,110 @@
+{
+  "name": "unicodedata2",
+  "version": "15.1.0",
+  "build": "py312h827c3e9_1",
+  "build_number": 1,
+  "channel": "https://repo.anaconda.com/pkgs/main/win-64",
+  "subdir": "win-64",
+  "fn": "unicodedata2-15.1.0-py312h827c3e9_1.conda",
+  "md5": "ea16778d65850fe0819fed9a3811524a",
+  "url": "https://repo.anaconda.com/pkgs/main/win-64/unicodedata2-15.1.0-py312h827c3e9_1.conda",
+  "sha256": "3af3c13cfc45bcb765b6664c1b61243b3f7c6d6e5ed748bb12f85d03eb084ba0",
+  "arch": "x86_64",
+  "platform": "win32",
+  "depends": [
+    "python >=3.12,<3.13.0a0",
+    "vc >=14.2,<15.0a0",
+    "vs2015_runtime >=14.29.30133,<15.0a0"
+  ],
+  "constrains": [],
+  "license": "Apache-2.0",
+  "license_family": "Apache",
+  "timestamp": 1736544012912,
+  "size": 537700,
+  "requested_spec": "pkgs/main/win-64::unicodedata2==15.1.0=py312h827c3e9_1",
+  "package_tarball_full_path": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\unicodedata2-15.1.0-py312h827c3e9_1.conda",
+  "extracted_package_dir": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\unicodedata2-15.1.0-py312h827c3e9_1",
+  "files": [
+    "Lib/site-packages/unicodedata2-15.1.0.dist-info/INSTALLER",
+    "Lib/site-packages/unicodedata2-15.1.0.dist-info/LICENSE",
+    "Lib/site-packages/unicodedata2-15.1.0.dist-info/METADATA",
+    "Lib/site-packages/unicodedata2-15.1.0.dist-info/RECORD",
+    "Lib/site-packages/unicodedata2-15.1.0.dist-info/REQUESTED",
+    "Lib/site-packages/unicodedata2-15.1.0.dist-info/WHEEL",
+    "Lib/site-packages/unicodedata2-15.1.0.dist-info/direct_url.json",
+    "Lib/site-packages/unicodedata2-15.1.0.dist-info/top_level.txt",
+    "Lib/site-packages/unicodedata2.cp312-win_amd64.pyd"
+  ],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": [
+      {
+        "_path": "Lib/site-packages/unicodedata2-15.1.0.dist-info/INSTALLER",
+        "path_type": "hardlink",
+        "sha256": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "size_in_bytes": 5,
+        "sha256_in_prefix": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8"
+      },
+      {
+        "_path": "Lib/site-packages/unicodedata2-15.1.0.dist-info/LICENSE",
+        "path_type": "hardlink",
+        "sha256": "cb5e8e7e5f4a3988e1063c142c60dc2df75605f4c46515e776e3aca6df976e14",
+        "size_in_bytes": 11325,
+        "sha256_in_prefix": "cb5e8e7e5f4a3988e1063c142c60dc2df75605f4c46515e776e3aca6df976e14"
+      },
+      {
+        "_path": "Lib/site-packages/unicodedata2-15.1.0.dist-info/METADATA",
+        "path_type": "hardlink",
+        "sha256": "dbda23ad40b76290842aeba4840c2aa7b0704d54b5a60e293831f3f62cd18a23",
+        "size_in_bytes": 3129,
+        "sha256_in_prefix": "dbda23ad40b76290842aeba4840c2aa7b0704d54b5a60e293831f3f62cd18a23"
+      },
+      {
+        "_path": "Lib/site-packages/unicodedata2-15.1.0.dist-info/RECORD",
+        "path_type": "hardlink",
+        "sha256": "5be2de08992872a0987915c65eba75835eea1816be8110d0622804bb93a7d27e",
+        "size_in_bytes": 805,
+        "sha256_in_prefix": "5be2de08992872a0987915c65eba75835eea1816be8110d0622804bb93a7d27e"
+      },
+      {
+        "_path": "Lib/site-packages/unicodedata2-15.1.0.dist-info/REQUESTED",
+        "path_type": "hardlink",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_in_bytes": 0,
+        "sha256_in_prefix": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "_path": "Lib/site-packages/unicodedata2-15.1.0.dist-info/WHEEL",
+        "path_type": "hardlink",
+        "sha256": "def89d9c3b99f904a71c8c4b84d6c8d6020cf8a83211c307b99bafd6658f77f4",
+        "size_in_bytes": 101,
+        "sha256_in_prefix": "def89d9c3b99f904a71c8c4b84d6c8d6020cf8a83211c307b99bafd6658f77f4"
+      },
+      {
+        "_path": "Lib/site-packages/unicodedata2-15.1.0.dist-info/direct_url.json",
+        "path_type": "hardlink",
+        "sha256": "10905cba987939503b1fce20d3c0faa27cd4729aa5065c18163b8f47e4469474",
+        "size_in_bytes": 92,
+        "sha256_in_prefix": "10905cba987939503b1fce20d3c0faa27cd4729aa5065c18163b8f47e4469474"
+      },
+      {
+        "_path": "Lib/site-packages/unicodedata2-15.1.0.dist-info/top_level.txt",
+        "path_type": "hardlink",
+        "sha256": "2efe3a3c550aa72f5a669a41449f07023f185c6a2da7d9c8bff8b9c93cb523d7",
+        "size_in_bytes": 13,
+        "sha256_in_prefix": "2efe3a3c550aa72f5a669a41449f07023f185c6a2da7d9c8bff8b9c93cb523d7"
+      },
+      {
+        "_path": "Lib/site-packages/unicodedata2.cp312-win_amd64.pyd",
+        "path_type": "hardlink",
+        "sha256": "09b08ae715dee7fdadae76e51184ac9c09ce4390ae7cfe9feb20a80d679983e6",
+        "size_in_bytes": 1258256,
+        "sha256_in_prefix": "09b08ae715dee7fdadae76e51184ac9c09ce4390ae7cfe9feb20a80d679983e6"
+      }
+    ]
+  },
+  "link": {
+    "source": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\unicodedata2-15.1.0-py312h827c3e9_1",
+    "type": 1
+  }
+}

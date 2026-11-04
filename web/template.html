@@ -1,0 +1,864 @@
+<meta charset="utf-8">
+<title>SWEET Basin Explorer</title>
+<meta name="description" content="Interactive New Mexico basin map of ensemble snow water equivalent (SWE) from SNODAS, SWANN and CU SWE, with per-product historical comparison.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+/* Leaflet 1.9.4 (BSD-2-Clause) */ .leaflet-pane, .leaflet-tile, .leaflet-marker-icon, .leaflet-marker-shadow, .leaflet-tile-container, .leaflet-pane > svg, .leaflet-pane > canvas, .leaflet-zoom-box, .leaflet-image-layer, .leaflet-layer { position: absolute; left: 0; top: 0; } .leaflet-container { overflow: hidden; } .leaflet-tile, .leaflet-marker-icon, .leaflet-marker-shadow { -webkit-user-select: none; -moz-user-select: none; user-select: none; -webkit-user-drag: none; } .leaflet-tile::selection { background: transparent; } .leaflet-safari .leaflet-tile { image-rendering: -webkit-optimize-contrast; } .leaflet-safari .leaflet-tile-container { width: 1600px; height: 1600px; -webkit-transform-origin: 0 0; } .leaflet-marker-icon, .leaflet-marker-shadow { display: block; } .leaflet-container .leaflet-overlay-pane svg { max-width: none !important; max-height: none !important; } .leaflet-container .leaflet-marker-pane img, .leaflet-container .leaflet-shadow-pane img, .leaflet-container .leaflet-tile-pane img, .leaflet-container img.leaflet-image-layer, .leaflet-container .leaflet-tile { max-width: none !important; max-height: none !important; width: auto; padding: 0; } .leaflet-container img.leaflet-tile { mix-blend-mode: plus-lighter; } .leaflet-container.leaflet-touch-zoom { -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; } .leaflet-container.leaflet-touch-drag { -ms-touch-action: pinch-zoom; touch-action: none; touch-action: pinch-zoom; } .leaflet-container.leaflet-touch-drag.leaflet-touch-zoom { -ms-touch-action: none; touch-action: none; } .leaflet-container { -webkit-tap-highlight-color: transparent; } .leaflet-container a { -webkit-tap-highlight-color: rgba(51, 181, 229, 0.4); } .leaflet-tile { filter: inherit; visibility: hidden; } .leaflet-tile-loaded { visibility: inherit; } .leaflet-zoom-box { width: 0; height: 0; -moz-box-sizing: border-box; box-sizing: border-box; z-index: 800; } .leaflet-overlay-pane svg { -moz-user-select: none; } .leaflet-pane { z-index: 400; } .leaflet-tile-pane { z-index: 200; } .leaflet-overlay-pane { z-index: 400; } .leaflet-shadow-pane { z-index: 500; } .leaflet-marker-pane { z-index: 600; } .leaflet-tooltip-pane { z-index: 650; } .leaflet-popup-pane { z-index: 700; } .leaflet-map-pane canvas { z-index: 100; } .leaflet-map-pane svg { z-index: 200; } .leaflet-vml-shape { width: 1px; height: 1px; } .lvml { behavior: url(#default#VML); display: inline-block; position: absolute; } .leaflet-control { position: relative; z-index: 800; pointer-events: visiblePainted; pointer-events: auto; } .leaflet-top, .leaflet-bottom { position: absolute; z-index: 1000; pointer-events: none; } .leaflet-top { top: 0; } .leaflet-right { right: 0; } .leaflet-bottom { bottom: 0; } .leaflet-left { left: 0; } .leaflet-control { float: left; clear: both; } .leaflet-right .leaflet-control { float: right; } .leaflet-top .leaflet-control { margin-top: 10px; } .leaflet-bottom .leaflet-control { margin-bottom: 10px; } .leaflet-left .leaflet-control { margin-left: 10px; } .leaflet-right .leaflet-control { margin-right: 10px; } .leaflet-fade-anim .leaflet-popup { opacity: 0; -webkit-transition: opacity 0.2s linear; -moz-transition: opacity 0.2s linear; transition: opacity 0.2s linear; } .leaflet-fade-anim .leaflet-map-pane .leaflet-popup { opacity: 1; } .leaflet-zoom-animated { -webkit-transform-origin: 0 0; -ms-transform-origin: 0 0; transform-origin: 0 0; } svg.leaflet-zoom-animated { will-change: transform; } .leaflet-zoom-anim .leaflet-zoom-animated { -webkit-transition: -webkit-transform 0.25s cubic-bezier(0,0,0.25,1); -moz-transition: -moz-transform 0.25s cubic-bezier(0,0,0.25,1); transition: transform 0.25s cubic-bezier(0,0,0.25,1); } .leaflet-zoom-anim .leaflet-tile, .leaflet-pan-anim .leaflet-tile { -webkit-transition: none; -moz-transition: none; transition: none; } .leaflet-zoom-anim .leaflet-zoom-hide { visibility: hidden; } .leaflet-interactive { cursor: pointer; } .leaflet-grab { cursor: -webkit-grab; cursor: -moz-grab; cursor: grab; } .leaflet-crosshair, .leaflet-crosshair .leaflet-interactive { cursor: crosshair; } .leaflet-popup-pane, .leaflet-control { cursor: auto; } .leaflet-dragging .leaflet-grab, .leaflet-dragging .leaflet-grab .leaflet-interactive, .leaflet-dragging .leaflet-marker-draggable { cursor: move; cursor: -webkit-grabbing; cursor: -moz-grabbing; cursor: grabbing; } .leaflet-marker-icon, .leaflet-marker-shadow, .leaflet-image-layer, .leaflet-pane > svg path, .leaflet-tile-container { pointer-events: none; } .leaflet-marker-icon.leaflet-interactive, .leaflet-image-layer.leaflet-interactive, .leaflet-pane > svg path.leaflet-interactive, svg.leaflet-image-layer.leaflet-interactive path { pointer-events: visiblePainted; pointer-events: auto; } .leaflet-container { background: #ddd; outline-offset: 1px; } .leaflet-container a { color: #0078A8; } .leaflet-zoom-box { border: 2px dotted #38f; background: rgba(255,255,255,0.5); } .leaflet-container { font-family: "Helvetica Neue", Arial, Helvetica, sans-serif; font-size: 12px; font-size: 0.75rem; line-height: 1.5; } .leaflet-bar { box-shadow: 0 1px 5px rgba(0,0,0,0.65); border-radius: 4px; } .leaflet-bar a { background-color: #fff; border-bottom: 1px solid #ccc; width: 26px; height: 26px; line-height: 26px; display: block; text-align: center; text-decoration: none; color: black; } .leaflet-bar a, .leaflet-control-layers-toggle { background-position: 50% 50%; background-repeat: no-repeat; display: block; } .leaflet-bar a:hover, .leaflet-bar a:focus { background-color: #f4f4f4; } .leaflet-bar a:first-child { border-top-left-radius: 4px; border-top-right-radius: 4px; } .leaflet-bar a:last-child { border-bottom-left-radius: 4px; border-bottom-right-radius: 4px; border-bottom: none; } .leaflet-bar a.leaflet-disabled { cursor: default; background-color: #f4f4f4; color: #bbb; } .leaflet-touch .leaflet-bar a { width: 30px; height: 30px; line-height: 30px; } .leaflet-touch .leaflet-bar a:first-child { border-top-left-radius: 2px; border-top-right-radius: 2px; } .leaflet-touch .leaflet-bar a:last-child { border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; } .leaflet-control-zoom-in, .leaflet-control-zoom-out { font: bold 18px 'Lucida Console', Monaco, monospace; text-indent: 1px; } .leaflet-touch .leaflet-control-zoom-in, .leaflet-touch .leaflet-control-zoom-out { font-size: 22px; } .leaflet-control-layers { box-shadow: 0 1px 5px rgba(0,0,0,0.4); background: #fff; border-radius: 5px; } .leaflet-control-layers-toggle { background-image: url(images/layers.png); width: 36px; height: 36px; } .leaflet-retina .leaflet-control-layers-toggle { background-image: url(images/layers-2x.png); background-size: 26px 26px; } .leaflet-touch .leaflet-control-layers-toggle { width: 44px; height: 44px; } .leaflet-control-layers .leaflet-control-layers-list, .leaflet-control-layers-expanded .leaflet-control-layers-toggle { display: none; } .leaflet-control-layers-expanded .leaflet-control-layers-list { display: block; position: relative; } .leaflet-control-layers-expanded { padding: 6px 10px 6px 6px; color: #333; background: #fff; } .leaflet-control-layers-scrollbar { overflow-y: scroll; overflow-x: hidden; padding-right: 5px; } .leaflet-control-layers-selector { margin-top: 2px; position: relative; top: 1px; } .leaflet-control-layers label { display: block; font-size: 13px; font-size: 1.08333em; } .leaflet-control-layers-separator { height: 0; border-top: 1px solid #ddd; margin: 5px -10px 5px -6px; } .leaflet-default-icon-path { background-image: url(images/marker-icon.png); } .leaflet-container .leaflet-control-attribution { background: #fff; background: rgba(255, 255, 255, 0.8); margin: 0; } .leaflet-control-attribution, .leaflet-control-scale-line { padding: 0 5px; color: #333; line-height: 1.4; } .leaflet-control-attribution a { text-decoration: none; } .leaflet-control-attribution a:hover, .leaflet-control-attribution a:focus { text-decoration: underline; } .leaflet-attribution-flag { display: inline !important; vertical-align: baseline !important; width: 1em; height: 0.6669em; } .leaflet-left .leaflet-control-scale { margin-left: 5px; } .leaflet-bottom .leaflet-control-scale { margin-bottom: 5px; } .leaflet-control-scale-line { border: 2px solid #777; border-top: none; line-height: 1.1; padding: 2px 5px 1px; white-space: nowrap; -moz-box-sizing: border-box; box-sizing: border-box; background: rgba(255, 255, 255, 0.8); text-shadow: 1px 1px #fff; } .leaflet-control-scale-line:not(:first-child) { border-top: 2px solid #777; border-bottom: none; margin-top: -2px; } .leaflet-control-scale-line:not(:first-child):not(:last-child) { border-bottom: 2px solid #777; } .leaflet-touch .leaflet-control-attribution, .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar { box-shadow: none; } .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar { border: 2px solid rgba(0,0,0,0.2); background-clip: padding-box; } .leaflet-popup { position: absolute; text-align: center; margin-bottom: 20px; } .leaflet-popup-content-wrapper { padding: 1px; text-align: left; border-radius: 12px; } .leaflet-popup-content { margin: 13px 24px 13px 20px; line-height: 1.3; font-size: 13px; font-size: 1.08333em; min-height: 1px; } .leaflet-popup-content p { margin: 17px 0; margin: 1.3em 0; } .leaflet-popup-tip-container { width: 40px; height: 20px; position: absolute; left: 50%; margin-top: -1px; margin-left: -20px; overflow: hidden; pointer-events: none; } .leaflet-popup-tip { width: 17px; height: 17px; padding: 1px; margin: -10px auto 0; pointer-events: auto; -webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg); } .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: white; color: #333; box-shadow: 0 3px 14px rgba(0,0,0,0.4); } .leaflet-container a.leaflet-popup-close-button { position: absolute; top: 0; right: 0; border: none; text-align: center; width: 24px; height: 24px; font: 16px/24px Tahoma, Verdana, sans-serif; color: #757575; text-decoration: none; background: transparent; } .leaflet-container a.leaflet-popup-close-button:hover, .leaflet-container a.leaflet-popup-close-button:focus { color: #585858; } .leaflet-popup-scrolled { overflow: auto; } .leaflet-oldie .leaflet-popup-content-wrapper { -ms-zoom: 1; } .leaflet-oldie .leaflet-popup-tip { width: 24px; margin: 0 auto; -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)"; filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678); } .leaflet-oldie .leaflet-control-zoom, .leaflet-oldie .leaflet-control-layers, .leaflet-oldie .leaflet-popup-content-wrapper, .leaflet-oldie .leaflet-popup-tip { border: 1px solid #999; } .leaflet-div-icon { background: #fff; border: 1px solid #666; } .leaflet-tooltip { position: absolute; padding: 6px; background-color: #fff; border: 1px solid #fff; border-radius: 3px; color: #222; white-space: nowrap; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; pointer-events: none; box-shadow: 0 1px 3px rgba(0,0,0,0.4); } .leaflet-tooltip.leaflet-interactive { cursor: pointer; pointer-events: auto; } .leaflet-tooltip-top:before, .leaflet-tooltip-bottom:before, .leaflet-tooltip-left:before, .leaflet-tooltip-right:before { position: absolute; pointer-events: none; border: 6px solid transparent; background: transparent; content: ""; } .leaflet-tooltip-bottom { margin-top: 6px; } .leaflet-tooltip-top { margin-top: -6px; } .leaflet-tooltip-bottom:before, .leaflet-tooltip-top:before { left: 50%; margin-left: -6px; } .leaflet-tooltip-top:before { bottom: 0; margin-bottom: -12px; border-top-color: #fff; } .leaflet-tooltip-bottom:before { top: 0; margin-top: -12px; margin-left: -6px; border-bottom-color: #fff; } .leaflet-tooltip-left { margin-left: -6px; } .leaflet-tooltip-right { margin-left: 6px; } .leaflet-tooltip-left:before, .leaflet-tooltip-right:before { top: 50%; margin-top: -6px; } .leaflet-tooltip-left:before { right: 0; margin-right: -12px; border-left-color: #fff; } .leaflet-tooltip-right:before { left: 0; margin-left: -12px; border-right-color: #fff; } @media print { .leaflet-control { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+<style>
+:root{
+  --bg:#f3f6f9; --surface:#ffffff; --surface-2:#f8fafc; --ink:#0f1a24; --ink-2:#45525f; --muted:#6d7a87;
+  --line:#dbe2e9; --line-2:#e9eef3; --accent:#1d5c96; --accent-soft:#e3eef8; --focus:#2a78d6;
+  --map-bg:#e6ebf0; --state-fill:#f7f9fb; --state-line:#b9c3cd; --nm-line:#0f1a24; --nodata:#d3dae2; --nodata-line:#bcc6d0;
+  --s-snodas:#2a78d6; --s-uaswe:#eb6834; --s-cuswe:#1baf7a; --s-ens:#0f1a24;
+  --seq-0:#cde2fb; --seq-1:#9ec5f4; --seq-2:#6da7ec; --seq-3:#3987e5; --seq-4:#256abf; --seq-5:#184f95; --seq-6:#0d366b;
+  --div-0:#a52f2e; --div-1:#e34948; --div-2:#f2a7a3; --div-3:#f0efec; --div-4:#9ec5f4; --div-5:#3987e5; --div-6:#184f95;
+  --basin-line:#ffffff; --sel-line:#0f1a24;
+  --y1:#4a3aa7; --y2:#e87ba4; --y3:#008300; --y4:#eda100; --y5:#e34948;
+  --radius:10px;
+  --font:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0e1318; --surface:#151c23; --surface-2:#1a222a; --ink:#edf1f5; --ink-2:#b4bfca; --muted:#8793a0;
+    --line:#29333d; --line-2:#212a33; --accent:#6aa8e0; --accent-soft:#1c2c3b; --focus:#5598e7;
+    --map-bg:#0c1115; --state-fill:#151c23; --state-line:#35414c; --nm-line:#dfe6ed; --nodata:#27313b; --nodata-line:#384450;
+    --s-snodas:#3987e5; --s-uaswe:#d95926; --s-cuswe:#199e70; --s-ens:#edf1f5;
+    --seq-0:#cde2fb; --seq-1:#9ec5f4; --seq-2:#6da7ec; --seq-3:#3987e5; --seq-4:#256abf; --seq-5:#184f95; --seq-6:#0d366b;
+    --div-0:#a52f2e; --div-1:#e34948; --div-2:#f2a7a3; --div-3:#5a5955; --div-4:#9ec5f4; --div-5:#3987e5; --div-6:#184f95;
+    --basin-line:#0e1318; --sel-line:#ffffff; --y1:#9085e9; --y2:#d55181; --y3:#008300; --y4:#c98500; --y5:#e66767;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0e1318; --surface:#151c23; --surface-2:#1a222a; --ink:#edf1f5; --ink-2:#b4bfca; --muted:#8793a0;
+  --line:#29333d; --line-2:#212a33; --accent:#6aa8e0; --accent-soft:#1c2c3b; --focus:#5598e7;
+  --map-bg:#0c1115; --state-fill:#151c23; --state-line:#35414c; --nm-line:#dfe6ed; --nodata:#27313b; --nodata-line:#384450;
+  --s-snodas:#3987e5; --s-uaswe:#d95926; --s-cuswe:#199e70; --s-ens:#edf1f5;
+  --seq-0:#cde2fb; --seq-1:#9ec5f4; --seq-2:#6da7ec; --seq-3:#3987e5; --seq-4:#256abf; --seq-5:#184f95; --seq-6:#0d366b;
+  --div-0:#a52f2e; --div-1:#e34948; --div-2:#f2a7a3; --div-3:#5a5955; --div-4:#9ec5f4; --div-5:#3987e5; --div-6:#184f95;
+  --basin-line:#0e1318; --sel-line:#ffffff; --y1:#9085e9; --y2:#d55181; --y3:#008300; --y4:#c98500; --y5:#e66767;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:14px;line-height:1.45;margin:0}
+.wrap{max-width:1440px;margin:0 auto;padding-inline:16px;padding-block:16px 32px;display:flex;flex-direction:column;gap:14px}
+button,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+
+/* header */
+.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px}
+.brand h1{margin:0;font-size:22px;font-weight:700;letter-spacing:-0.01em;text-wrap:balance}
+.brand h1 .mark{color:var(--accent)}
+.brand p{margin:2px 0 0;color:var(--ink-2);font-size:13px}
+.controls{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:flex-end}
+.field{display:flex;flex-direction:column;gap:3px}
+.field label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.field select{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:7px 30px 7px 10px;min-width:0;max-width:100%;
+  appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);
+  background-position:calc(100% - 15px) 52%,calc(100% - 10px) 52%;background-size:5px 5px;background-repeat:no-repeat;cursor:pointer}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}
+.seg button{border:0;background:transparent;padding:7px 12px;cursor:pointer;font-weight:500;color:var(--ink-2)}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent);font-weight:700}
+
+.notice{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:9px 12px;font-size:12.5px;color:var(--ink-2);display:flex;gap:10px;align-items:flex-start}
+.notice b{color:var(--ink)}
+.notice .tag{flex:none;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--accent);background:var(--accent-soft);border-radius:5px;padding:2px 6px;margin-top:1px}
+
+/* layout */
+.main{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:14px;align-items:start}
+@media (max-width:980px){.main{grid-template-columns:minmax(0,1fr)}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}
+.mapcard{position:relative;overflow:hidden}
+#map{height:min(72vh,640px);min-height:420px;background:var(--map-bg)}
+.leaflet-container{background:var(--map-bg);font-family:var(--font)}
+.legend{position:absolute;left:10px;bottom:10px;z-index:500;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:11.5px;max-width:calc(100% - 20px)}
+.legend .lt{font-weight:600;margin-bottom:5px;color:var(--ink)}
+.legend .sw{display:flex;gap:0;align-items:stretch}
+.legend .sw span{display:block;width:36px;height:10px}
+.legend .ticks{display:flex;font-variant-numeric:tabular-nums;color:var(--ink-2)}
+.legend .ticks span{width:36px;text-align:left;font-size:10.5px;transform:translateX(-5px);white-space:nowrap}
+.legend .ls{font-size:11px;color:var(--ink-2);margin:-2px 0 5px}
+.legend .pl{display:flex;align-items:center;gap:6px;margin-top:4px;color:var(--ink-2)}
+.legend .pl i{width:14px;height:0;border-top:2px dashed var(--ink-2)}
+.legend .nd{display:flex;align-items:center;gap:6px;margin-top:6px;color:var(--ink-2)}
+.legend .nd i{width:14px;height:10px;background:var(--nodata);border:1px solid var(--nodata-line)}
+.maphint{position:absolute;right:10px;top:10px;z-index:500;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:5px 9px;font-size:11.5px;color:var(--ink-2)}
+.leaflet-tooltip.btip{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:7px;box-shadow:0 4px 14px rgba(0,0,0,.14);padding:6px 9px;font-size:12px}
+.leaflet-tooltip.btip:before{display:none}
+.btip b{display:block;font-size:12.5px}
+.btip .c{color:var(--muted);font-variant-numeric:tabular-nums}
+.btip .v{font-variant-numeric:tabular-nums;margin-top:2px}
+.lbl-state{color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.12em}
+.lbl-city{color:var(--ink-2);font-size:10.5px;white-space:nowrap;text-shadow:0 0 3px var(--map-bg),0 0 3px var(--map-bg),0 0 3px var(--map-bg)}
+.leaflet-control-zoom a{background:var(--surface)!important;color:var(--ink)!important;border-color:var(--line)!important}
+.leaflet-control-attribution{display:none}
+
+/* basin panel */
+.panel{padding:16px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.bhead{display:flex;flex-direction:column;gap:4px}
+.crumbs{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px;color:var(--muted)}
+.crumbs button{background:none;border:0;padding:0;color:var(--accent);cursor:pointer;font-weight:600}
+.bhead h2{margin:0;font-size:20px;font-weight:700;letter-spacing:-0.01em;text-wrap:balance}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;border:1px solid var(--line);border-radius:999px;padding:2px 8px;color:var(--ink-2);font-variant-numeric:tabular-nums;background:var(--surface-2)}
+.chip.part{border-style:dashed;border-color:var(--ink-2);color:var(--ink);background:transparent;font-weight:600}
+.btip .p{color:var(--ink-2);font-size:11.5px;margin-top:3px;max-width:240px;white-space:normal}
+tr.excl td{color:var(--muted);font-style:italic}
+.chip.ose{border-color:transparent;background:var(--accent-soft);color:var(--accent);font-weight:600}
+.kpis{display:flex;flex-wrap:wrap;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.kpi{flex:1 1 150px;background:var(--surface);padding:10px 12px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.kpi .k{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.kpi .v{font-size:19px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-0.01em}
+.kpi .v small{font-size:12px;font-weight:500;color:var(--ink-2)}
+.kpi .s{font-size:11.5px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.tabs{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+#chart{width:100%;height:340px}
+.cnote{font-size:12px;color:var(--ink-2);margin:-4px 0 0}
+.empty{border:1px dashed var(--line);border-radius:8px;padding:18px;color:var(--ink-2);font-size:13px;background:var(--surface-2)}
+.empty b{color:var(--ink)}
+.vizbox{display:flex;flex-direction:column;gap:14px;min-width:0}
+.vtools{display:inline-flex;gap:4px;align-items:center}
+.vt{width:30px;height:30px;padding:0;border:1px solid var(--line);background:var(--surface);border-radius:7px;display:inline-grid;place-items:center;color:var(--ink-2);cursor:pointer}
+.vt[hidden]{display:none}
+.vt:hover{color:var(--ink);border-color:var(--ink-2)}
+.vt svg{width:16px;height:16px;display:block}
+.maptools{position:absolute;right:10px;bottom:10px;z-index:600}
+.elev-r{display:inline-flex;align-items:center;gap:10px}
+.fsbox:fullscreen,.fsbox.fs{background:var(--surface);padding:18px 20px;overflow:auto;border:0;border-radius:0}
+.fsbox.fs{position:fixed;inset:0;z-index:3000;max-width:none}
+.mapcard:fullscreen,.mapcard.fs{padding:0;background:var(--map-bg)}
+.mapcard:fullscreen #map,.mapcard.fs #map{height:100%!important;min-height:0}
+.elev:fullscreen,.elev.fs{border-top:0}
+.histkey{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:11.5px;color:var(--ink-2);align-items:center}
+.histkey .k{display:inline-flex;align-items:center;gap:6px}
+.histkey svg{flex:none}
+.yearpick{display:flex;flex-direction:column;gap:6px}
+.yearpick .yl{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 10px;font-size:12px;color:var(--ink-2)}
+.yearpick .yl b{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600}
+.yearpick .chips{display:flex;flex-wrap:wrap;gap:5px}
+.yr{font:inherit;font-size:11.5px;font-variant-numeric:tabular-nums;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:999px;padding:3px 9px;cursor:pointer;display:inline-flex;align-items:center;gap:5px}
+.yr i{width:10px;height:3px;border-radius:2px;display:none}
+.yr[aria-pressed="true"]{color:var(--ink);font-weight:600;border-color:var(--ink-2)}
+.yr[aria-pressed="true"] i{display:inline-block}
+.yr:disabled{opacity:.45;cursor:not-allowed}
+.yr.act{border-style:dashed}
+.elev{display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--line);padding-top:12px}
+.elev-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 12px}
+.elev-h h3{margin:0;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.elev-sub{font-size:12px;color:var(--ink-2)}
+#elevchart{width:100%}
+.elev-leg{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:11.5px;color:var(--ink-2)}
+.elev-leg .sw{display:flex}.elev-leg .sw span{display:block;width:34px;height:9px}
+.elev-leg .ticks{display:flex;font-variant-numeric:tabular-nums}.elev-leg .ticks span{width:34px;font-size:10.5px;transform:translateX(-5px);white-space:nowrap}
+.subs h3{margin:0 0 6px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.tblwrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:12.5px;font-variant-numeric:tabular-nums}
+th{font-weight:600;color:var(--muted);text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.05em;padding:6px 8px;border-bottom:1px solid var(--line)}
+td{padding:6px 8px;border-bottom:1px solid var(--line-2)}
+td.n,th.n{text-align:right}
+tr.row{cursor:pointer}
+tr.row:hover td{background:var(--surface-2)}
+tr.row td:first-child{color:var(--accent);font-weight:600}
+.bar{height:6px;border-radius:3px;background:var(--seq-3);min-width:1px}
+.foot{font-size:12px;color:var(--ink-2);display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px 24px}
+.foot h4{margin:0 0 3px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.foot p{margin:0;max-width:68ch}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <h1><span class="mark">SWEET</span> Basin Explorer</h1>
+      <p>Snow water equivalent for New Mexico basins &middot; SNODAS, SWANN and CU SWE with the SWEET ensemble</p>
+    </div>
+    <div class="controls" role="group" aria-label="Map controls">
+      <div class="field"><label id="lvl-l">Boundaries</label>
+        <div class="seg" role="group" aria-labelledby="lvl-l">
+          <button type="button" id="lvl-huc6" aria-pressed="true">HUC6</button>
+          <button type="button" id="lvl-huc8" aria-pressed="false">HUC8</button>
+          <button type="button" id="lvl-huc12" aria-pressed="false">HUC12</button>
+        </div>
+      </div>
+      <div class="field"><label for="metric">Map shows</label><select id="metric"></select></div>
+      <div class="field"><label for="date">Date</label><select id="date"></select></div>
+    </div>
+  </header>
+
+  <div class="notice" id="notice"></div>
+
+  <div class="main">
+    <section class="card mapcard fsbox" id="mapbox" aria-label="Basin map">
+      <div id="map"></div>
+      <div class="maphint">Click a basin for its season chart</div>
+      <div class="legend" id="legend"></div>
+      <div class="vtools maptools" id="maptools" role="toolbar" aria-label="Map tools"></div>
+    </section>
+
+    <section class="card panel" aria-live="polite">
+      <div class="bhead">
+        <div class="crumbs" id="crumbs"></div>
+        <h2 id="bname">Select a basin</h2>
+        <div class="chips" id="bchips"></div>
+      </div>
+      <div class="kpis" id="kpis"></div>
+      <div class="vizbox fsbox" id="swebox">
+        <div class="tabs">
+          <div class="seg" role="tablist" aria-label="Chart view">
+            <button type="button" id="tab-ens" role="tab" aria-pressed="true">SWEET ensemble</button>
+            <button type="button" id="tab-hist" role="tab" aria-pressed="false">Compare with history</button>
+          </div>
+          <div class="vtools" id="swetools" role="toolbar" aria-label="Chart tools"></div>
+        </div>
+        <div class="histkey" id="histkey" hidden></div>
+        <div id="chart" role="img" aria-label="SWE volume through the water year"></div>
+        <div class="yearpick" id="yearpick" hidden></div>
+        <p class="cnote" id="cnote"></p>
+      </div>
+      <section class="elev fsbox" id="elevbox" aria-label="SWE volume by elevation band">
+        <div class="elev-h"><h3 id="elevtitle">SWE volume by elevation band</h3><span class="elev-r"><span class="elev-sub" id="elevsub"></span><span class="vtools" id="elevtools" role="toolbar" aria-label="Elevation chart tools"></span></span></div>
+        <div id="elevchart" role="img" aria-label="Ensemble SWE volume by 1000-ft elevation band"></div>
+        <div class="elev-leg" id="elevleg"></div>
+      </section>
+      <div class="subs" id="subs"></div>
+    </section>
+  </div>
+
+  <footer class="foot" id="foot"></footer>
+</div>
+
+<script id="sweet-data" type="application/json">__SWEET_DATA__</script>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/plotly.js-basic-dist-min@2.35.2/plotly-basic.min.js"></script>
+<script>
+(function(){
+"use strict";
+const D = JSON.parse(document.getElementById("sweet-data").textContent);
+const M = D.meta, B = D.basins, S = D.series, CL = D.clim || {};
+const AF_TO_M3 = 1233.48183754752, M_PER_IN = 0.0254;
+const PKEY = {SNODAS:"--s-snodas", UA_SWE:"--s-uaswe", CU_SWE:"--s-cuswe"};
+const state = {level:"huc6", metric:"vol", di:M.dates.length-1, sel:null, tab:"ens", years:[]};
+const H = D.hist || {};
+const CUR = D.cur || {};   // current WY per product, whole season (unmasked), for the history panels
+const YCOL = ["--y1","--y2","--y3","--y4","--y5"];
+const LEVELS = ["huc6","huc8","huc12"].filter(lv=>D.geo[lv]&&D.geo[lv].features.length);
+const LVL = l => String(l||"").toUpperCase();          // "huc12" -> "HUC12"
+
+// ---------- helpers ----------
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const $ = id => document.getElementById(id);
+const fmtAF = v => v==null||isNaN(v) ? "—" : Math.round(v).toLocaleString("en-US");
+const fmtK = v => v==null||isNaN(v) ? "—" : (Math.abs(v)>=1e6 ? (v/1e6).toFixed(2)+"M" : Math.abs(v)>=1e5 ? Math.round(v/1e3)+"k" : Math.abs(v)>=1e3 ? (v/1e3).toFixed(1)+"k" : Math.round(v).toString());
+const fmtDate = (iso, yr=true) => new Date(iso+"T12:00:00").toLocaleDateString("en-US",{month:"short",day:"numeric",year:yr?"numeric":undefined});
+const label = p => M.labels[p] || p;
+const esc = s => String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function ensAt(code, i){ const s=S[code]; if(!s||!s.ens) return null; const v=s.ens.mean[i]; return v; }
+function reportedAt(code,i){ const s=S[code]; return !!(s&&s.ens&&s.ens.rep[i]); }
+function prodAt(code,p,i,masked){ const s=S[code]; const t=s&&(masked?(s.pm||s.p):s.p); return t&&t[p]?t[p][i]:null; }
+function climMedian(p, code, dowy){   // linear interpolation between the sampled history days
+  const c=CL[p], b=c&&c.b[code]; if(!b) return null;
+  const d=c.d; let k=d.findIndex(x=>x>=dowy); if(k<0) return null;
+  if(d[k]===dowy) return b.m[k]; if(k===0) return null;
+  const a=b.m[k-1], z=b.m[k]; if(a==null||z==null) return null;
+  return a+(z-a)*(dowy-d[k-1])/(d[k]-d[k-1]);
+}
+function pctMedian(p, code, i){
+  const v=prodAt(code,p,i,false), m=climMedian(p,code,M.dowy[i]);
+  if(v==null||m==null) return null; if(m<50) return (v<50? null : Infinity); return 100*v/m;
+}
+function wyDate(dowy){ // 365-day WY calendar -> ISO date in the current WY
+  const d=new Date(Date.UTC(M.wy-1,9,1)); let n=dowy-1;
+  while(n>0){ d.setUTCDate(d.getUTCDate()+1); if(!(d.getUTCMonth()===1&&d.getUTCDate()===29)) n--; }
+  return d.toISOString().slice(0,10);
+}
+
+// ---------- metrics & scales ----------
+const METRICS = [
+  {id:"vol", label:"SWE — ensemble basin-average SWE volume (af)"},
+  {id:"chg", label:"Change since previous week — SWE volume (af)"}]
+  // % of median for every product, incl. those without a history yet (shown disabled)
+  .concat([...new Set([...M.climProducts, ...M.products])].map(p=>({id:"pct:"+p, label:`% of median — ${label(p)}`,
+    disabled: !M.climAvailable.includes(p), why: M.climProducts.includes(p)? "after backfill" : "no history yet"})));
+const SEQV = ["--seq-0","--seq-1","--seq-2","--seq-3","--seq-4","--seq-5","--seq-6"];
+const DIVV = ["--div-0","--div-1","--div-2","--div-3","--div-4","--div-5","--div-6"];
+// SWE volume class lower bounds (af); fixed so colours compare across dates
+const VOL = {huc12:[1,100,500,1e3,2.5e3,5e3,1e4], huc8:[1,1e3,5e3,1e4,2.5e4,5e4,1e5], huc6:[1,5e3,2.5e4,5e4,1e5,2.5e5,5e5]};
+// change classes: |change| thresholds b1<b2<b3 (af) -> 7 classes, grey = |change| < b1
+const CHG = {huc12:[100,1e3,5e3], huc8:[1e3,1e4,5e4], huc6:[5e3,5e4,2e5]};
+const PCT = [0,50,70,90,110,130,150];
+const lvlOf = code => (B[code]&&B[code].l) || state.level;
+// date index one week before date index i: exactly 7 days earlier, else the
+// latest date 8-10 days earlier (fills a missed day); null if there is none
+const DAY = 864e5, tOf = iso => Date.parse(iso+"T00:00:00Z");
+function weekI(i){
+  if(i==null || i<0) return null;
+  const t = tOf(M.dates[i]) - 7*DAY;
+  for(let j=i-1; j>=0; j--){ const d=tOf(M.dates[j]);
+    if(d>t) continue;
+    return (t-d) <= 3*DAY ? j : null; }
+  return null;
+}
+function metricValue(code, i){
+  if(!S[code]) return null;
+  if(state.metric==="chg"){
+    const j=weekI(i); if(j==null) return null;
+    const a=ensAt(code,i), b=ensAt(code,j); return (a==null||b==null)? null : a-b;
+  }
+  if(!reportedAt(code,i)) return null;
+  if(state.metric==="vol") return ensAt(code,i);
+  return pctMedian(state.metric.split(":")[1], code, i);
+}
+function classOf(v, code){
+  if(v==null||isNaN(v)) return null;
+  const lv=lvlOf(code);
+  if(state.metric==="vol"){ const e=VOL[lv]; if(v<e[0]) return null; let k=0; e.forEach((x,j)=>{ if(v>=x) k=j; }); return SEQV[k]; }
+  if(state.metric==="chg"){ const [b1,b2,b3]=CHG[lv];
+    const k = v<=-b3?0 : v<=-b2?1 : v<=-b1?2 : v<b1?3 : v<b2?4 : v<b3?5 : 6; return DIVV[k]; }
+  if(v===Infinity) return DIVV[6];
+  let k=0; PCT.forEach((x,j)=>{ if(v>=x) k=j; }); return DIVV[k];
+}
+function colorFor(v, code){ const c=classOf(v,code); return c? css(c) : null; }
+const fmtT = v => v>=1e6? (v/1e6)+"M" : v>=1e3? (v/1e3)+"k" : String(v);
+const sgn = v => (v>0?"+":v<0?"−":"±") + fmtAF(Math.abs(v));
+function metricText(code,i){
+  const v=metricValue(code,i);
+  if(!S[code]) return "No SWEET estimate yet";
+  if(state.metric==="chg"){
+    const j=weekI(i);
+    if(j==null) return "No estimate from a week earlier";
+    return v==null? "—" : `Change since ${fmtDate(M.dates[j],false)}: ${sgn(v)} af`;
+  }
+  if(!reportedAt(code,i)) return "No agreed snow on this date";
+  if(state.metric==="vol") return v==null? "—" : `SWE volume: ${fmtAF(v)} af`;
+  if(v===Infinity) return "Snow where the median is ~0";
+  return v==null? "No historical median" : `${Math.round(v)}% of median`;
+}
+function partialNote(code){
+  const b=B[code]; if(!b||!b.part) return "";
+  return `Partial HUC6: total of the ${b.n8} included HUC8s (${Math.round(100*b.a/b.fa)}% of the HUC6 area)`;
+}
+
+// ---------- map ----------
+// canvas rendering so the map can be exported as PNG
+const map = L.map("map",{zoomSnap:0.25,attributionControl:false,preferCanvas:true});
+// Optional basemap for hosted deployments, e.g. on drought.nm.gov:
+// L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:"© OpenStreetMap"}).addTo(map);
+const nbLayer = L.geoJSON(D.geo.nb,{interactive:false,style:()=>({color:css("--state-line"),weight:1,fillColor:css("--state-fill"),fillOpacity:1})}).addTo(map);
+const layers = {};
+function baseStyle(f){
+  const code=f.properties.huc, c=colorFor(metricValue(code,state.di),code);
+  const sel = code===state.sel;
+  return {color: sel? css("--sel-line") : css("--basin-line"), weight: sel? 3 : 0.8, opacity:1,
+          fillColor: c || css("--nodata"), fillOpacity: 1};
+}
+function tipHtml(code){
+  const b=B[code]||{};
+  const pn=partialNote(code);
+  return `<b>${esc(b.n)}${b.part?" *":""}</b><div class="c">${LVL(b.l)} ${code}</div><div class="v">${esc(metricText(code,state.di))}</div>${pn?`<div class="p">* ${esc(pn)}</div>`:""}`;
+}
+for(const lv of LEVELS){
+  layers[lv] = L.geoJSON(D.geo[lv],{
+    style: baseStyle,
+    onEachFeature:(f,l)=>{
+      l.bindTooltip(()=>tipHtml(f.properties.huc),{sticky:true,className:"btip",direction:"top",offset:[0,-8]});
+      l.on("click",()=>select(f.properties.huc));
+      l.on("mouseover",()=>{ if(f.properties.huc!==state.sel) l.setStyle({weight:2.2,color:css("--sel-line")}); });
+      l.on("mouseout",()=>l.setStyle(baseStyle(f)));
+    }
+  });
+}
+// HUC8 outlines for context under the (few, small) HUC12s
+const ctx12 = L.geoJSON(D.geo.huc8,{interactive:false,style:()=>({color:css("--ink-2"),weight:0.8,opacity:0.7,fill:false})});
+const fullLayer = L.geoJSON(D.geo.huc6full,{interactive:false,style:()=>({color:css("--ink-2"),weight:1.3,dashArray:"5 4",fill:false})});
+const nmLayer = L.geoJSON(D.geo.nm,{interactive:false,style:()=>({color:css("--nm-line"),weight:2,fill:false})}).addTo(map);
+const decor = L.layerGroup().addTo(map);
+function drawDecor(){
+  decor.clearLayers();
+  const st={CO:[37.55,-105.3],AZ:[34.4,-109.55],TX:[32.35,-103.4],OK:[36.75,-102.75],UT:[37.55,-109.5]};
+  for(const [n,ll] of Object.entries(st)) L.marker(ll,{interactive:false,icon:L.divIcon({className:"lbl-state",html:n,iconSize:[30,14]})}).addTo(decor);
+  for(const [name,lat,lon] of M.cities){
+    L.circleMarker([lat,lon],{radius:3,color:css("--map-bg"),weight:1.5,fillColor:css("--ink"),fillOpacity:1,interactive:false}).addTo(decor);
+    L.marker([lat,lon],{interactive:false,icon:L.divIcon({className:"lbl-city",html:esc(name),iconSize:[90,14],iconAnchor:[-6,7]})}).addTo(decor);
+  }
+}
+function showLevel(){
+  for(const lv of LEVELS) map.removeLayer(layers[lv]);
+  map.removeLayer(fullLayer); map.removeLayer(ctx12);
+  if(state.level==="huc12") ctx12.addTo(map);
+  layers[state.level].addTo(map);
+  if(state.level==="huc6") fullLayer.addTo(map);
+  nmLayer.bringToFront(); decor.eachLayer(l=>l.bringToFront&&l.bringToFront());
+  for(const lv of ["huc6","huc8","huc12"]) $("lvl-"+lv).setAttribute("aria-pressed", state.level===lv);
+}
+function restyle(){ for(const lv of LEVELS) layers[lv].setStyle(baseStyle); ctx12.setStyle({color:css("--ink-2")}); nbLayer.setStyle({color:css("--state-line"),fillColor:css("--state-fill")}); nmLayer.setStyle({color:css("--nm-line")}); fullLayer.setStyle({color:css("--ink-2")}); }
+function fit(){ map.fitBounds(nmLayer.getBounds(),{padding:[18,18]}); }
+
+function drawLegend(){
+  const lv=state.level, i=state.di;
+  let title, sub="", vars, ticks;
+  if(state.metric==="vol"){
+    title="SWE volume (af) — SWEET ensemble mean"; vars=SEQV;
+    ticks=VOL[lv].map((x,j)=>fmtT(x)+(j===VOL[lv].length-1?"+":""));
+  } else if(state.metric==="chg"){
+    const [b1,b2,b3]=CHG[lv];
+    const j=weekI(i);
+    title="Change in SWE volume over the previous week (af)"; vars=DIVV;
+    sub = j!=null ? `${fmtDate(M.dates[j],false)} → ${fmtDate(M.dates[i],false)} · grey = within ±${fmtT(b1)}` : "No estimate from a week before this date";
+    ticks=["",`−${fmtT(b3)}`,`−${fmtT(b2)}`,`−${fmtT(b1)}`,`+${fmtT(b1)}`,`+${fmtT(b2)}`,`+${fmtT(b3)}`];
+  } else {
+    title=`% of ${M.climPeriod} median, ${label(state.metric.split(":")[1])}`; vars=DIVV;
+    ticks=["","50","70","90","110","130","150"];
+  }
+  const anyPartial = lv==="huc6" && D.geo.huc6full.features.length;
+  state.leg = {title, sub, vars, ticks, nd: state.metric==="chg"?"No estimate":"No agreed snow or no estimate", partial: !!anyPartial};
+  $("legend").innerHTML = `<div class="lt">${title}</div>${sub?`<div class="ls">${sub}</div>`:""}
+    <div class="sw">${vars.map(v=>`<span style="background:${css(v)}"></span>`).join("")}</div>
+    <div class="ticks">${ticks.map(t=>`<span>${t}</span>`).join("")}</div>
+    <div class="nd"><i></i>${state.metric==="chg"?"No estimate":"No agreed snow or no estimate"}</div>
+    ${anyPartial?`<div class="pl"><i></i>Full extent of a partial HUC6 (*)</div>`:""}`;
+}
+
+// ---------- panel ----------
+function select(code){
+  state.sel = code; restyle(); renderPanel();
+}
+function crumbs(code){
+  const b=B[code]; if(!b) return "";
+  const sep = `<span aria-hidden="true">›</span>`;
+  if(b.l==="huc12"){
+    const h6 = B[b.p6]? `<button type="button" data-huc="${b.p6}">${esc(B[b.p6].n)}</button>${sep}` : "";
+    const h8 = B[b.p]&&!B[b.p].nogeom? `<button type="button" data-huc="${b.p}">${esc(B[b.p].n)}</button>${sep}` : "";
+    return `${h6}${h8}<span>HUC12 ${code}</span>`;
+  }
+  if(b.l==="huc8"&&B[b.p]) return `<button type="button" data-huc="${b.p}">${esc(B[b.p].n)}</button>${sep}<span>HUC8 ${code}</span>`;
+  return `<span>HUC6 ${code}</span>`;
+}
+function kpiHtml(code){
+  const i=state.di, s=S[code];
+  if(!s||!s.ens) return "";
+  const out=[];
+  const mean=s.ens.mean[i], b=B[code]||{};
+  out.push(`<div class="kpi"><span class="k">SWE volume</span><span class="v">${fmtAF(mean)} <small>af</small></span><span class="s">SWEET ensemble mean${b.part?` · ${b.n8} included HUC8s *`:""}</span></div>`);
+  if(i>0){ const pv=s.ens.mean[i-1]; const d=(mean!=null&&pv!=null)? mean-pv : null;
+    out.push(`<div class="kpi"><span class="k">Change since ${fmtDate(M.dates[i-1],false)}</span><span class="v">${d==null?"—":(d>=0?"▲ +":"▼ −")+fmtAF(Math.abs(d))} <small>af</small></span><span class="s">${d==null||!pv?"":((d/pv*100)>=0?"+":"")+(d/pv*100).toFixed(0)+"% in "+Math.round((new Date(M.dates[i])-new Date(M.dates[i-1]))/864e5)+" days"}</span></div>`); }
+  const mn=s.ens.min[i], mx=s.ens.max[i];
+  const src=x=>x? x.split(",").map(t=>label(t.trim())).join(" / ") : "";
+  out.push(`<div class="kpi"><span class="k">Product range</span><span class="v">${fmtK(mn)}–${fmtK(mx)} <small>af</small></span><span class="s">low ${esc(src(s.ens.minsrc[i]))} · high ${esc(src(s.ens.maxsrc[i]))}</span></div>`);
+  const pcts = M.climAvailable.map(p=>[p,pctMedian(p,code,i)]).filter(x=>x[1]!=null&&isFinite(x[1]));
+  if(pcts.length) out.push(`<div class="kpi"><span class="k">% of median</span><span class="v">${pcts.map(x=>Math.round(x[1])+"%").join(" · ")}</span><span class="s">${pcts.map(x=>label(x[0])).join(" · ")} vs own ${M.climPeriod}</span></div>`);
+  else if(s.ens.agree && s.ens.agree[i]!=null) out.push(`<div class="kpi"><span class="k">Agreed snow area</span><span class="v">${fmtAF(s.ens.agree[i])} <small>km²</small></span><span class="s">≥${M.minAgree} products ≥ ${M.threshold} in</span></div>`);
+  return out.join("");
+}
+function subsHtml(code){
+  const b=B[code]; if(!b||b.l!=="huc6") return "";
+  const kids = Object.entries(B).filter(([c,x])=>x.l==="huc8"&&x.p===code).map(([c])=>c).sort();
+  if(!kids.length) return "";
+  const i=state.di, tot=ensAt(code,i);
+  const rows=kids.map(c=>{const v=ensAt(c,i); const w=(v!=null&&tot)? Math.max(0,Math.min(100,100*v/tot)) : 0;
+    return `<tr class="row" data-huc="${c}" tabindex="0"><td>${esc(B[c].n)}${B[c].nogeom?' <span class="chip">not mapped</span>':""}</td><td>${c}</td><td class="n">${fmtAF(v)}</td><td style="width:26%"><div class="bar" style="width:${w}%"></div></td></tr>`;}).join("");
+  let ex="";
+  if(b.part){
+    const names = b.ex && b.ex.length ? b.ex.map(e=>`${esc(e[1])} (${e[0]})`).join(", ") + (b.exAll?"":", and others") : "HUC8s outside the SWEET domain";
+    ex = `<tr class="excl"><td colspan="2">Not included: ${names}</td><td class="n">—</td><td>${Math.round(b.fa-b.a).toLocaleString("en-US")} km²</td></tr>`;
+  }
+  const cap = b.part ? `<p class="cnote" style="margin:6px 0 0">* HUC6 total is the sum of the included HUC8s only, not the full ${Math.round(b.fa).toLocaleString("en-US")} km² HUC6 basin.</p>` : "";
+  return `<h3>HUC8 subbasins · SWE volume on ${fmtDate(M.dates[i],false)}</h3><div class="tblwrap"><table><thead><tr><th>Subbasin</th><th>HUC8</th><th class="n">SWE volume (af)</th><th>Share of HUC6</th></tr></thead><tbody>${rows}${ex}</tbody></table></div>${cap}`;
+}
+function renderPanel(){
+  const code=state.sel, b=B[code];
+  $("crumbs").innerHTML = crumbs(code);
+  $("bname").textContent = b? b.n + (b.part?" *":"") : "Select a basin";
+  const chips=[];
+  if(b){ chips.push(`<span class="chip">${LVL(b.l)} ${code}</span>`);
+    if(b.part) chips.push(`<span class="chip part" title="${esc(partialNote(code))}">* Partial HUC6 · ${b.n8} included HUC8s</span>`);
+    if(b.a) chips.push(`<span class="chip">${Math.round(b.a).toLocaleString("en-US")}${b.part?` of ${Math.round(b.fa).toLocaleString("en-US")}`:""} km²</span>`);
+    if(b.s) chips.push(`<span class="chip">${esc(b.s.replace(/,/g,", "))}</span>`);
+    if(b.o) chips.push(`<span class="chip ose">OSE: ${esc(b.o)}</span>`); }
+  $("bchips").innerHTML=chips.join("");
+  $("kpis").innerHTML = kpiHtml(code); $("kpis").hidden = !S[code];
+  $("subs").innerHTML = subsHtml(code);
+  renderChart(); renderElev();
+}
+
+// ---------- chart ----------
+const WYR = () => [`${M.wy-1}-10-01`, `${M.wy}-09-30`];      // water-year axis, Oct 1 - Sep 30
+const alpha=(hex,a)=>{const h=hex.replace("#","");const n=parseInt(h.length===3?h.split("").map(c=>c+c).join(""):h,16);return `rgba(${n>>16&255},${n>>8&255},${n&255},${a})`;};
+const histProducts = () => M.climProducts.filter(p=>CL[p]||H[p]);
+function allYears(){ const y=new Set(); Object.values(H).forEach(h=>h.y.forEach(v=>y.add(v))); return [...y].sort((a,b)=>a-b); }
+function yearSeries(p, code, wy){ const h=H[p]; if(!h||!h.b[code]) return null; const k=h.y.indexOf(wy); return k<0? null : h.b[code][k]; }
+function peakYears(code){
+  const p=histProducts().find(q=>H[q]&&H[q].b[code]); if(!p) return null;
+  const pk=H[p].y.map((wy,k)=>[wy, Math.max(...H[p].b[code][k].map(v=>v??-1))]).filter(x=>x[1]>=0);
+  if(!pk.length) return null; pk.sort((a,b)=>a[1]-b[1]); return {low:pk[0][0], high:pk[pk.length-1][0], p};
+}
+function renderYearPick(){
+  const el=$("yearpick"), key=$("histkey"), ys=allYears(), code=state.sel;
+  const on = state.tab==="hist";
+  key.hidden = !on; el.hidden = !on || !ys.length;
+  if(!on) return;
+  const ln=(c,w,dash)=>`<svg width="22" height="10" aria-hidden="true"><line x1="1" y1="5" x2="21" y2="5" stroke="${c}" stroke-width="${w}" ${dash?'stroke-dasharray="4 3"':""}/></svg>`;
+  const ink2=css("--ink-2");
+  key.innerHTML = `<span class="k">${ln(ink2,3)}WY${M.wy} (current)</span><span class="k">${ln(ink2,2,true)}Median ${esc(M.climPeriod)}</span>`+
+    `<span class="k"><svg width="22" height="10" aria-hidden="true"><rect x="1" y="1" width="20" height="8" fill="${alpha(ink2,0.22)}"/></svg>Interquartile range (25th–75th percentile)</span>`+
+    `<span class="k">Panel colour = product</span>`;
+  if(!ys.length) return;
+  const full = state.years.length>=YCOL.length;
+  const chips = ys.map(y=>{ const k=state.years.indexOf(y), sel=k>=0;
+    return `<button type="button" class="yr" data-wy="${y}" aria-pressed="${sel}" ${!sel&&full?"disabled":""}><i style="background:${sel?css(YCOL[k]):"transparent"}"></i>WY${y}</button>`; }).join("");
+  const pk = code && peakYears(code);
+  el.innerHTML = `<div class="yl"><span><b>Compare water years</b> · up to ${YCOL.length}, drawn in every panel</span>
+     <span class="chips">${pk?`<button type="button" class="yr act" data-preset="high" title="Year with the highest ${esc(label(pk.p))} peak for this basin">Highest peak (WY${pk.high})</button><button type="button" class="yr act" data-preset="low" title="Year with the lowest ${esc(label(pk.p))} peak for this basin">Lowest peak (WY${pk.low})</button>`:""}${state.years.length?`<button type="button" class="yr act" data-preset="clear">Clear</button>`:""}</span></div>
+     <div class="chips" role="group" aria-label="Historical water years">${chips}</div>`;
+}
+function toggleYear(wy){
+  const k=state.years.indexOf(wy);
+  if(k>=0) state.years.splice(k,1); else if(state.years.length<YCOL.length) state.years.push(wy);
+  renderChart();
+}
+function renderChart(){
+  const code=state.sel, s=S[code], el=$("chart");
+  $("tab-ens").setAttribute("aria-pressed", state.tab==="ens");
+  $("tab-hist").setAttribute("aria-pressed", state.tab==="hist");
+  { const c=document.querySelector('#swetools .vt[data-a="csv"]'); if(c) c.hidden = state.tab!=="ens"; }
+  renderYearPick();
+  const curHas = M.climProducts.some(p=>CUR[p]&&CUR[p].b[code]) || M.climProducts.some(p=>CL[p]&&CL[p].b[code]);
+  if(!s && !(state.tab==="hist" && curHas)){
+    Plotly.purge(el);
+    el.innerHTML = `<div class="empty"><b>No ${M.wy} SWEET estimates for this basin yet.</b><br>This prototype carries the Rio Grande basins from the WY${M.wy} weekly reports. Every basin in the map fills in once the statewide daily run starts.</div>`;
+    el.style.height="auto"; $("cnote").textContent=""; return;
+  }
+  if(el.querySelector(".empty")){ el.innerHTML=""; }
+  const ink=css("--ink"), ink2=css("--ink-2"), line=css("--line"), surf=css("--surface"), muted=css("--muted");
+  const x=M.dates, traces=[], anns=[], shapes=[];
+  const xaxis={type:"date",range:WYR(),gridcolor:"rgba(0,0,0,0)",linecolor:line,tickcolor:line,dtick:"M1",tickformat:"%b",hoverformat:"%b %-d, %Y",ticklabelmode:"period"};
+  const ytmpl={gridcolor:line,zeroline:false,rangemode:"tozero",tickformat:",.3~s",linecolor:line};
+  const layout={margin:{l:58,r:12,t:8,b:36}, paper_bgcolor:"rgba(0,0,0,0)", plot_bgcolor:"rgba(0,0,0,0)",
+    font:{family:css("--font")||"sans-serif",size:12,color:ink2}, xaxis,
+    legend:{orientation:"h",y:-0.12,x:0,font:{size:11.5,color:ink2}},
+    hovermode:"x unified", hoverlabel:{bgcolor:surf,bordercolor:line,font:{color:ink,family:css("--font")}}};
+  let note="";
+  if(state.tab==="ens"){
+    traces.push({x,y:s.ens.min,mode:"lines",line:{width:0},hoverinfo:"skip",showlegend:false});
+    traces.push({x,y:s.ens.max,mode:"lines",line:{width:0},fill:"tonexty",fillcolor:alpha(ink,0.09),name:"Product range",hoverinfo:"skip"});
+    const pv = s.pm || s.p || {};
+    for(const p of M.products){ if(!pv[p]) continue;
+      traces.push({x,y:pv[p],name:label(p),mode:"lines",line:{color:css(PKEY[p]),width:1.6},
+        hovertemplate:"%{y:,.0f} af<extra>"+label(p)+"</extra>"}); }
+    traces.push({x,y:s.ens.mean,name:"SWEET ensemble mean",mode:"lines",line:{color:ink,width:3},
+      hovertemplate:"<b>%{y:,.0f} af</b><extra>Ensemble mean</extra>"});
+    layout.yaxis={...ytmpl,title:{text:"SWE volume (acre-feet)",font:{size:11.5,color:muted}}};
+    shapes.push({type:"line",xref:"x",yref:"paper",x0:M.dates[state.di],x1:M.dates[state.di],y0:0,y1:1,line:{color:muted,width:1,dash:"dot"}});
+    layout.height=340;
+    // SWEET ensemble: x-axis follows the reporting period of the water year
+    const t0=+new Date(x[0]), t1=+new Date(x[x.length-1]), pad=Math.max(7*864e5,(t1-t0)*0.04);
+    Object.assign(xaxis,{range:[new Date(t0-pad).toISOString().slice(0,10), new Date(t1+pad).toISOString().slice(0,10)],
+      dtick:undefined, tickformat:"%b %-d", ticklabelmode:"instant"});
+    note = `Product lines are each product's volume inside the agreement mask (pixels where ≥${M.minAgree} products show ≥${M.threshold} in SWE); the ensemble is their mean, the band their min–max.`;
+    const two = (M.dateProducts||[]).filter(p=>p.length && p.length<M.products.length).length;
+    if(two) note += ` On ${two} date${two>1?"s":""} marked “2 products” in the Date list, CU SWE was not available and the ensemble uses SNODAS and SWANN only.`;
+  } else {
+    // one panel per product with a history: median + IQR, current WY, selected past WYs
+    const P = histProducts().length ? histProducts() : M.climProducts;
+    const n=P.length, gap=0.1, hgt=(1-gap*(n-1))/n;
+    layout.height = n*215 + 70;
+    layout.margin.t=22; layout.margin.b=40; layout.legend.y = -0.3/n;
+    xaxis.anchor = n>1 ? "y"+n : "y";
+    P.forEach((p,i)=>{
+      const ax = i===0? "y" : "y"+(i+1), key = i===0? "yaxis" : "yaxis"+(i+1);
+      const top=1-i*(hgt+gap), dom=[Math.max(0,top-hgt), top];
+      layout[key]={...ytmpl,domain:dom,title:{text:"af",font:{size:11,color:muted},standoff:4}};
+      const col=css(PKEY[p]), c=CL[p]&&CL[p].b[code];
+      anns.push({xref:"paper",yref:"paper",x:0,y:dom[1],xanchor:"left",yanchor:"bottom",showarrow:false,
+        text:`<b>${esc(label(p))}</b>`,font:{size:12,color:ink}});
+      if(c){
+        const hx=CL[p].d.map(wyDate);
+        traces.push({x:hx,y:c.q1,yaxis:ax,mode:"lines",line:{width:0},hoverinfo:"skip",showlegend:false});
+        traces.push({x:hx,y:c.q3,yaxis:ax,mode:"lines",line:{width:0},fill:"tonexty",fillcolor:alpha(col,0.22),showlegend:false,
+          customdata:c.q1,hovertemplate:"IQR %{customdata:,.0f}–%{y:,.0f} af<extra></extra>"});
+        traces.push({x:hx,y:c.m,yaxis:ax,mode:"lines",line:{color:col,width:2,dash:"dash"},showlegend:false,hovertemplate:"Median %{y:,.0f} af<extra></extra>"});
+      } else {
+        anns.push({xref:"paper",yref:"paper",x:0.99,y:dom[1]-0.02,xanchor:"right",yanchor:"top",showarrow:false,
+          text:`Median and IQR (${esc(M.climPeriod)}) appear after the historical backfill`,font:{size:11,color:muted}});
+      }
+      state.years.forEach((wy,k)=>{ const ys=yearSeries(p,code,wy); if(!ys) return;
+        traces.push({x:H[p].d.map(wyDate),y:ys,yaxis:ax,mode:"lines",name:`WY${wy}`,legendgroup:`wy${wy}`,showlegend:i===0,
+          line:{color:css(YCOL[k]),width:1.6},hovertemplate:`WY${wy}: %{y:,.0f} af<extra></extra>`}); });
+      // current WY: whole season from the daily run / backfill; report dates only as a fallback
+      const cy=CUR[p]&&CUR[p].b[code], pv = cy || (s&&s.p||{})[p], px = cy ? CUR[p].t : x;
+      if(pv) traces.push({x:px,y:pv,yaxis:ax,mode:"lines",showlegend:false,line:{color:col,width:3},hovertemplate:`<b>WY${M.wy}: %{y:,.0f} af</b><extra></extra>`});
+      shapes.push({type:"line",xref:"x",yref:ax==="y"?"y domain":ax+" domain",x0:M.dates[state.di],x1:M.dates[state.di],y0:0,y1:1,line:{color:muted,width:1,dash:"dot"}});
+    });
+    layout.showlegend = state.years.length>0;
+    note = histProducts().length
+      ? `Each product for WY${M.wy} against its own ${M.climPeriod} record (${M.histEvery>1?`every ${M.histEvery}${({2:"nd",3:"rd"})[M.histEvery]||"th"} day`:"daily"}; no agreement mask, so each product is compared only with itself). Past years are placed on the current water-year calendar.`
+      : `The ${M.climProducts.map(label).join(" and ")} medians and interquartile ranges for ${M.climPeriod} appear here once the historical backfill has run.`;
+  }
+  layout.shapes=shapes; layout.annotations=anns;
+  if(isFs($("swebox"))) layout.height = availH($("swebox"), el, state.tab==="ens"? 340 : 480);
+  el.style.height = layout.height+"px";
+  Plotly.react(el,traces,layout,{displayModeBar:false,responsive:true});
+  $("cnote").textContent=note;
+}
+
+// ---------- elevation bands ----------
+const niceNum = v => { if(v<=0) return 0; const e=Math.pow(10,Math.floor(Math.log10(v))); const f=v/e; return (f<1.5?1:f<3.5?2:f<7.5?5:10)*e; };
+function renderElev(){
+  const code=state.sel, E=D.elev&&D.elev[code], el=$("elevchart"), i=state.di, bw=M.bandFt;
+  const b=B[code]||{};
+  $("elevtitle").textContent = `SWE volume by elevation band · ${fmtDate(M.dates[i],false)}`;
+  if(!E || !E.m[i] || E.m[i].every(v=>v==null)){
+    Plotly.purge(el); el.style.height="auto";
+    el.innerHTML = `<div class="empty">${S[code]
+      ? `<b>No elevation-band values for this ${LVL(b.l)} on this date yet.</b><br>They come from the statewide daily run (or, for WY${M.wy}, the weekly reports' Table 3 CSVs).`
+      : `<b>No ${M.wy} SWEET estimates for this basin yet.</b>`}</div>`;
+    $("elevsub").textContent=""; $("elevleg").innerHTML=""; return;
+  }
+  if(el.querySelector(".empty")){ el.innerHTML=""; }
+  const ink=css("--ink"), ink2=css("--ink-2"), line=css("--line"), surf=css("--surface"), muted=css("--muted");
+  const nb=E.b.length, labs=E.b.map(lo=>`${lo.toLocaleString("en-US")}–${(lo+bw).toLocaleString("en-US")} ft`);
+  const m=E.m[i].map(v=>v??0), j=i>0? i-1 : null;
+  const chg = j==null || !E.m[j] ? null : E.m[i].map((v,k)=> (v==null||E.m[j][k]==null)? null : v-E.m[j][k]);
+  // colour: change since previous report, 7 classes scaled to this profile
+  let th=null, colors;
+  if(chg && chg.some(v=>v)){
+    const mx=Math.max(...chg.map(v=>Math.abs(v||0)));
+    th=[niceNum(mx*0.05), niceNum(mx*0.25), niceNum(mx*0.6)];
+    const [b1,b2,b3]=th;
+    colors=chg.map(v=> v==null? css("--nodata") : css(DIVV[v<=-b3?0: v<=-b2?1: v<=-b1?2: v<b1?3: v<b2?4: v<b3?5:6]));
+  } else colors=m.map(()=>css("--seq-3"));
+  const hasR = E.lo[i] && E.lo[i].some(v=>v!=null);
+  const src=x=>x? x.split(",").map(t=>label(t.trim())).join(" / ") : "";
+  const cd = m.map((v,k)=>[
+    hasR&&E.lo[i][k]!=null ? `${fmtAF(E.lo[i][k])}–${fmtAF(E.hi[i][k])} af (low ${src(E.ls[i][k])}, high ${src(E.hs[i][k])})` : "n/a",
+    chg&&chg[k]!=null ? `${sgn(chg[k])} af since ${fmtDate(M.dates[j],false)}` : "no previous report"]);
+  const tr={type:"bar",orientation:"h",y:labs,x:m,marker:{color:colors,line:{color:surf,width:1}},customdata:cd,
+    hovertemplate:"<b>%{y}</b><br>Ensemble mean: %{x:,.0f} af<br>Product range: %{customdata[0]}<br>Change: %{customdata[1]}<extra></extra>",
+    name:"Ensemble mean"};
+  if(hasR) tr.error_x={type:"data",symmetric:false,array:m.map((v,k)=>E.hi[i][k]==null?0:E.hi[i][k]-v),
+    arrayminus:m.map((v,k)=>E.lo[i][k]==null?0:v-E.lo[i][k]),color:ink2,thickness:1.2,width:4};
+  const eh = isFs($("elevbox")) ? availH($("elevbox"), el, 300) : Math.max(180, nb*30+70);
+  el.style.height = eh+"px";
+  Plotly.react(el,[tr],{ height:eh,
+    margin:{l:8,r:16,t:4,b:40}, paper_bgcolor:"rgba(0,0,0,0)", plot_bgcolor:"rgba(0,0,0,0)",
+    font:{family:css("--font")||"sans-serif",size:12,color:ink2}, bargap:0.18, showlegend:false,
+    xaxis:{title:{text:"Ensemble SWE volume (af)",font:{size:11.5,color:muted}},gridcolor:line,zeroline:true,zerolinecolor:line,rangemode:"tozero",tickformat:",.3~s"},
+    yaxis:{type:"category",categoryorder:"array",categoryarray:labs,title:{text:"Elevation band (ft)",font:{size:11.5,color:muted},standoff:14},ticks:"",ticklabelstandoff:6,automargin:true},
+    hoverlabel:{bgcolor:surf,bordercolor:line,font:{color:ink,family:css("--font")}}
+  },{displayModeBar:false,responsive:true});
+  const tot=m.reduce((a,v)=>a+v,0);
+  $("elevsub").textContent = `${fmtAF(tot)} af total${b.part?" · included HUC8s only *":""}`;
+  $("elevleg").innerHTML = th
+    ? `<span>Change since ${fmtDate(M.dates[j],false)} (af):</span><span><span class="sw">${DIVV.map(v=>`<span style="background:${css(v)}"></span>`).join("")}</span><span class="ticks">${["",`−${fmtT(th[2])}`,`−${fmtT(th[1])}`,`−${fmtT(th[0])}`,`+${fmtT(th[0])}`,`+${fmtT(th[1])}`,`+${fmtT(th[2])}`].map(t=>`<span>${t}</span>`).join("")}</span></span>${hasR?"<span>Whiskers: product min–max</span>":""}`
+    : `<span>Bars: SWEET ensemble mean${j==null?" · first report of the season, no change shown":""}</span>${hasR?"<span>Whiskers: product min–max</span>":""}`;
+}
+
+// ---------- full screen, PNG and CSV tools ----------
+const ICON = {
+  fs:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4"/></svg>',
+  unfs:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2v4H2M14 6h-4V2M10 14v-4h4M2 10h4v4"/></svg>',
+  png:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="1.8" y="2.8" width="12.4" height="10.4" rx="1.6"/><circle cx="5.6" cy="6.4" r="1.2"/><path d="M2.4 11.6l3.8-3.4 2.6 2.2 2.2-1.8 2.8 2.6"/></svg>',
+  csv:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1.8" y="1.8" width="12.4" height="12.4" rx="1.6"/><path d="M1.8 6h12.4M1.8 10h12.4M6.2 1.8v12.4"/></svg>'
+};
+function makeTools(host, box, png, csv){
+  host.innerHTML = `<button type="button" class="vt" data-a="fs" title="Full screen" aria-label="Full screen">${ICON.fs}</button>`+
+    `<button type="button" class="vt" data-a="png" title="Download PNG" aria-label="Download PNG">${ICON.png}</button>`+
+    `<button type="button" class="vt" data-a="csv" title="Download CSV" aria-label="Download CSV">${ICON.csv}</button>`;
+  host.addEventListener("click",e=>{ const b=e.target.closest("button"); if(!b) return;
+    if(b.dataset.a==="fs") toggleFs(box); else if(b.dataset.a==="png") png(); else csv(); });
+}
+const isFs = box => document.fullscreenElement===box || box.classList.contains("fs");
+async function toggleFs(box){
+  if(isFs(box)){
+    if(document.fullscreenElement===box){ try{ await document.exitFullscreen(); }catch(e){} }
+    box.classList.remove("fs"); afterFs(); return;
+  }
+  try{ if(!box.requestFullscreen) throw new Error("no fullscreen"); await box.requestFullscreen(); }
+  catch(e){ box.classList.add("fs"); afterFs(); }            // fallback: fill the window
+}
+function afterFs(){
+  document.querySelectorAll(".fsbox").forEach(b=>{ const t=b.querySelector('.vt[data-a="fs"]'); if(!t) return;
+    const on=isFs(b); t.innerHTML = on? ICON.unfs : ICON.fs; t.title = on? "Exit full screen" : "Full screen"; t.setAttribute("aria-label", t.title); });
+  setTimeout(()=>{ map.invalidateSize(); renderChart(); renderElev();
+    ["chart","elevchart"].forEach(id=>{ const el=$(id); if(el && el.layout) Plotly.Plots.resize(el); }); }, 80);
+}
+document.addEventListener("fullscreenchange", afterFs);
+document.addEventListener("keydown", e=>{ if(e.key==="Escape" && document.querySelector(".fsbox.fs")){
+  document.querySelectorAll(".fsbox.fs").forEach(b=>b.classList.remove("fs")); afterFs(); } });
+function availH(box, el, min){        // plot height that fills a full-screen box
+  const cs=getComputedStyle(box); let other=0, n=0;
+  for(const c of box.children){ if(c===el || c.hidden || c.offsetParent===null) continue; other+=c.offsetHeight; n++; }
+  const gap=parseFloat(cs.rowGap)||parseFloat(cs.gap)||0;
+  return Math.max(min, Math.floor(box.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom) - other - gap*n - 4));
+}
+function saveBlob(blob, name){
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=name;
+  document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+}
+const slug = t => String(t||"").replace(/[^A-Za-z0-9]+/g,"_").replace(/^_|_$/g,"");
+const baseName = code => `SWEET_WY${M.wy}_${code}_${slug(B[code]&&B[code].n)}`;
+function toCsv(header, rows){
+  const q=v=> v==null||v===""? "" : (typeof v==="number"? String(Math.round(v*100)/100) : (/[",\n]/.test(v)? '"'+String(v).replace(/"/g,'""')+'"' : v));
+  return "\ufeff"+[header.join(","), ...rows.map(r=>r.map(q).join(","))].join("\r\n");
+}
+const saveCsv = (name, header, rows) => saveBlob(new Blob([toCsv(header, rows)],{type:"text/csv;charset=utf-8"}), name+".csv");
+async function plotPng(el, title, sub, name){
+  if(!el || !el.layout) return;
+  const L0=el.layout, bg=css("--surface"), add = sub? 58 : 40;
+  const old={paper_bgcolor:L0.paper_bgcolor, plot_bgcolor:L0.plot_bgcolor, "title.text":"", "margin.t":L0.margin.t};
+  await Plotly.relayout(el,{paper_bgcolor:bg, plot_bgcolor:bg, "margin.t":(L0.margin.t||8)+add,
+    "title.text":`<b>${title}</b>`+(sub?`<br><span style="font-size:11.5px">${sub}</span>`:""), "title.x":0.01, "title.xanchor":"left",
+    "title.yref":"container", "title.y":1, "title.yanchor":"top", "title.pad.t":18, "title.font.size":14, "title.font.color":css("--ink")});
+  try{ await Plotly.downloadImage(el,{format:"png", filename:name, width:el.clientWidth, height:(L0.height||el.clientHeight)+add, scale:2}); }
+  finally{ await Plotly.relayout(el,{...old, "title.text":""}); }
+}
+function basinTitle(code){ const b=B[code]||{}; return `${b.n||code}${b.part?" *":""} (${LVL(b.l)} ${code})`; }
+
+// SWE chart
+function sweCsv(){                     // ensemble tab only (no CSV on the history tab)
+  const code=state.sel, s=S[code]; if(!s || state.tab!=="ens") return;
+  const pm=s.pm||s.p||{}, pu=s.p||{}, P=M.products.filter(p=>pm[p]||pu[p]);
+  const header=["date","products_available","ens_mean_af","ens_median_af","ens_min_af","ens_max_af","min_source","max_source",
+    ...P.map(p=>`${p}_af_in_agreement_mask`), ...P.map(p=>`${p}_af_unmasked`)];
+  const rows=M.dates.map((d,i)=>[d,(M.dateProducts&&M.dateProducts[i]||[]).join(" "),s.ens.mean[i],s.ens.median[i],s.ens.min[i],s.ens.max[i],
+    s.ens.minsrc[i],s.ens.maxsrc[i], ...P.map(p=>pm[p]?pm[p][i]:null), ...P.map(p=>pu[p]?pu[p][i]:null)]);
+  saveCsv(baseName(code)+"_ensemble", header, rows);
+}
+function swePng(){
+  const code=state.sel; if(!S[code]) return;
+  const sub = state.tab==="ens" ? `SWEET ensemble and products, WY${M.wy} · agreement mask ≥${M.minAgree} products ≥ ${M.threshold} in`
+    : `Solid: WY${M.wy} · dashed: median ${M.climPeriod} · band: interquartile range${state.years.length?` · years: ${state.years.map(y=>"WY"+y).join(", ")}`:""}`;
+  plotPng($("chart"), `SWE volume (af) · ${basinTitle(code)}`, sub, baseName(code)+(state.tab==="ens"?"_ensemble":"_history"));
+}
+// elevation chart
+function elevCsv(){
+  const code=state.sel, E=D.elev&&D.elev[code]; if(!E) return; const bw=M.bandFt, rows=[];
+  M.dates.forEach((d,i)=>{ if(!E.m[i]) return; E.b.forEach((lo,k)=>{
+    const v=E.m[i][k], pv=i>0&&E.m[i-1]? E.m[i-1][k] : null;
+    rows.push([d,lo,lo+bw,v,E.lo[i]?E.lo[i][k]:null,E.hi[i]?E.hi[i][k]:null,E.ls[i]?E.ls[i][k]:null,E.hs[i]?E.hs[i][k]:null,(v!=null&&pv!=null)?v-pv:null]); }); });
+  saveCsv(baseName(code)+"_elevation_bands", ["date","band_low_ft","band_high_ft","ens_mean_af","ens_min_af","ens_max_af","min_source","max_source","change_since_previous_af"], rows);
+}
+function elevPng(){
+  const code=state.sel; if(!(D.elev&&D.elev[code])) return;
+  plotPng($("elevchart"), `SWE volume by elevation band · ${basinTitle(code)}`, `${fmtDate(M.dates[state.di])} · bars: ensemble mean · whiskers: product min–max · colour: change since previous report`,
+    baseName(code)+"_elevation_"+M.dates[state.di]);
+}
+// map
+function mapCsv(){
+  const i=state.di, lv=state.level, j=weekI(i), mlab=(METRICS.find(m=>m.id===state.metric)||{}).label||state.metric;
+  const codes=D.geo[lv].features.map(f=>f.properties.huc);
+  const header=["huc","name","level","parent_huc6","parent_huc8","area_km2","partial_huc6","date","map_shows","map_value","ens_mean_af","ens_median_af","ens_min_af","ens_max_af",
+    "change_since_previous_week_af","previous_week_date", ...M.products.map(p=>`${p}_af`), ...M.climAvailable.map(p=>`pct_of_median_${p}`)];
+  const rows=codes.map(c=>{ const b=B[c]||{}, s=S[c], e=s&&s.ens, pm=s&&(s.pm||s.p)||{};
+    const v=metricValue(c,i), ch=(e&&j!=null&&e.mean[i]!=null&&e.mean[j]!=null)? e.mean[i]-e.mean[j] : null;
+    return [c,b.n,LVL(lv),b.l==="huc12"?b.p6:(b.l==="huc8"?b.p:""),b.l==="huc12"?b.p:"",b.a,b.part?"yes":"",M.dates[i],mlab,(v===Infinity?null:v),
+      e?e.mean[i]:null,e?e.median[i]:null,e?e.min[i]:null,e?e.max[i]:null,ch,j!=null?M.dates[j]:"", ...M.products.map(p=>pm[p]?pm[p][i]:null),
+      ...M.climAvailable.map(p=>{ const x=pctMedian(p,c,i); return (x==null||!isFinite(x))? null : x; })]; });
+  saveCsv(`SWEET_WY${M.wy}_map_${lv.toUpperCase()}_${M.dates[i]}_${slug(state.metric)}`, header, rows);
+}
+function mapPng(){
+  const mEl=$("map"), mr=mEl.getBoundingClientRect(), W=Math.round(mr.width), Hm=Math.round(mr.height), top=46, s=2;
+  const font=css("--font")||"sans-serif", ink=css("--ink"), ink2=css("--ink-2"), line=css("--line");
+  const cv=document.createElement("canvas"); cv.width=W*s; cv.height=(Hm+top)*s;
+  const g=cv.getContext("2d"); g.scale(s,s);
+  g.fillStyle=css("--surface"); g.fillRect(0,0,W,Hm+top);
+  g.save(); g.beginPath(); g.rect(0,top,W,Hm); g.clip();
+  g.fillStyle=css("--map-bg"); g.fillRect(0,top,W,Hm);
+  mEl.querySelectorAll("canvas").forEach(c=>{ const r=c.getBoundingClientRect(); g.drawImage(c, r.left-mr.left, r.top-mr.top+top, r.width, r.height); });
+  // labels (HTML markers on the page, drawn here)
+  const pt = ll => { const p=map.latLngToContainerPoint(ll); return [p.x, p.y+top]; };
+  g.textBaseline="middle";
+  g.fillStyle=css("--muted"); g.font=`700 11px ${font}`;
+  [["CO",[37.55,-105.3]],["AZ",[34.4,-109.55]],["TX",[32.35,-103.4]],["OK",[36.75,-102.75]],["UT",[37.55,-109.5]]].forEach(([n,ll])=>{ const [x,y]=pt(ll); g.fillText(n,x-8,y); });
+  g.font=`10.5px ${font}`;
+  M.cities.forEach(([n,lat,lon])=>{ const [x,y]=pt([lat,lon]); g.lineWidth=3; g.strokeStyle=css("--map-bg"); g.strokeText(n,x+6,y); g.fillStyle=ink2; g.fillText(n,x+6,y); });
+  // legend
+  const L=state.leg||{}; const lx=10, lw=Math.max(260, 36*L.vars.length+20), lh=L.sub? 92 : 78, ly=top+Hm-lh-10+(L.partial?0:0);
+  g.fillStyle=css("--surface"); g.strokeStyle=line; g.lineWidth=1; g.fillRect(lx,ly-(L.partial?16:0),lw,lh+(L.partial?16:0)); g.strokeRect(lx+.5,ly-(L.partial?16:0)+.5,lw-1,lh+(L.partial?16:0)-1);
+  let y=ly-(L.partial?16:0)+14; g.fillStyle=ink; g.font=`600 11.5px ${font}`; g.fillText(L.title||"",lx+10,y);
+  if(L.sub){ y+=15; g.fillStyle=ink2; g.font=`11px ${font}`; g.fillText(L.sub,lx+10,y); }
+  y+=13; (L.vars||[]).forEach((v,k)=>{ g.fillStyle=css(v); g.fillRect(lx+10+k*36, y, 36, 10); });
+  y+=20; g.fillStyle=ink2; g.font=`10.5px ${font}`; (L.ticks||[]).forEach((t,k)=>g.fillText(t, lx+10+k*36-4, y));
+  y+=17; g.fillStyle=css("--nodata"); g.fillRect(lx+10,y-5,14,10); g.fillStyle=ink2; g.fillText(L.nd||"",lx+30,y);
+  if(L.partial){ y+=16; g.strokeStyle=ink2; g.setLineDash([4,3]); g.beginPath(); g.moveTo(lx+10,y); g.lineTo(lx+24,y); g.stroke(); g.setLineDash([]); g.fillText("Full extent of a partial HUC6 (*)",lx+30,y); }
+  g.restore();
+  // title
+  const mlab=(METRICS.find(m=>m.id===state.metric)||{}).label||"";
+  g.fillStyle=ink; g.font=`600 14px ${font}`; g.textBaseline="alphabetic"; g.fillText(`SWEET Basin Explorer · ${state.level.toUpperCase()} · ${fmtDate(M.dates[state.di])}`,10,19);
+  g.fillStyle=ink2; g.font=`12px ${font}`; g.fillText(mlab,10,37);
+  cv.toBlob(b=>b&&saveBlob(b, `SWEET_WY${M.wy}_map_${state.level.toUpperCase()}_${M.dates[state.di]}.png`), "image/png");
+}
+function initTools(){
+  makeTools($("maptools"), $("mapbox"), mapPng, mapCsv);
+  makeTools($("swetools"), $("swebox"), swePng, sweCsv);
+  makeTools($("elevtools"), $("elevbox"), elevPng, elevCsv);
+}
+
+// ---------- controls ----------
+function initControls(){
+  const mSel=$("metric");
+  mSel.innerHTML = METRICS.map(m=>`<option value="${m.id}" ${m.disabled?"disabled":""}>${esc(m.label)}${m.disabled?` (${m.why})`:""}</option>`).join("");
+  mSel.value=state.metric;
+  mSel.onchange=()=>{state.metric=mSel.value; restyle(); drawLegend();};
+  const dSel=$("date");
+  const np_ = i => (M.dateProducts&&M.dateProducts[i]||[]).length;
+  dSel.innerHTML = M.dates.map((d,i)=>`<option value="${i}">${fmtDate(d)}${np_(i) && np_(i)<M.products.length?` · ${np_(i)} products`:""}</option>`).join("");
+  dSel.value=state.di;
+  dSel.onchange=()=>{state.di=+dSel.value; restyle(); drawLegend(); renderPanel();};
+  $("yearpick").addEventListener("click",e=>{
+    const b=e.target.closest("button"); if(!b||b.disabled) return;
+    if(b.dataset.wy) return toggleYear(+b.dataset.wy);
+    const pk=peakYears(state.sel);
+    if(b.dataset.preset==="clear") state.years=[];
+    else if(pk){ const wy=b.dataset.preset==="high"? pk.high : pk.low;
+      if(!state.years.includes(wy) && state.years.length<YCOL.length) state.years.push(wy); }
+    renderChart();
+  });
+
+  const setLevel = lv => {
+    const was=state.level, b=B[state.sel];
+    state.level=lv;
+    // keep the selection meaningful: move up to the parent at coarser levels
+    if(b && b.l==="huc12" && lv!=="huc12") state.sel = lv==="huc6"? b.p6 : (B[b.p]? b.p : b.p6);
+    else if(b && b.l==="huc8" && lv==="huc6") state.sel = b.p;
+    showLevel(); restyle(); drawLegend(); renderPanel();
+    if(lv==="huc12") map.fitBounds(layers.huc12.getBounds(),{padding:[40,40],maxZoom:10});
+    else if(was==="huc12") fit();
+  };
+  $("lvl-huc6").onclick=()=>setLevel("huc6");
+  $("lvl-huc8").onclick=()=>setLevel("huc8");
+  if(LEVELS.includes("huc12")) $("lvl-huc12").onclick=()=>setLevel("huc12");
+  else $("lvl-huc12").hidden=true;
+  $("tab-ens").onclick=()=>{state.tab="ens"; renderChart();};
+  $("tab-hist").onclick=()=>{state.tab="hist"; renderChart();};
+  const go=e=>{const t=e.target.closest("[data-huc]"); if(t) select(t.dataset.huc);};
+  $("subs").addEventListener("click",go); $("crumbs").addEventListener("click",go);
+  $("subs").addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); go(e);} });
+}
+function initText(){
+  const n = Object.keys(S).filter(c=>B[c]&&B[c].l==="huc8").length;
+  const nAll = Object.values(B).filter(b=>b.l==="huc8").length;
+  const n12 = Object.values(B).filter(b=>b.l==="huc12").length;
+  const hist = M.climAvailable.length ? `Historical comparison: ${M.climAvailable.map(label).join(", ")} vs own ${M.climPeriod}.` : `Historical medians (${M.climPeriod}) are not loaded yet.`;
+  $("notice").innerHTML = `<span class="tag">Prototype</span><span><b>WY${M.wy} values: ${esc(M.source)}</b>, ${n} of ${nAll} HUC8s (Rio Grande). ${hist} Latest: ${fmtDate(M.dates[M.dates.length-1])}.</span>`;
+  $("foot").innerHTML = `
+   <div><h4>Products</h4><p>SNODAS (NOAA NOHRSC, 1 km), SWANN / UA SWE (University of Arizona, 800 m) and CU SWE (INSTAAR, University of Colorado, 500 m), resampled to a common 500 m equal-area grid.</p></div>
+   <div><h4>SWEET ensemble</h4><p>A pixel counts as snow-covered when at least ${M.minAgree} products report ≥ ${M.threshold} in of SWE. Inside that area each product's own value is used, including zeros; the ensemble is the mean of the product volumes. Basins without agreed snow are greyed out.</p></div>
+   <div><h4>Boundaries &amp; history</h4><p>The ${nAll} USGS WBD HUC8s that intersect New Mexico plus the upstream Rio Grande and San Juan headwaters. HUC6 totals are the sum of the included HUC8s; HUC6s marked * extend beyond these HUC8s, so their totals do not cover the full HUC6 basin. ${n12?`The HUC12 tab shows ${n12} selected subwatersheds, computed on the same 500 m grid; they are reported on their own and are not part of the HUC8/HUC6 totals. `:""}Each product is compared only with its own ${M.climPeriod} record. Built ${esc(M.built)}.</p></div>`;
+}
+
+// ---------- boot ----------
+initText(); initControls(); initTools(); drawDecor();
+fit(); showLevel(); drawLegend();
+select(S["130100"]? "130100" : Object.keys(S)[0]);
+window.addEventListener("resize",()=>{ map.invalidateSize(); });
+const retheme=()=>{ restyle(); drawDecor(); drawLegend(); renderChart(); renderElev(); };
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",retheme);
+new MutationObserver(retheme).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+})();
+</script>

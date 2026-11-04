@@ -1,0 +1,427 @@
+{
+  "name": "geotiff",
+  "version": "1.7.0",
+  "build": "h4545760_3",
+  "build_number": 3,
+  "channel": "https://repo.anaconda.com/pkgs/main/win-64",
+  "subdir": "win-64",
+  "fn": "geotiff-1.7.0-h4545760_3.conda",
+  "md5": "b831edf84035b4fba41f40e0f2114202",
+  "url": "https://repo.anaconda.com/pkgs/main/win-64/geotiff-1.7.0-h4545760_3.conda",
+  "sha256": "7f54f037ff7a2618aea4faf672c97f11ff054c1135baf6a37b557763e9432c63",
+  "arch": "x86_64",
+  "platform": "win32",
+  "depends": [
+    "jpeg >=9e,<10a",
+    "libtiff >=4.1.0,<5.0a0",
+    "proj >=9.3.1,<9.3.2.0a0",
+    "vc >=14.1,<15.0a0",
+    "vs2015_runtime >=14.16.27012,<15.0a0",
+    "zlib >=1.2.13,<1.3.0a0"
+  ],
+  "constrains": [],
+  "license": "MIT",
+  "license_family": "MIT",
+  "timestamp": 1704901404457,
+  "size": 135844,
+  "requested_spec": "pkgs/main/win-64::geotiff==1.7.0=h4545760_3",
+  "package_tarball_full_path": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\geotiff-1.7.0-h4545760_3.conda",
+  "extracted_package_dir": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\geotiff-1.7.0-h4545760_3",
+  "files": [
+    "Library/bin/applygeo.exe",
+    "Library/bin/geotifcp.exe",
+    "Library/bin/geotiff.dll",
+    "Library/bin/listgeo.exe",
+    "Library/bin/makegeo.exe",
+    "Library/cmake/geotiff-config-version.cmake",
+    "Library/cmake/geotiff-config.cmake",
+    "Library/cmake/geotiff-depends-release.cmake",
+    "Library/cmake/geotiff-depends.cmake",
+    "Library/doc/AUTHORS",
+    "Library/doc/COPYING",
+    "Library/doc/ChangeLog",
+    "Library/doc/INSTALL",
+    "Library/doc/LICENSE",
+    "Library/doc/README",
+    "Library/doc/README.WIN",
+    "Library/doc/README_BIN",
+    "Library/include/cpl_serv.h",
+    "Library/include/epsg_datum.inc",
+    "Library/include/epsg_ellipse.inc",
+    "Library/include/epsg_gcs.inc",
+    "Library/include/epsg_pcs.inc",
+    "Library/include/epsg_pm.inc",
+    "Library/include/epsg_proj.inc",
+    "Library/include/epsg_units.inc",
+    "Library/include/epsg_vertcs.inc",
+    "Library/include/geo_config.h",
+    "Library/include/geo_ctrans.inc",
+    "Library/include/geo_keyp.h",
+    "Library/include/geo_normalize.h",
+    "Library/include/geo_simpletags.h",
+    "Library/include/geo_tiffp.h",
+    "Library/include/geokeys.h",
+    "Library/include/geokeys.inc",
+    "Library/include/geokeys_v1_1.inc",
+    "Library/include/geonames.h",
+    "Library/include/geotiff.h",
+    "Library/include/geotiffio.h",
+    "Library/include/geovalues.h",
+    "Library/include/xtiffio.h",
+    "Library/lib/geotiff_i.lib",
+    "Library/share/man/man1/applygeo.1",
+    "Library/share/man/man1/geotifcp.1",
+    "Library/share/man/man1/listgeo.1",
+    "etc/conda/activate.d/geotiff-activate.bat",
+    "etc/conda/activate.d/geotiff-activate.sh",
+    "etc/conda/deactivate.d/geotiff-deactivate.bat",
+    "etc/conda/deactivate.d/geotiff-deactivate.sh"
+  ],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": [
+      {
+        "_path": "Library/bin/applygeo.exe",
+        "path_type": "hardlink",
+        "sha256": "f3ef04b62bcbb622330910bee0e830d821851f96b0b14543b4c636d454727d8a",
+        "size_in_bytes": 13312,
+        "sha256_in_prefix": "f3ef04b62bcbb622330910bee0e830d821851f96b0b14543b4c636d454727d8a"
+      },
+      {
+        "_path": "Library/bin/geotifcp.exe",
+        "path_type": "hardlink",
+        "sha256": "8c5ce4f045b072fc19e797bc2e2ae4b60f2d36c6dab1a19abbb01fe0c5bf8e25",
+        "size_in_bytes": 33792,
+        "sha256_in_prefix": "8c5ce4f045b072fc19e797bc2e2ae4b60f2d36c6dab1a19abbb01fe0c5bf8e25"
+      },
+      {
+        "_path": "Library/bin/geotiff.dll",
+        "path_type": "hardlink",
+        "sha256": "4e16cc1507d633b217509f2bf7ce876bff731aae25f37390daa085b10a7dcc3d",
+        "size_in_bytes": 158720,
+        "sha256_in_prefix": "4e16cc1507d633b217509f2bf7ce876bff731aae25f37390daa085b10a7dcc3d"
+      },
+      {
+        "_path": "Library/bin/listgeo.exe",
+        "path_type": "hardlink",
+        "sha256": "5254fc9602b864d2b2516b6d5d3e9e8c771d0c3dd80a531344a7fc6459dbc146",
+        "size_in_bytes": 16896,
+        "sha256_in_prefix": "5254fc9602b864d2b2516b6d5d3e9e8c771d0c3dd80a531344a7fc6459dbc146"
+      },
+      {
+        "_path": "Library/bin/makegeo.exe",
+        "path_type": "hardlink",
+        "sha256": "9c8dc2f6f3ecba7696a780dace543c1fb514ddda7caf385e3261ba670e9a78f1",
+        "size_in_bytes": 12800,
+        "sha256_in_prefix": "9c8dc2f6f3ecba7696a780dace543c1fb514ddda7caf385e3261ba670e9a78f1"
+      },
+      {
+        "_path": "Library/cmake/geotiff-config-version.cmake",
+        "path_type": "hardlink",
+        "sha256": "8c4eb12b2a19634d59f32fef02b1c16143f213854bd458b69475f22093a87488",
+        "size_in_bytes": 1443,
+        "sha256_in_prefix": "8c4eb12b2a19634d59f32fef02b1c16143f213854bd458b69475f22093a87488"
+      },
+      {
+        "_path": "Library/cmake/geotiff-config.cmake",
+        "path_type": "hardlink",
+        "sha256": "76af29a8a23fcbbdcf7d4362e62945829061eda94cd125b2325a00ca128239b1",
+        "size_in_bytes": 1943,
+        "sha256_in_prefix": "76af29a8a23fcbbdcf7d4362e62945829061eda94cd125b2325a00ca128239b1"
+      },
+      {
+        "_path": "Library/cmake/geotiff-depends-release.cmake",
+        "prefix_placeholder": "C:/b/abs_d1p88o33mi/croot/geotiff_1704901300952/_h_env",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "sha256": "55b25c2830c93e34914b483913ef49cf214a374286ee4dfcc48fee1b7f96667e",
+        "size_in_bytes": 1205,
+        "sha256_in_prefix": "305253c740eae73ceda7f73cd3b00ae855deb3aa2120cf4be66c1e1b94382fe9"
+      },
+      {
+        "_path": "Library/cmake/geotiff-depends.cmake",
+        "path_type": "hardlink",
+        "sha256": "751fd90fbad19a33a8fc998e444ec176e563329a53bb7f7d44bc4b7b865249c2",
+        "size_in_bytes": 3760,
+        "sha256_in_prefix": "751fd90fbad19a33a8fc998e444ec176e563329a53bb7f7d44bc4b7b865249c2"
+      },
+      {
+        "_path": "Library/doc/AUTHORS",
+        "path_type": "hardlink",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_in_bytes": 0,
+        "sha256_in_prefix": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "_path": "Library/doc/COPYING",
+        "path_type": "hardlink",
+        "sha256": "2f718eec2798cfe9aaf8cfef31f1926a815027e6336519b2dc50e0a89e55b8a5",
+        "size_in_bytes": 19,
+        "sha256_in_prefix": "2f718eec2798cfe9aaf8cfef31f1926a815027e6336519b2dc50e0a89e55b8a5"
+      },
+      {
+        "_path": "Library/doc/ChangeLog",
+        "path_type": "hardlink",
+        "sha256": "8ac193fd52a4e7763cb274e9ede4e8356f7193dc50f3a0ae6b241a9879770397",
+        "size_in_bytes": 45836,
+        "sha256_in_prefix": "8ac193fd52a4e7763cb274e9ede4e8356f7193dc50f3a0ae6b241a9879770397"
+      },
+      {
+        "_path": "Library/doc/INSTALL",
+        "path_type": "hardlink",
+        "sha256": "5e265c4567e60148617ebb0d89cf93e038dfcc7b7d427a697953013e7616181a",
+        "size_in_bytes": 9416,
+        "sha256_in_prefix": "5e265c4567e60148617ebb0d89cf93e038dfcc7b7d427a697953013e7616181a"
+      },
+      {
+        "_path": "Library/doc/LICENSE",
+        "path_type": "hardlink",
+        "sha256": "6a22340b8293c50a34ce8e95589489bd3ec65bcb8b93e61cbda3daaafe498375",
+        "size_in_bytes": 3637,
+        "sha256_in_prefix": "6a22340b8293c50a34ce8e95589489bd3ec65bcb8b93e61cbda3daaafe498375"
+      },
+      {
+        "_path": "Library/doc/README",
+        "path_type": "hardlink",
+        "sha256": "2a7ae276f5a5bcc21dae87c3e853f4b4fb62bf98debad84ad20c98b4701fd7a2",
+        "size_in_bytes": 4890,
+        "sha256_in_prefix": "2a7ae276f5a5bcc21dae87c3e853f4b4fb62bf98debad84ad20c98b4701fd7a2"
+      },
+      {
+        "_path": "Library/doc/README.WIN",
+        "path_type": "hardlink",
+        "sha256": "8f2b3b606ccbfd7e507a3960eb6e72c6a870c3d6e629ba7931c6a1e9c2721682",
+        "size_in_bytes": 604,
+        "sha256_in_prefix": "8f2b3b606ccbfd7e507a3960eb6e72c6a870c3d6e629ba7931c6a1e9c2721682"
+      },
+      {
+        "_path": "Library/doc/README_BIN",
+        "path_type": "hardlink",
+        "sha256": "816bd9bfe5af4e536dca52e6083c5f66989efe514470460c9c2d305931b80e08",
+        "size_in_bytes": 1183,
+        "sha256_in_prefix": "816bd9bfe5af4e536dca52e6083c5f66989efe514470460c9c2d305931b80e08"
+      },
+      {
+        "_path": "Library/include/cpl_serv.h",
+        "path_type": "hardlink",
+        "sha256": "032eb6900ed7427155f79ed429134052ecd2605cc8322b8bb9964d8cd2bcf955",
+        "size_in_bytes": 8608,
+        "sha256_in_prefix": "032eb6900ed7427155f79ed429134052ecd2605cc8322b8bb9964d8cd2bcf955"
+      },
+      {
+        "_path": "Library/include/epsg_datum.inc",
+        "path_type": "hardlink",
+        "sha256": "045115d7ce20c446d9399572f97daa78e3ded816ba928c4ee39e5117c4475d34",
+        "size_in_bytes": 6145,
+        "sha256_in_prefix": "045115d7ce20c446d9399572f97daa78e3ded816ba928c4ee39e5117c4475d34"
+      },
+      {
+        "_path": "Library/include/epsg_ellipse.inc",
+        "path_type": "hardlink",
+        "sha256": "f1aab95879875b7cb9e2a2b63024292d878bbde4ec2eaae2568e45d817e29608",
+        "size_in_bytes": 1694,
+        "sha256_in_prefix": "f1aab95879875b7cb9e2a2b63024292d878bbde4ec2eaae2568e45d817e29608"
+      },
+      {
+        "_path": "Library/include/epsg_gcs.inc",
+        "path_type": "hardlink",
+        "sha256": "4994e774b632c540dc4833c1710c8458db93869a0c352e7ec8dc12d0fa359f61",
+        "size_in_bytes": 5944,
+        "sha256_in_prefix": "4994e774b632c540dc4833c1710c8458db93869a0c352e7ec8dc12d0fa359f61"
+      },
+      {
+        "_path": "Library/include/epsg_pcs.inc",
+        "path_type": "hardlink",
+        "sha256": "e5d6814d66bc392f5d7a1a5eb1547024c6cda3fb843e4b9bd6c2256bf944d33c",
+        "size_in_bytes": 41711,
+        "sha256_in_prefix": "e5d6814d66bc392f5d7a1a5eb1547024c6cda3fb843e4b9bd6c2256bf944d33c"
+      },
+      {
+        "_path": "Library/include/epsg_pm.inc",
+        "path_type": "hardlink",
+        "sha256": "3b9984b1dd9a27b586ba039cb234454dcdb60f4160156ec3f263a3b79cb7eab9",
+        "size_in_bytes": 578,
+        "sha256_in_prefix": "3b9984b1dd9a27b586ba039cb234454dcdb60f4160156ec3f263a3b79cb7eab9"
+      },
+      {
+        "_path": "Library/include/epsg_proj.inc",
+        "path_type": "hardlink",
+        "sha256": "8057f81dc5258a9ff0183787dd26af3e6816f22b2a3cf9c39b22b734b5702055",
+        "size_in_bytes": 17555,
+        "sha256_in_prefix": "8057f81dc5258a9ff0183787dd26af3e6816f22b2a3cf9c39b22b734b5702055"
+      },
+      {
+        "_path": "Library/include/epsg_units.inc",
+        "path_type": "hardlink",
+        "sha256": "e141cc141633efa365cf2315804707e0ad8d3ebd6ded1841d92a11b0805df0bd",
+        "size_in_bytes": 970,
+        "sha256_in_prefix": "e141cc141633efa365cf2315804707e0ad8d3ebd6ded1841d92a11b0805df0bd"
+      },
+      {
+        "_path": "Library/include/epsg_vertcs.inc",
+        "path_type": "hardlink",
+        "sha256": "40a66e46101c3c55fd09a1acf9dae236ee15659cb0bfe8f439651c7fe5243e77",
+        "size_in_bytes": 1990,
+        "sha256_in_prefix": "40a66e46101c3c55fd09a1acf9dae236ee15659cb0bfe8f439651c7fe5243e77"
+      },
+      {
+        "_path": "Library/include/geo_config.h",
+        "path_type": "hardlink",
+        "sha256": "251dcc9068860512e18de9ae323c4db7fb5bfdbeebd229806ca5d6974287f946",
+        "size_in_bytes": 371,
+        "sha256_in_prefix": "251dcc9068860512e18de9ae323c4db7fb5bfdbeebd229806ca5d6974287f946"
+      },
+      {
+        "_path": "Library/include/geo_ctrans.inc",
+        "path_type": "hardlink",
+        "sha256": "595558a2df7ca650444b9f22b136768f2e61354ee6b455f96da2d21b5506c6ed",
+        "size_in_bytes": 3733,
+        "sha256_in_prefix": "595558a2df7ca650444b9f22b136768f2e61354ee6b455f96da2d21b5506c6ed"
+      },
+      {
+        "_path": "Library/include/geo_keyp.h",
+        "path_type": "hardlink",
+        "sha256": "7a8ca7e23541778542b013d3a94f73fa655ef1d9e03c263ec46361c5e4205922",
+        "size_in_bytes": 4162,
+        "sha256_in_prefix": "7a8ca7e23541778542b013d3a94f73fa655ef1d9e03c263ec46361c5e4205922"
+      },
+      {
+        "_path": "Library/include/geo_normalize.h",
+        "path_type": "hardlink",
+        "sha256": "560b5859dfcb4f6c4bf02657b16395385788b11b8fb376938babb3509fc2cb76",
+        "size_in_bytes": 10206,
+        "sha256_in_prefix": "560b5859dfcb4f6c4bf02657b16395385788b11b8fb376938babb3509fc2cb76"
+      },
+      {
+        "_path": "Library/include/geo_simpletags.h",
+        "path_type": "hardlink",
+        "sha256": "7b8789ef2f5a97fa30ceec87615b592f1974c474bac0b8ac9386e8b5e1828996",
+        "size_in_bytes": 2372,
+        "sha256_in_prefix": "7b8789ef2f5a97fa30ceec87615b592f1974c474bac0b8ac9386e8b5e1828996"
+      },
+      {
+        "_path": "Library/include/geo_tiffp.h",
+        "path_type": "hardlink",
+        "sha256": "15010707fcb3c799fb2c4dfb4d0e7d6db2be5474012c0070e67ad61a07dd7019",
+        "size_in_bytes": 3859,
+        "sha256_in_prefix": "15010707fcb3c799fb2c4dfb4d0e7d6db2be5474012c0070e67ad61a07dd7019"
+      },
+      {
+        "_path": "Library/include/geokeys.h",
+        "path_type": "hardlink",
+        "sha256": "e6ad7451ad71f3261a3a79c713b1341dab8df590df22b7553adb6e29ccc521ef",
+        "size_in_bytes": 1724,
+        "sha256_in_prefix": "e6ad7451ad71f3261a3a79c713b1341dab8df590df22b7553adb6e29ccc521ef"
+      },
+      {
+        "_path": "Library/include/geokeys.inc",
+        "path_type": "hardlink",
+        "sha256": "f54966f1a3af6d6cba4e08084fef6863cbe87576da36a332fca771e612768556",
+        "size_in_bytes": 4441,
+        "sha256_in_prefix": "f54966f1a3af6d6cba4e08084fef6863cbe87576da36a332fca771e612768556"
+      },
+      {
+        "_path": "Library/include/geokeys_v1_1.inc",
+        "path_type": "hardlink",
+        "sha256": "93d6f8dadb96b0ebd43dde72494ec41fc510cf5c0591c8db49ecc6be438c9fb5",
+        "size_in_bytes": 2989,
+        "sha256_in_prefix": "93d6f8dadb96b0ebd43dde72494ec41fc510cf5c0591c8db49ecc6be438c9fb5"
+      },
+      {
+        "_path": "Library/include/geonames.h",
+        "path_type": "hardlink",
+        "sha256": "24b8e96cd3342b1dfd121aefeebc8805805c1c098658bf53f02607066349efb5",
+        "size_in_bytes": 3235,
+        "sha256_in_prefix": "24b8e96cd3342b1dfd121aefeebc8805805c1c098658bf53f02607066349efb5"
+      },
+      {
+        "_path": "Library/include/geotiff.h",
+        "path_type": "hardlink",
+        "sha256": "3631342e1e638152a67fc9553bc0b0ed4e39e935c9ccd53f904828bfb7060db2",
+        "size_in_bytes": 6323,
+        "sha256_in_prefix": "3631342e1e638152a67fc9553bc0b0ed4e39e935c9ccd53f904828bfb7060db2"
+      },
+      {
+        "_path": "Library/include/geotiffio.h",
+        "path_type": "hardlink",
+        "sha256": "f4345cfb487b33b9a4c12cec8cdf010149e2208bf6e13d7f449d6ad4ba1f6e78",
+        "size_in_bytes": 480,
+        "sha256_in_prefix": "f4345cfb487b33b9a4c12cec8cdf010149e2208bf6e13d7f449d6ad4ba1f6e78"
+      },
+      {
+        "_path": "Library/include/geovalues.h",
+        "path_type": "hardlink",
+        "sha256": "fca11db9dc9904b3d8e419d6e1b31d17a04c01bfebbed33501796bab100dbd7f",
+        "size_in_bytes": 2781,
+        "sha256_in_prefix": "fca11db9dc9904b3d8e419d6e1b31d17a04c01bfebbed33501796bab100dbd7f"
+      },
+      {
+        "_path": "Library/include/xtiffio.h",
+        "path_type": "hardlink",
+        "sha256": "a77cce5780f3ec43959703ecca7509957ceadbcce8dd1c2755c4ad798e3d2e2b",
+        "size_in_bytes": 2821,
+        "sha256_in_prefix": "a77cce5780f3ec43959703ecca7509957ceadbcce8dd1c2755c4ad798e3d2e2b"
+      },
+      {
+        "_path": "Library/lib/geotiff_i.lib",
+        "path_type": "hardlink",
+        "sha256": "bd167fea520cfee3edf109df2cdb56cdd9d1a8912a02837ecb896c5ff7f68fe5",
+        "size_in_bytes": 21500,
+        "sha256_in_prefix": "bd167fea520cfee3edf109df2cdb56cdd9d1a8912a02837ecb896c5ff7f68fe5"
+      },
+      {
+        "_path": "Library/share/man/man1/applygeo.1",
+        "path_type": "hardlink",
+        "sha256": "a9c476c20387f866d8c228c9133c94a35290df046c5a0e720944cdda4eb40a2f",
+        "size_in_bytes": 657,
+        "sha256_in_prefix": "a9c476c20387f866d8c228c9133c94a35290df046c5a0e720944cdda4eb40a2f"
+      },
+      {
+        "_path": "Library/share/man/man1/geotifcp.1",
+        "path_type": "hardlink",
+        "sha256": "027f012e7fb7df0b12f4f24419e0c24a866e3b6e1b6071938a25a794f2676eab",
+        "size_in_bytes": 3864,
+        "sha256_in_prefix": "027f012e7fb7df0b12f4f24419e0c24a866e3b6e1b6071938a25a794f2676eab"
+      },
+      {
+        "_path": "Library/share/man/man1/listgeo.1",
+        "path_type": "hardlink",
+        "sha256": "b77288e20be58c05d206d72e809cdb9a2641a248f15e5133dfcfdb19a521c11f",
+        "size_in_bytes": 1426,
+        "sha256_in_prefix": "b77288e20be58c05d206d72e809cdb9a2641a248f15e5133dfcfdb19a521c11f"
+      },
+      {
+        "_path": "etc/conda/activate.d/geotiff-activate.bat",
+        "path_type": "hardlink",
+        "sha256": "ee62efc5e24951478fdb96ab8e1619c393800870d6c95b217467d2dd88d84ce8",
+        "size_in_bytes": 259,
+        "sha256_in_prefix": "ee62efc5e24951478fdb96ab8e1619c393800870d6c95b217467d2dd88d84ce8"
+      },
+      {
+        "_path": "etc/conda/activate.d/geotiff-activate.sh",
+        "path_type": "hardlink",
+        "sha256": "39572a7c057495d33383e3fbd44f7d49154a1e2af8a405675fa69c5b0de823d7",
+        "size_in_bytes": 555,
+        "sha256_in_prefix": "39572a7c057495d33383e3fbd44f7d49154a1e2af8a405675fa69c5b0de823d7"
+      },
+      {
+        "_path": "etc/conda/deactivate.d/geotiff-deactivate.bat",
+        "path_type": "hardlink",
+        "sha256": "c05094c6520e974f47ed79cf9de2254aa900fe70432aa29068a32a11171d4545",
+        "size_in_bytes": 194,
+        "sha256_in_prefix": "c05094c6520e974f47ed79cf9de2254aa900fe70432aa29068a32a11171d4545"
+      },
+      {
+        "_path": "etc/conda/deactivate.d/geotiff-deactivate.sh",
+        "path_type": "hardlink",
+        "sha256": "f3f217eecf244f84455d51b4430e0db70a909c184db02ec48dd90aa41c124d1a",
+        "size_in_bytes": 212,
+        "sha256_in_prefix": "f3f217eecf244f84455d51b4430e0db70a909c184db02ec48dd90aa41c124d1a"
+      }
+    ]
+  },
+  "link": {
+    "source": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\geotiff-1.7.0-h4545760_3",
+    "type": 1
+  }
+}

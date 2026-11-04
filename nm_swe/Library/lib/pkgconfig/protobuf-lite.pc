@@ -1,0 +1,12 @@
+prefix=C:/Users/mgersh/nm_swe/nm_swe/Library
+exec_prefix=C:/Users/mgersh/nm_swe/nm_swe/Library
+libdir=C:/Users/mgersh/nm_swe/nm_swe/Library/lib
+includedir=C:/Users/mgersh/nm_swe/nm_swe/Library/include
+
+Name: Protocol Buffers
+Description: Google's Data Interchange Format
+Version: 25.3.0
+Requires: abseil_dll utf8_range
+Libs: -L${libdir} -lprotobuf-lite 
+Cflags: -I${includedir} -DPROTOBUF_USE_DLLS
+Conflicts: protobuf

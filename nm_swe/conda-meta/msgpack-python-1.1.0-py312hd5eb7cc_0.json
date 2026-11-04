@@ -1,0 +1,176 @@
+{
+  "name": "msgpack-python",
+  "version": "1.1.0",
+  "build": "py312hd5eb7cc_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/win-64",
+  "subdir": "win-64",
+  "fn": "msgpack-python-1.1.0-py312hd5eb7cc_0.conda",
+  "md5": "ff4f1e63a6438a06d1ab259936e5c2ac",
+  "url": "https://conda.anaconda.org/conda-forge/win-64/msgpack-python-1.1.0-py312hd5eb7cc_0.conda",
+  "sha256": "3fd45d9c0830e931e34990cb90e88ba53cc7f89fce69fc7d1a8289639d363e85",
+  "arch": "x86_64",
+  "platform": "win32",
+  "depends": [
+    "python >=3.12,<3.13.0a0",
+    "python_abi 3.12.* *_cp312",
+    "ucrt >=10.0.20348.0",
+    "vc >=14.2,<15",
+    "vc14_runtime >=14.29.30139"
+  ],
+  "constrains": [],
+  "license": "Apache-2.0",
+  "license_family": "Apache",
+  "timestamp": 1725975418157,
+  "size": 88169,
+  "requested_spec": "conda-forge/win-64::msgpack-python==1.1.0=py312hd5eb7cc_0",
+  "package_tarball_full_path": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\msgpack-python-1.1.0-py312hd5eb7cc_0.conda",
+  "extracted_package_dir": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\msgpack-python-1.1.0-py312hd5eb7cc_0",
+  "files": [
+    "Lib/site-packages/msgpack-1.1.0.dist-info/COPYING",
+    "Lib/site-packages/msgpack-1.1.0.dist-info/INSTALLER",
+    "Lib/site-packages/msgpack-1.1.0.dist-info/METADATA",
+    "Lib/site-packages/msgpack-1.1.0.dist-info/RECORD",
+    "Lib/site-packages/msgpack-1.1.0.dist-info/REQUESTED",
+    "Lib/site-packages/msgpack-1.1.0.dist-info/WHEEL",
+    "Lib/site-packages/msgpack-1.1.0.dist-info/direct_url.json",
+    "Lib/site-packages/msgpack-1.1.0.dist-info/top_level.txt",
+    "Lib/site-packages/msgpack/__init__.py",
+    "Lib/site-packages/msgpack/__pycache__/__init__.cpython-312.pyc",
+    "Lib/site-packages/msgpack/__pycache__/exceptions.cpython-312.pyc",
+    "Lib/site-packages/msgpack/__pycache__/ext.cpython-312.pyc",
+    "Lib/site-packages/msgpack/__pycache__/fallback.cpython-312.pyc",
+    "Lib/site-packages/msgpack/_cmsgpack.cp312-win_amd64.pyd",
+    "Lib/site-packages/msgpack/exceptions.py",
+    "Lib/site-packages/msgpack/ext.py",
+    "Lib/site-packages/msgpack/fallback.py"
+  ],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": [
+      {
+        "_path": "Lib/site-packages/msgpack-1.1.0.dist-info/COPYING",
+        "path_type": "hardlink",
+        "sha256": "492dedba85da5872f78e6091bcd1fea474d660d35acb4dee964b8aab3f007427",
+        "size_in_bytes": 614,
+        "sha256_in_prefix": "492dedba85da5872f78e6091bcd1fea474d660d35acb4dee964b8aab3f007427"
+      },
+      {
+        "_path": "Lib/site-packages/msgpack-1.1.0.dist-info/INSTALLER",
+        "path_type": "hardlink",
+        "sha256": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "size_in_bytes": 5,
+        "sha256_in_prefix": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8"
+      },
+      {
+        "_path": "Lib/site-packages/msgpack-1.1.0.dist-info/METADATA",
+        "path_type": "hardlink",
+        "sha256": "a2e6b5027036545a8d87ce63c7e5e73d2c656699538fea92ff97f0342cf3b6f0",
+        "size_in_bytes": 8632,
+        "sha256_in_prefix": "a2e6b5027036545a8d87ce63c7e5e73d2c656699538fea92ff97f0342cf3b6f0"
+      },
+      {
+        "_path": "Lib/site-packages/msgpack-1.1.0.dist-info/RECORD",
+        "path_type": "hardlink",
+        "sha256": "083ff9677a31478544ffe8b24b69e902592e50068bac517aba6b5a38ed262f8b",
+        "size_in_bytes": 1253,
+        "sha256_in_prefix": "083ff9677a31478544ffe8b24b69e902592e50068bac517aba6b5a38ed262f8b"
+      },
+      {
+        "_path": "Lib/site-packages/msgpack-1.1.0.dist-info/REQUESTED",
+        "path_type": "hardlink",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_in_bytes": 0,
+        "sha256_in_prefix": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "_path": "Lib/site-packages/msgpack-1.1.0.dist-info/WHEEL",
+        "path_type": "hardlink",
+        "sha256": "a7665228487c69f597b6d677f7c9abf3eef482f929529d62a7108857f185af7f",
+        "size_in_bytes": 101,
+        "sha256_in_prefix": "a7665228487c69f597b6d677f7c9abf3eef482f929529d62a7108857f185af7f"
+      },
+      {
+        "_path": "Lib/site-packages/msgpack-1.1.0.dist-info/direct_url.json",
+        "path_type": "hardlink",
+        "sha256": "76691b1a01d9cd775e4fe65a48976d1b2bf20233af4af269699a12d13a0bf991",
+        "size_in_bytes": 75,
+        "sha256_in_prefix": "76691b1a01d9cd775e4fe65a48976d1b2bf20233af4af269699a12d13a0bf991"
+      },
+      {
+        "_path": "Lib/site-packages/msgpack-1.1.0.dist-info/top_level.txt",
+        "path_type": "hardlink",
+        "sha256": "dadca4498d695dd880db16130d1ea33f0d2a239646c518a1ca17f84b9859c979",
+        "size_in_bytes": 8,
+        "sha256_in_prefix": "dadca4498d695dd880db16130d1ea33f0d2a239646c518a1ca17f84b9859c979"
+      },
+      {
+        "_path": "Lib/site-packages/msgpack/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "ade45a88eb44cd28cf9ebed3a718e022f6df967e6957ae8586b89c02cd9e0be8",
+        "size_in_bytes": 1109,
+        "sha256_in_prefix": "ade45a88eb44cd28cf9ebed3a718e022f6df967e6957ae8586b89c02cd9e0be8"
+      },
+      {
+        "_path": "Lib/site-packages/msgpack/__pycache__/__init__.cpython-312.pyc",
+        "path_type": "hardlink",
+        "sha256": "516318926b8bdfeb81e975abc1df4a2fac41bea33dbb7bf4ec4492a141e604f4",
+        "size_in_bytes": 1682,
+        "sha256_in_prefix": "516318926b8bdfeb81e975abc1df4a2fac41bea33dbb7bf4ec4492a141e604f4"
+      },
+      {
+        "_path": "Lib/site-packages/msgpack/__pycache__/exceptions.cpython-312.pyc",
+        "path_type": "hardlink",
+        "sha256": "30c6a8cbde1048bac08cd303e234ac318310256a89729bc1140163b33548f5f6",
+        "size_in_bytes": 1968,
+        "sha256_in_prefix": "30c6a8cbde1048bac08cd303e234ac318310256a89729bc1140163b33548f5f6"
+      },
+      {
+        "_path": "Lib/site-packages/msgpack/__pycache__/ext.cpython-312.pyc",
+        "path_type": "hardlink",
+        "sha256": "e5e3cfcc85e86f2a84e28a5fb1d23847babc570168b5e2d727bcddf2486c0343",
+        "size_in_bytes": 8236,
+        "sha256_in_prefix": "e5e3cfcc85e86f2a84e28a5fb1d23847babc570168b5e2d727bcddf2486c0343"
+      },
+      {
+        "_path": "Lib/site-packages/msgpack/__pycache__/fallback.cpython-312.pyc",
+        "path_type": "hardlink",
+        "sha256": "d4a6ca1cb2256fad3c8c31cb6bf53561e72a933882720d0eec6e884869e50276",
+        "size_in_bytes": 41432,
+        "sha256_in_prefix": "d4a6ca1cb2256fad3c8c31cb6bf53561e72a933882720d0eec6e884869e50276"
+      },
+      {
+        "_path": "Lib/site-packages/msgpack/_cmsgpack.cp312-win_amd64.pyd",
+        "path_type": "hardlink",
+        "sha256": "99ca001c7f98358c86977ce70c8130095c56091afc2206884303cf17a7d9e74a",
+        "size_in_bytes": 137728,
+        "sha256_in_prefix": "99ca001c7f98358c86977ce70c8130095c56091afc2206884303cf17a7d9e74a"
+      },
+      {
+        "_path": "Lib/site-packages/msgpack/exceptions.py",
+        "path_type": "hardlink",
+        "sha256": "7424d67a2f1da64accb100dc8d093be004e5f47b08047d326edf3338f36a3187",
+        "size_in_bytes": 1081,
+        "sha256_in_prefix": "7424d67a2f1da64accb100dc8d093be004e5f47b08047d326edf3338f36a3187"
+      },
+      {
+        "_path": "Lib/site-packages/msgpack/ext.py",
+        "path_type": "hardlink",
+        "sha256": "92d789bf4de7f6d633779a28df1628a554e8e2f45a031a27050409857a21659a",
+        "size_in_bytes": 5726,
+        "sha256_in_prefix": "92d789bf4de7f6d633779a28df1628a554e8e2f45a031a27050409857a21659a"
+      },
+      {
+        "_path": "Lib/site-packages/msgpack/fallback.py",
+        "path_type": "hardlink",
+        "sha256": "d20d4fce9d2fb66044989e70f45decffe24c55444ff114b81b571ce5345a02c2",
+        "size_in_bytes": 32390,
+        "sha256_in_prefix": "d20d4fce9d2fb66044989e70f45decffe24c55444ff114b81b571ce5345a02c2"
+      }
+    ]
+  },
+  "link": {
+    "source": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\msgpack-python-1.1.0-py312hd5eb7cc_0",
+    "type": 1
+  }
+}

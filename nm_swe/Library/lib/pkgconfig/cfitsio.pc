@@ -1,0 +1,12 @@
+prefix=C:/Users/mgersh/nm_swe/nm_swe/Library
+exec_prefix=C:/Users/mgersh/nm_swe/nm_swe/Library
+libdir=
+includedir=C:/Users/mgersh/nm_swe/nm_swe/Library/include/
+
+Name: cfitsio
+Description: FITS File Subroutine Library
+URL: https://heasarc.gsfc.nasa.gov/fitsio/
+Version: .
+Libs: -L${libdir} 
+Libs.private: -lm
+Cflags: -I${includedir}

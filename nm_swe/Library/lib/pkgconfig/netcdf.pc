@@ -1,0 +1,13 @@
+prefix=C:/Users/mgersh/nm_swe/nm_swe/Library
+exec_prefix=C:/Users/mgersh/nm_swe/nm_swe/Library
+libdir=C:/Users/mgersh/nm_swe/nm_swe/Library/lib
+includedir=C:/Users/mgersh/nm_swe/nm_swe/Library/include
+ccompiler=C:/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/VC/Tools/MSVC/14.16.27023/bin/Hostx86/x64/cl.exe
+
+Name: netCDF
+Description: NetCDF Client Library for C
+URL: http://www.unidata.ucar.edu/netcdf
+Version: 4.8.1
+Libs: -L${libdir} -lnetcdf
+Libs.private: -lmfhdf -lhdf -lhdf5 -lhdf5_hl -lzlib -lcurl -lzip
+Cflags: -I${includedir}

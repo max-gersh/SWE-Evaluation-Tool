@@ -1,0 +1,113 @@
+{
+  "name": "cligj",
+  "version": "0.7.2",
+  "build": "pyhd3eb1b0_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/noarch",
+  "subdir": "noarch",
+  "fn": "cligj-0.7.2-pyhd3eb1b0_0.conda",
+  "md5": "a304c2ad08c7d498e7dc9eadc6b36e22",
+  "url": "https://repo.anaconda.com/pkgs/main/noarch/cligj-0.7.2-pyhd3eb1b0_0.conda",
+  "sha256": "3e9e7724faf770df2106cfd7e365363f6575186d7c7b2cc5cf44dabc984942f0",
+  "depends": [
+    "click >=4.0",
+    "python >=3.6"
+  ],
+  "constrains": [],
+  "noarch": "python",
+  "license": "BSD 3-Clause",
+  "license_family": "BSD",
+  "package_type": "noarch_python",
+  "timestamp": 1622563293000,
+  "size": 11206,
+  "requested_spec": "pkgs/main/noarch::cligj==0.7.2=pyhd3eb1b0_0",
+  "package_tarball_full_path": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\cligj-0.7.2-pyhd3eb1b0_0.conda",
+  "extracted_package_dir": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\cligj-0.7.2-pyhd3eb1b0_0",
+  "files": [
+    "Lib/site-packages/cligj-0.7.2-py3.9.egg-info/PKG-INFO",
+    "Lib/site-packages/cligj-0.7.2-py3.9.egg-info/SOURCES.txt",
+    "Lib/site-packages/cligj-0.7.2-py3.9.egg-info/dependency_links.txt",
+    "Lib/site-packages/cligj-0.7.2-py3.9.egg-info/not-zip-safe",
+    "Lib/site-packages/cligj-0.7.2-py3.9.egg-info/requires.txt",
+    "Lib/site-packages/cligj-0.7.2-py3.9.egg-info/top_level.txt",
+    "Lib/site-packages/cligj/__init__.py",
+    "Lib/site-packages/cligj/features.py",
+    "Lib/site-packages/cligj/__pycache__/__init__.cpython-312.pyc",
+    "Lib/site-packages/cligj/__pycache__/features.cpython-312.pyc"
+  ],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": [
+      {
+        "_path": "site-packages/cligj-0.7.2-py3.9.egg-info/PKG-INFO",
+        "path_type": "hardlink",
+        "sha256": "f69960f2975db08e5d35a87dd25396d976a84d6320ce66411f4adf92ee384bfc",
+        "size_in_bytes": 6307,
+        "sha256_in_prefix": "f69960f2975db08e5d35a87dd25396d976a84d6320ce66411f4adf92ee384bfc"
+      },
+      {
+        "_path": "site-packages/cligj-0.7.2-py3.9.egg-info/SOURCES.txt",
+        "path_type": "hardlink",
+        "sha256": "661276dd9c1a3befe471b39771e5d20a8f9027c5a9e77c99176ca4c6077cc7bc",
+        "size_in_bytes": 541,
+        "sha256_in_prefix": "661276dd9c1a3befe471b39771e5d20a8f9027c5a9e77c99176ca4c6077cc7bc"
+      },
+      {
+        "_path": "site-packages/cligj-0.7.2-py3.9.egg-info/dependency_links.txt",
+        "path_type": "hardlink",
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "size_in_bytes": 1,
+        "sha256_in_prefix": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      {
+        "_path": "site-packages/cligj-0.7.2-py3.9.egg-info/not-zip-safe",
+        "path_type": "hardlink",
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "size_in_bytes": 1,
+        "sha256_in_prefix": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      {
+        "_path": "site-packages/cligj-0.7.2-py3.9.egg-info/requires.txt",
+        "path_type": "hardlink",
+        "sha256": "c029a5aed7457a48756a896bec69289d56d1aa4d2fbcd9ab1106c4adca6dedff",
+        "size_in_bytes": 30,
+        "sha256_in_prefix": "c029a5aed7457a48756a896bec69289d56d1aa4d2fbcd9ab1106c4adca6dedff"
+      },
+      {
+        "_path": "site-packages/cligj-0.7.2-py3.9.egg-info/top_level.txt",
+        "path_type": "hardlink",
+        "sha256": "1efcb5b6f8a233329b0750f70185c955ea3310957a4a00acf841c59e11a5c0c0",
+        "size_in_bytes": 6,
+        "sha256_in_prefix": "1efcb5b6f8a233329b0750f70185c955ea3310957a4a00acf841c59e11a5c0c0"
+      },
+      {
+        "_path": "site-packages/cligj/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "cef0fc29ce4f718f80a291ea18863e21e923bf9dc15214420fa147885d24f2e3",
+        "size_in_bytes": 3876,
+        "sha256_in_prefix": "cef0fc29ce4f718f80a291ea18863e21e923bf9dc15214420fa147885d24f2e3"
+      },
+      {
+        "_path": "site-packages/cligj/features.py",
+        "path_type": "hardlink",
+        "sha256": "1705478f488076ab4e3b2d2e0859650ba1f411536ab1fdc38e3f7d544058a825",
+        "size_in_bytes": 6905,
+        "sha256_in_prefix": "1705478f488076ab4e3b2d2e0859650ba1f411536ab1fdc38e3f7d544058a825"
+      },
+      {
+        "_path": "Lib/site-packages/cligj/__pycache__/__init__.cpython-312.pyc",
+        "path_type": "pyc_file",
+        "size_in_bytes": 4257
+      },
+      {
+        "_path": "Lib/site-packages/cligj/__pycache__/features.cpython-312.pyc",
+        "path_type": "pyc_file",
+        "size_in_bytes": 7147
+      }
+    ]
+  },
+  "link": {
+    "source": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\cligj-0.7.2-pyhd3eb1b0_0",
+    "type": 1
+  }
+}

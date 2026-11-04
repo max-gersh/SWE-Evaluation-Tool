@@ -1,0 +1,72 @@
+{
+  "name": "freexl",
+  "version": "2.0.0",
+  "build": "hd7a5696_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/win-64",
+  "subdir": "win-64",
+  "fn": "freexl-2.0.0-hd7a5696_0.conda",
+  "md5": "337c36844d2ff3df2e9924f01ed06691",
+  "url": "https://repo.anaconda.com/pkgs/main/win-64/freexl-2.0.0-hd7a5696_0.conda",
+  "sha256": "d9216cb8d24131b341f511040664ed636056b95210a87ccb55d142fac01aa07d",
+  "arch": "x86_64",
+  "platform": "win32",
+  "depends": [
+    "expat >=2.5.0,<3.0a0",
+    "libiconv >=1.16,<2.0a0",
+    "minizip >=4.0.3,<5.0a0",
+    "vc >=14.1,<15.0a0",
+    "vs2015_runtime >=14.16.27012,<15.0a0"
+  ],
+  "constrains": [],
+  "license": "MPL-1.1 OR GPL-2.0 OR LGPL-2.1",
+  "license_family": "OTHER",
+  "timestamp": 1704742083000,
+  "size": 85519,
+  "requested_spec": "pkgs/main/win-64::freexl==2.0.0=hd7a5696_0",
+  "package_tarball_full_path": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\freexl-2.0.0-hd7a5696_0.conda",
+  "extracted_package_dir": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\freexl-2.0.0-hd7a5696_0",
+  "files": [
+    "Library/bin/freexl.dll",
+    "Library/include/freexl.h",
+    "Library/lib/freexl.lib",
+    "Library/lib/freexl_i.lib"
+  ],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": [
+      {
+        "_path": "Library/bin/freexl.dll",
+        "path_type": "hardlink",
+        "sha256": "30e84861a3ff6584113ab65ceef5fefbae0117e8a9e959eaf5e29052dead05bb",
+        "size_in_bytes": 121344,
+        "sha256_in_prefix": "30e84861a3ff6584113ab65ceef5fefbae0117e8a9e959eaf5e29052dead05bb"
+      },
+      {
+        "_path": "Library/include/freexl.h",
+        "path_type": "hardlink",
+        "sha256": "410c8bbe03a8801bcbec25f48387312efa418ac0dbafcd54c501f2c4077e2d26",
+        "size_in_bytes": 29425,
+        "sha256_in_prefix": "410c8bbe03a8801bcbec25f48387312efa418ac0dbafcd54c501f2c4077e2d26"
+      },
+      {
+        "_path": "Library/lib/freexl.lib",
+        "path_type": "hardlink",
+        "sha256": "e8e645e8f60cfac626be30c57a74ef9623f0ab69e2229c90ff79da87e8b32279",
+        "size_in_bytes": 137482,
+        "sha256_in_prefix": "e8e645e8f60cfac626be30c57a74ef9623f0ab69e2229c90ff79da87e8b32279"
+      },
+      {
+        "_path": "Library/lib/freexl_i.lib",
+        "path_type": "hardlink",
+        "sha256": "f630fb4e59181f4c997545b6328cd9b0b75733d50276b63b3a043658f37ada24",
+        "size_in_bytes": 5742,
+        "sha256_in_prefix": "f630fb4e59181f4c997545b6328cd9b0b75733d50276b63b3a043658f37ada24"
+      }
+    ]
+  },
+  "link": {
+    "source": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\freexl-2.0.0-hd7a5696_0",
+    "type": 1
+  }
+}

@@ -1,0 +1,14 @@
+prefix=C:/Users/mgersh/nm_swe/nm_swe/Library
+exec_prefix=C:/Users/mgersh/nm_swe/nm_swe/Library
+libdir=C:/Users/mgersh/nm_swe/nm_swe/Library/lib
+sharedlibdir=C:/Users/mgersh/nm_swe/nm_swe/Library/lib
+includedir=C:/Users/mgersh/nm_swe/nm_swe/Library/include/minizip
+
+Name: minizip
+Description: Zip manipulation library
+Version: 4.0.3
+
+Requires.private: zlib
+Libs: -L${libdir} -L${sharedlibdir} -lminizip
+Libs.private: -lbzip2 -llzma -lzstd
+Cflags: -I${includedir}

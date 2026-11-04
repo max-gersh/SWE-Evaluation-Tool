@@ -1,0 +1,10 @@
+*.tif
+!data/dem.tif
+*.pkl
+*.nc
+*.zip
+*.tar
+*.gz
+.cdsapi
+__pycache__/
+data/logs/

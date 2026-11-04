@@ -1,0 +1,157 @@
+{
+  "name": "intel-openmp",
+  "version": "2023.1.0",
+  "build": "h59b6b97_46320",
+  "build_number": 46320,
+  "channel": "https://repo.anaconda.com/pkgs/main/win-64",
+  "subdir": "win-64",
+  "fn": "intel-openmp-2023.1.0-h59b6b97_46320.conda",
+  "md5": "24ec0112499542d8170daa38552134d9",
+  "url": "https://repo.anaconda.com/pkgs/main/win-64/intel-openmp-2023.1.0-h59b6b97_46320.conda",
+  "sha256": "44bc9235c43ae6ad02bb2a5c06fe860a9efefdd4747ad72b21e32b76917bf1d5",
+  "arch": "x86_64",
+  "platform": "win32",
+  "depends": [
+    "vc >=14.1,<15.0a0",
+    "vs2015_runtime >=14.16.27012,<15.0a0"
+  ],
+  "constrains": [],
+  "license": "LicenseRef-ProprietaryIntel",
+  "license_family": "Proprietary",
+  "timestamp": 1699647939158,
+  "size": 2826403,
+  "requested_spec": "pkgs/main/win-64::intel-openmp==2023.1.0=h59b6b97_46320",
+  "package_tarball_full_path": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\intel-openmp-2023.1.0-h59b6b97_46320.conda",
+  "extracted_package_dir": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\intel-openmp-2023.1.0-h59b6b97_46320",
+  "files": [
+    "Library/bin/libiomp5md.dll",
+    "Library/bin/libiomp5md.pdb",
+    "Library/bin/libiompstubs5md.dll",
+    "Library/bin/libomp-fallback-cstring.spv",
+    "Library/bin/omptarget.dll",
+    "Library/bin/omptarget.rtl.level0.dll",
+    "Library/bin/omptarget.rtl.opencl.dll",
+    "Library/bin/omptarget.sycl.wrap.dll",
+    "Library/lib/libiomp5md.lib",
+    "Library/lib/libomp-device-svml.obj",
+    "Library/lib/libomp-fallback-cstring.obj",
+    "Library/lib/libomp-spirvdevicertl-optional.obj",
+    "Library/lib/libomp-spirvdevicertl-required.obj",
+    "Library/lib/libomptarget-opencl-optional.bc",
+    "Library/lib/libomptarget-opencl-required.bc"
+  ],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": [
+      {
+        "_path": "Library/bin/libiomp5md.dll",
+        "path_type": "hardlink",
+        "sha256": "0ad71f466d115d353dce94ba32b63e288f48198e89f551d46dcce461fedbd195",
+        "size_in_bytes": 2047000,
+        "sha256_in_prefix": "0ad71f466d115d353dce94ba32b63e288f48198e89f551d46dcce461fedbd195"
+      },
+      {
+        "_path": "Library/bin/libiomp5md.pdb",
+        "path_type": "hardlink",
+        "sha256": "bcdf78f17d1e2e68cfec5fe8b85776f2ccaa73d2c52be3fdf8f3c57362026991",
+        "size_in_bytes": 4476928,
+        "sha256_in_prefix": "bcdf78f17d1e2e68cfec5fe8b85776f2ccaa73d2c52be3fdf8f3c57362026991"
+      },
+      {
+        "_path": "Library/bin/libiompstubs5md.dll",
+        "path_type": "hardlink",
+        "sha256": "5deddfc8611d49ac01c42dd5e8b857df0fe8d9e71306e3784e3a5da24ac2d6be",
+        "size_in_bytes": 41496,
+        "sha256_in_prefix": "5deddfc8611d49ac01c42dd5e8b857df0fe8d9e71306e3784e3a5da24ac2d6be"
+      },
+      {
+        "_path": "Library/bin/libomp-fallback-cstring.spv",
+        "path_type": "hardlink",
+        "sha256": "7243dff3be07b78d96d41a605e92a958d2bf7446bb0b627850e4154a3f62b7e3",
+        "size_in_bytes": 14936,
+        "sha256_in_prefix": "7243dff3be07b78d96d41a605e92a958d2bf7446bb0b627850e4154a3f62b7e3"
+      },
+      {
+        "_path": "Library/bin/omptarget.dll",
+        "path_type": "hardlink",
+        "sha256": "e47f16ddbe5894caf8163597678c3944c752df33095e0fe31aafc7348cb22b9b",
+        "size_in_bytes": 693280,
+        "sha256_in_prefix": "e47f16ddbe5894caf8163597678c3944c752df33095e0fe31aafc7348cb22b9b"
+      },
+      {
+        "_path": "Library/bin/omptarget.rtl.level0.dll",
+        "path_type": "hardlink",
+        "sha256": "15004d9d406e0043e3f268297ced042dc72be4d17e1e6e368de0b2bb76708870",
+        "size_in_bytes": 1331232,
+        "sha256_in_prefix": "15004d9d406e0043e3f268297ced042dc72be4d17e1e6e368de0b2bb76708870"
+      },
+      {
+        "_path": "Library/bin/omptarget.rtl.opencl.dll",
+        "path_type": "hardlink",
+        "sha256": "2dc1754ac51212b3e5a767edf25f00971b331f37a40ae751670a699ce242f811",
+        "size_in_bytes": 1274904,
+        "sha256_in_prefix": "2dc1754ac51212b3e5a767edf25f00971b331f37a40ae751670a699ce242f811"
+      },
+      {
+        "_path": "Library/bin/omptarget.sycl.wrap.dll",
+        "path_type": "hardlink",
+        "sha256": "585f0d8debfc0edfb78fee91a0a1bb8d142d4e1693a86069ef42822d87334e03",
+        "size_in_bytes": 72736,
+        "sha256_in_prefix": "585f0d8debfc0edfb78fee91a0a1bb8d142d4e1693a86069ef42822d87334e03"
+      },
+      {
+        "_path": "Library/lib/libiomp5md.lib",
+        "path_type": "hardlink",
+        "sha256": "f65fb2ce89f02eb244778c6f3e4f2b5a9b91080505cdeae97d702c8d0c51774f",
+        "size_in_bytes": 254232,
+        "sha256_in_prefix": "f65fb2ce89f02eb244778c6f3e4f2b5a9b91080505cdeae97d702c8d0c51774f"
+      },
+      {
+        "_path": "Library/lib/libomp-device-svml.obj",
+        "path_type": "hardlink",
+        "sha256": "468362bcb63483fe701575bd33166d91b2fec03f6d15352af81292f6c02ac3ce",
+        "size_in_bytes": 1433289,
+        "sha256_in_prefix": "468362bcb63483fe701575bd33166d91b2fec03f6d15352af81292f6c02ac3ce"
+      },
+      {
+        "_path": "Library/lib/libomp-fallback-cstring.obj",
+        "path_type": "hardlink",
+        "sha256": "27e76f77c778fc8cf02f9099468dfe49ad5d91fe8512c9b53f7e620609070639",
+        "size_in_bytes": 20816,
+        "sha256_in_prefix": "27e76f77c778fc8cf02f9099468dfe49ad5d91fe8512c9b53f7e620609070639"
+      },
+      {
+        "_path": "Library/lib/libomp-spirvdevicertl-optional.obj",
+        "path_type": "hardlink",
+        "sha256": "88c9545d5d9cc04d8bcd9c5bde9d724005a2921d77e0e91e8c04ef68b1747703",
+        "size_in_bytes": 390541,
+        "sha256_in_prefix": "88c9545d5d9cc04d8bcd9c5bde9d724005a2921d77e0e91e8c04ef68b1747703"
+      },
+      {
+        "_path": "Library/lib/libomp-spirvdevicertl-required.obj",
+        "path_type": "hardlink",
+        "sha256": "3b629e7e6e9ff6a3a1cc8130eb2e083c94052ae8d7713a885dd26229c3b0ea3f",
+        "size_in_bytes": 14245,
+        "sha256_in_prefix": "3b629e7e6e9ff6a3a1cc8130eb2e083c94052ae8d7713a885dd26229c3b0ea3f"
+      },
+      {
+        "_path": "Library/lib/libomptarget-opencl-optional.bc",
+        "path_type": "hardlink",
+        "sha256": "a1e79d38a8f8a14563bf6bfa864c12ad25eeabf1ae42fccc3fc69ff0c3b0c03e",
+        "size_in_bytes": 121072,
+        "sha256_in_prefix": "a1e79d38a8f8a14563bf6bfa864c12ad25eeabf1ae42fccc3fc69ff0c3b0c03e"
+      },
+      {
+        "_path": "Library/lib/libomptarget-opencl-required.bc",
+        "path_type": "hardlink",
+        "sha256": "76e6562f11b6af6d42d7fbb198731b144ab3ad5e79525d573f510df4f2916790",
+        "size_in_bytes": 4136,
+        "sha256_in_prefix": "76e6562f11b6af6d42d7fbb198731b144ab3ad5e79525d573f510df4f2916790"
+      }
+    ]
+  },
+  "link": {
+    "source": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\intel-openmp-2023.1.0-h59b6b97_46320",
+    "type": 1
+  }
+}

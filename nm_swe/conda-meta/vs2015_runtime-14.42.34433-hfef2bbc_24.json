@@ -1,0 +1,34 @@
+{
+  "name": "vs2015_runtime",
+  "version": "14.42.34433",
+  "build": "hfef2bbc_24",
+  "build_number": 24,
+  "channel": "https://conda.anaconda.org/conda-forge/win-64",
+  "subdir": "win-64",
+  "fn": "vs2015_runtime-14.42.34433-hfef2bbc_24.conda",
+  "md5": "117fcc5b86c48f3b322b0722258c7259",
+  "url": "https://conda.anaconda.org/conda-forge/win-64/vs2015_runtime-14.42.34433-hfef2bbc_24.conda",
+  "sha256": "09102e0bd283af65772c052d85028410b0c31989b3cd96c260485d28e270836e",
+  "arch": "x86_64",
+  "platform": "win32",
+  "depends": [
+    "vc14_runtime >=14.42.34433"
+  ],
+  "constrains": [],
+  "license": "BSD-3-Clause",
+  "license_family": "BSD",
+  "timestamp": 1737627066773,
+  "size": 17669,
+  "requested_spec": "conda-forge/win-64::vs2015_runtime==14.42.34433=hfef2bbc_24",
+  "package_tarball_full_path": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\vs2015_runtime-14.42.34433-hfef2bbc_24.conda",
+  "extracted_package_dir": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\vs2015_runtime-14.42.34433-hfef2bbc_24",
+  "files": [],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": []
+  },
+  "link": {
+    "source": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\vs2015_runtime-14.42.34433-hfef2bbc_24",
+    "type": 1
+  }
+}

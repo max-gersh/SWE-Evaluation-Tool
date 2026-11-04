@@ -1,0 +1,90 @@
+{
+  "name": "blosc",
+  "version": "1.21.3",
+  "build": "h6c2663c_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/win-64",
+  "subdir": "win-64",
+  "fn": "blosc-1.21.3-h6c2663c_0.conda",
+  "md5": "ca4efb4d157aa1ef9a6e901939aabc99",
+  "url": "https://repo.anaconda.com/pkgs/main/win-64/blosc-1.21.3-h6c2663c_0.conda",
+  "sha256": "47d3335a879acd7c2c145d888829e20fbe373ae2777f1d38e4671283237c13c2",
+  "arch": "x86_64",
+  "platform": "win32",
+  "depends": [
+    "lz4-c >=1.9.4,<1.10.0a0",
+    "vc >=14.1,<15.0a0",
+    "vs2015_runtime >=14.16.27012,<15.0a0",
+    "zlib >=1.2.12,<1.3.0a0",
+    "zstd >=1.5.2,<1.6.0a0"
+  ],
+  "constrains": [],
+  "license": "BSD-3-Clause",
+  "license_family": "BSD",
+  "timestamp": 1675247818708,
+  "size": 88529,
+  "requested_spec": "pkgs/main/win-64::blosc==1.21.3=h6c2663c_0",
+  "package_tarball_full_path": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\blosc-1.21.3-h6c2663c_0.conda",
+  "extracted_package_dir": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\blosc-1.21.3-h6c2663c_0",
+  "files": [
+    "Library/bin/blosc.dll",
+    "Library/include/blosc-export.h",
+    "Library/include/blosc.h",
+    "Library/lib/blosc.lib",
+    "Library/lib/libblosc.lib",
+    "Library/lib/pkgconfig/blosc.pc"
+  ],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": [
+      {
+        "_path": "Library/bin/blosc.dll",
+        "path_type": "hardlink",
+        "sha256": "a21580c0c6eb967a9442f4e0559203c99781a530679bd8c7c6c408c4f27c7b11",
+        "size_in_bytes": 54272,
+        "sha256_in_prefix": "a21580c0c6eb967a9442f4e0559203c99781a530679bd8c7c6c408c4f27c7b11"
+      },
+      {
+        "_path": "Library/include/blosc-export.h",
+        "path_type": "hardlink",
+        "sha256": "35845da65bd13b4b610752116d8c0cae703cf22a86a007574133c35bc8395b20",
+        "size_in_bytes": 1639,
+        "sha256_in_prefix": "35845da65bd13b4b610752116d8c0cae703cf22a86a007574133c35bc8395b20"
+      },
+      {
+        "_path": "Library/include/blosc.h",
+        "path_type": "hardlink",
+        "sha256": "55d301ffbb6afb3a48f793325c78fdb9d90d698be2000ba822e921db5a14095f",
+        "size_in_bytes": 19487,
+        "sha256_in_prefix": "55d301ffbb6afb3a48f793325c78fdb9d90d698be2000ba822e921db5a14095f"
+      },
+      {
+        "_path": "Library/lib/blosc.lib",
+        "path_type": "hardlink",
+        "sha256": "92cc3e91bfb5dfa81a112239bf5bf74916e3006b0a84931062e45ea0bc99bb4e",
+        "size_in_bytes": 7022,
+        "sha256_in_prefix": "92cc3e91bfb5dfa81a112239bf5bf74916e3006b0a84931062e45ea0bc99bb4e"
+      },
+      {
+        "_path": "Library/lib/libblosc.lib",
+        "path_type": "hardlink",
+        "sha256": "cf42bb587f657f9fc84ecd343cd93b8a7d7a1fc50eb4134e869af8c64e2b0172",
+        "size_in_bytes": 188634,
+        "sha256_in_prefix": "cf42bb587f657f9fc84ecd343cd93b8a7d7a1fc50eb4134e869af8c64e2b0172"
+      },
+      {
+        "_path": "Library/lib/pkgconfig/blosc.pc",
+        "prefix_placeholder": "C:/b/abs_aft804j5_4/croot/blosc_1675247587926/_h_env",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "sha256": "6a4992bcadb55115d2e6a3af841544751c6a8a164d353657048eae80f30f0db6",
+        "size_in_bytes": 381,
+        "sha256_in_prefix": "929f800693c15f094f25caf76339c94a8af88cd239ee44a45827f7b340b8878e"
+      }
+    ]
+  },
+  "link": {
+    "source": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\blosc-1.21.3-h6c2663c_0",
+    "type": 1
+  }
+}

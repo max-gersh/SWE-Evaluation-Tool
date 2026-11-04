@@ -1,0 +1,34 @@
+{
+  "name": "python_abi",
+  "version": "3.12",
+  "build": "5_cp312",
+  "build_number": 5,
+  "channel": "https://conda.anaconda.org/conda-forge/win-64",
+  "subdir": "win-64",
+  "fn": "python_abi-3.12-5_cp312.conda",
+  "md5": "e8681f534453af7afab4cd2bc1423eec",
+  "url": "https://conda.anaconda.org/conda-forge/win-64/python_abi-3.12-5_cp312.conda",
+  "sha256": "9486662af81a219e96d343449eff242f38d7c5128ced5ce5acf85857265058d6",
+  "arch": "x86_64",
+  "platform": "win32",
+  "depends": [],
+  "constrains": [
+    "python 3.12.* *_cpython"
+  ],
+  "license": "BSD-3-Clause",
+  "license_family": "BSD",
+  "timestamp": 1723823139725,
+  "size": 6730,
+  "requested_spec": "conda-forge/win-64::python_abi==3.12=5_cp312",
+  "package_tarball_full_path": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\python_abi-3.12-5_cp312.conda",
+  "extracted_package_dir": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\python_abi-3.12-5_cp312",
+  "files": [],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": []
+  },
+  "link": {
+    "source": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\python_abi-3.12-5_cp312",
+    "type": 1
+  }
+}

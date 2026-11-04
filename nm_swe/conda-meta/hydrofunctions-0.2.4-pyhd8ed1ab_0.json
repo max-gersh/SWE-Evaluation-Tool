@@ -1,0 +1,247 @@
+{
+  "name": "hydrofunctions",
+  "version": "0.2.4",
+  "build": "pyhd8ed1ab_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/noarch",
+  "subdir": "noarch",
+  "fn": "hydrofunctions-0.2.4-pyhd8ed1ab_0.conda",
+  "md5": "e8056fb4f1851749d06fa37b7a77b4cd",
+  "url": "https://conda.anaconda.org/conda-forge/noarch/hydrofunctions-0.2.4-pyhd8ed1ab_0.conda",
+  "sha256": "4304e1d4dafe13448b04f5cb91b40c3c913e2563de4c7cd1fbcedde0e09f3424",
+  "depends": [
+    "importlib-metadata",
+    "ipython",
+    "matplotlib-base",
+    "numpy >=1.16.0",
+    "pandas >=2",
+    "pyarrow",
+    "python >=3.9",
+    "requests"
+  ],
+  "constrains": [],
+  "noarch": "python",
+  "license": "MIT",
+  "license_family": "MIT",
+  "package_type": "noarch_python",
+  "timestamp": 1736762386663,
+  "size": 39224,
+  "requested_spec": "conda-forge/noarch::hydrofunctions==0.2.4=pyhd8ed1ab_0",
+  "package_tarball_full_path": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\hydrofunctions-0.2.4-pyhd8ed1ab_0.conda",
+  "extracted_package_dir": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\hydrofunctions-0.2.4-pyhd8ed1ab_0",
+  "files": [
+    "Lib/site-packages/hydrofunctions-0.2.4.dist-info/INSTALLER",
+    "Lib/site-packages/hydrofunctions-0.2.4.dist-info/LICENSE",
+    "Lib/site-packages/hydrofunctions-0.2.4.dist-info/METADATA",
+    "Lib/site-packages/hydrofunctions-0.2.4.dist-info/RECORD",
+    "Lib/site-packages/hydrofunctions-0.2.4.dist-info/REQUESTED",
+    "Lib/site-packages/hydrofunctions-0.2.4.dist-info/WHEEL",
+    "Lib/site-packages/hydrofunctions-0.2.4.dist-info/direct_url.json",
+    "Lib/site-packages/hydrofunctions-0.2.4.dist-info/top_level.txt",
+    "Lib/site-packages/hydrofunctions/__init__.py",
+    "Lib/site-packages/hydrofunctions/charts.py",
+    "Lib/site-packages/hydrofunctions/exceptions.py",
+    "Lib/site-packages/hydrofunctions/helpers.py",
+    "Lib/site-packages/hydrofunctions/hydrofunctions.py",
+    "Lib/site-packages/hydrofunctions/logging.py",
+    "Lib/site-packages/hydrofunctions/station.py",
+    "Lib/site-packages/hydrofunctions/usgs_rdb.py",
+    "Lib/site-packages/hydrofunctions/validate.py",
+    "Lib/site-packages/hydrofunctions/waterwatch.py",
+    "Lib/site-packages/hydrofunctions/__pycache__/__init__.cpython-312.pyc",
+    "Lib/site-packages/hydrofunctions/__pycache__/charts.cpython-312.pyc",
+    "Lib/site-packages/hydrofunctions/__pycache__/exceptions.cpython-312.pyc",
+    "Lib/site-packages/hydrofunctions/__pycache__/helpers.cpython-312.pyc",
+    "Lib/site-packages/hydrofunctions/__pycache__/hydrofunctions.cpython-312.pyc",
+    "Lib/site-packages/hydrofunctions/__pycache__/logging.cpython-312.pyc",
+    "Lib/site-packages/hydrofunctions/__pycache__/station.cpython-312.pyc",
+    "Lib/site-packages/hydrofunctions/__pycache__/usgs_rdb.cpython-312.pyc",
+    "Lib/site-packages/hydrofunctions/__pycache__/validate.cpython-312.pyc",
+    "Lib/site-packages/hydrofunctions/__pycache__/waterwatch.cpython-312.pyc"
+  ],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": [
+      {
+        "_path": "site-packages/hydrofunctions-0.2.4.dist-info/INSTALLER",
+        "path_type": "hardlink",
+        "sha256": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "size_in_bytes": 5,
+        "sha256_in_prefix": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8"
+      },
+      {
+        "_path": "site-packages/hydrofunctions-0.2.4.dist-info/LICENSE",
+        "path_type": "hardlink",
+        "sha256": "2c59f00a32ee55ad8c09d1248940c7df75c26f1ae8fd2657a273bf00824b3188",
+        "size_in_bytes": 1095,
+        "sha256_in_prefix": "2c59f00a32ee55ad8c09d1248940c7df75c26f1ae8fd2657a273bf00824b3188"
+      },
+      {
+        "_path": "site-packages/hydrofunctions-0.2.4.dist-info/METADATA",
+        "path_type": "hardlink",
+        "sha256": "206e4b033cbee255a1a12c52eeb325f7e40a61070eadc06664cf0cdaab49f29c",
+        "size_in_bytes": 8226,
+        "sha256_in_prefix": "206e4b033cbee255a1a12c52eeb325f7e40a61070eadc06664cf0cdaab49f29c"
+      },
+      {
+        "_path": "site-packages/hydrofunctions-0.2.4.dist-info/RECORD",
+        "path_type": "hardlink",
+        "sha256": "ef7ded9694649793483d046b7e6a5a37984fc19794dc015423ab47f9b6400725",
+        "size_in_bytes": 2113,
+        "sha256_in_prefix": "ef7ded9694649793483d046b7e6a5a37984fc19794dc015423ab47f9b6400725"
+      },
+      {
+        "_path": "site-packages/hydrofunctions-0.2.4.dist-info/REQUESTED",
+        "path_type": "hardlink",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_in_bytes": 0,
+        "sha256_in_prefix": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "_path": "site-packages/hydrofunctions-0.2.4.dist-info/WHEEL",
+        "path_type": "hardlink",
+        "sha256": "227f454cdc5e3fad0a9d3906c3bc24ea624f61dfdd4128c46665dd05d30223ef",
+        "size_in_bytes": 91,
+        "sha256_in_prefix": "227f454cdc5e3fad0a9d3906c3bc24ea624f61dfdd4128c46665dd05d30223ef"
+      },
+      {
+        "_path": "site-packages/hydrofunctions-0.2.4.dist-info/direct_url.json",
+        "path_type": "hardlink",
+        "sha256": "f961a0ad504f9cf093aa0e554c0186420142a7db6d021c95f38f07db0bcea33d",
+        "size_in_bytes": 110,
+        "sha256_in_prefix": "f961a0ad504f9cf093aa0e554c0186420142a7db6d021c95f38f07db0bcea33d"
+      },
+      {
+        "_path": "site-packages/hydrofunctions-0.2.4.dist-info/top_level.txt",
+        "path_type": "hardlink",
+        "sha256": "b29a85e37941946ad8af01c5d8ce0a61d30778487d7ee6c41249bbea434414d2",
+        "size_in_bytes": 15,
+        "sha256_in_prefix": "b29a85e37941946ad8af01c5d8ce0a61d30778487d7ee6c41249bbea434414d2"
+      },
+      {
+        "_path": "site-packages/hydrofunctions/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "23df3eadf2ba7f9aec89ce397b5770716964728ea498f58ec0297382c413bab6",
+        "size_in_bytes": 2722,
+        "sha256_in_prefix": "23df3eadf2ba7f9aec89ce397b5770716964728ea498f58ec0297382c413bab6"
+      },
+      {
+        "_path": "site-packages/hydrofunctions/charts.py",
+        "path_type": "hardlink",
+        "sha256": "8d239a829bdc254f3185f0abcfa46effd3f31b9b42dbf5d1d3fb54b2cc7f582b",
+        "size_in_bytes": 16117,
+        "sha256_in_prefix": "8d239a829bdc254f3185f0abcfa46effd3f31b9b42dbf5d1d3fb54b2cc7f582b"
+      },
+      {
+        "_path": "site-packages/hydrofunctions/exceptions.py",
+        "path_type": "hardlink",
+        "sha256": "ba5e3c760d437e14bbcd44b0ce9a53a776123402c62898631d7af7a050d30abd",
+        "size_in_bytes": 3938,
+        "sha256_in_prefix": "ba5e3c760d437e14bbcd44b0ce9a53a776123402c62898631d7af7a050d30abd"
+      },
+      {
+        "_path": "site-packages/hydrofunctions/helpers.py",
+        "path_type": "hardlink",
+        "sha256": "6afb25afee00f420641acbcf20ecdc5360ebf2bd54243305441e293ff9e632ec",
+        "size_in_bytes": 1694,
+        "sha256_in_prefix": "6afb25afee00f420641acbcf20ecdc5360ebf2bd54243305441e293ff9e632ec"
+      },
+      {
+        "_path": "site-packages/hydrofunctions/hydrofunctions.py",
+        "path_type": "hardlink",
+        "sha256": "058224c78fb579ea6998b81e83f9896aba835eaf8afc42fba87f7238688d3afa",
+        "size_in_bytes": 29820,
+        "sha256_in_prefix": "058224c78fb579ea6998b81e83f9896aba835eaf8afc42fba87f7238688d3afa"
+      },
+      {
+        "_path": "site-packages/hydrofunctions/logging.py",
+        "path_type": "hardlink",
+        "sha256": "002264e970f025b0cc48916f725f3c79029af64649f435db90317f108f079a1c",
+        "size_in_bytes": 4828,
+        "sha256_in_prefix": "002264e970f025b0cc48916f725f3c79029af64649f435db90317f108f079a1c"
+      },
+      {
+        "_path": "site-packages/hydrofunctions/station.py",
+        "path_type": "hardlink",
+        "sha256": "b096b2d4974e4b6a5377c58d013bc05ccece4e3c87db3100851ea305a0c1243f",
+        "size_in_bytes": 14580,
+        "sha256_in_prefix": "b096b2d4974e4b6a5377c58d013bc05ccece4e3c87db3100851ea305a0c1243f"
+      },
+      {
+        "_path": "site-packages/hydrofunctions/usgs_rdb.py",
+        "path_type": "hardlink",
+        "sha256": "5f102cf7433575602fee1ec102de2302fac3ab0fbc6bf8e798913fd91a4adf6b",
+        "size_in_bytes": 24639,
+        "sha256_in_prefix": "5f102cf7433575602fee1ec102de2302fac3ab0fbc6bf8e798913fd91a4adf6b"
+      },
+      {
+        "_path": "site-packages/hydrofunctions/validate.py",
+        "path_type": "hardlink",
+        "sha256": "1bf1a6f079b1c721ebfa98bc63b6704faa72a4d5ff668fd2c767fc87b0fb57bc",
+        "size_in_bytes": 6189,
+        "sha256_in_prefix": "1bf1a6f079b1c721ebfa98bc63b6704faa72a4d5ff668fd2c767fc87b0fb57bc"
+      },
+      {
+        "_path": "site-packages/hydrofunctions/waterwatch.py",
+        "path_type": "hardlink",
+        "sha256": "b99829f9a130889e7d300113ea1ce73524cae64960c582fecf8b355f91d1b9d8",
+        "size_in_bytes": 4648,
+        "sha256_in_prefix": "b99829f9a130889e7d300113ea1ce73524cae64960c582fecf8b355f91d1b9d8"
+      },
+      {
+        "_path": "Lib/site-packages/hydrofunctions/__pycache__/__init__.cpython-312.pyc",
+        "path_type": "pyc_file",
+        "size_in_bytes": 3128
+      },
+      {
+        "_path": "Lib/site-packages/hydrofunctions/__pycache__/charts.cpython-312.pyc",
+        "path_type": "pyc_file",
+        "size_in_bytes": 14446
+      },
+      {
+        "_path": "Lib/site-packages/hydrofunctions/__pycache__/exceptions.cpython-312.pyc",
+        "path_type": "pyc_file",
+        "size_in_bytes": 4961
+      },
+      {
+        "_path": "Lib/site-packages/hydrofunctions/__pycache__/helpers.cpython-312.pyc",
+        "path_type": "pyc_file",
+        "size_in_bytes": 1961
+      },
+      {
+        "_path": "Lib/site-packages/hydrofunctions/__pycache__/hydrofunctions.cpython-312.pyc",
+        "path_type": "pyc_file",
+        "size_in_bytes": 27935
+      },
+      {
+        "_path": "Lib/site-packages/hydrofunctions/__pycache__/logging.cpython-312.pyc",
+        "path_type": "pyc_file",
+        "size_in_bytes": 5130
+      },
+      {
+        "_path": "Lib/site-packages/hydrofunctions/__pycache__/station.cpython-312.pyc",
+        "path_type": "pyc_file",
+        "size_in_bytes": 15181
+      },
+      {
+        "_path": "Lib/site-packages/hydrofunctions/__pycache__/usgs_rdb.cpython-312.pyc",
+        "path_type": "pyc_file",
+        "size_in_bytes": 24727
+      },
+      {
+        "_path": "Lib/site-packages/hydrofunctions/__pycache__/validate.cpython-312.pyc",
+        "path_type": "pyc_file",
+        "size_in_bytes": 6232
+      },
+      {
+        "_path": "Lib/site-packages/hydrofunctions/__pycache__/waterwatch.cpython-312.pyc",
+        "path_type": "pyc_file",
+        "size_in_bytes": 5217
+      }
+    ]
+  },
+  "link": {
+    "source": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\hydrofunctions-0.2.4-pyhd8ed1ab_0",
+    "type": 1
+  }
+}

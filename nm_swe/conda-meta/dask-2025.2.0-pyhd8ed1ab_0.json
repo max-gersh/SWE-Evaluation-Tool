@@ -1,0 +1,44 @@
+{
+  "name": "dask",
+  "version": "2025.2.0",
+  "build": "pyhd8ed1ab_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/noarch",
+  "subdir": "noarch",
+  "fn": "dask-2025.2.0-pyhd8ed1ab_0.conda",
+  "md5": "60455cddc5f868d7ad37a504ff4ffd37",
+  "url": "https://conda.anaconda.org/conda-forge/noarch/dask-2025.2.0-pyhd8ed1ab_0.conda",
+  "sha256": "8be4982c98f4829a92b690dd47f516474d8e69d00f992bbf89764e08d535b679",
+  "depends": [
+    "bokeh >=3.1.0",
+    "cytoolz >=0.11.0",
+    "dask-core >=2025.2.0,<2025.2.1.0a0",
+    "distributed >=2025.2.0,<2025.2.1.0a0",
+    "jinja2 >=2.10.3",
+    "lz4 >=4.3.2",
+    "numpy >=1.24",
+    "pandas >=2.0",
+    "pyarrow >=14.0.1",
+    "python >=3.10"
+  ],
+  "constrains": [
+    "openssl !=1.1.1e"
+  ],
+  "noarch": "python",
+  "license": "BSD-3-Clause",
+  "package_type": "noarch_python",
+  "timestamp": 1739495288724,
+  "size": 7598,
+  "requested_spec": "conda-forge/noarch::dask==2025.2.0=pyhd8ed1ab_0",
+  "package_tarball_full_path": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\dask-2025.2.0-pyhd8ed1ab_0.conda",
+  "extracted_package_dir": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\dask-2025.2.0-pyhd8ed1ab_0",
+  "files": [],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": []
+  },
+  "link": {
+    "source": "C:\\Users\\mgersh\\AppData\\Local\\miniconda3\\pkgs\\dask-2025.2.0-pyhd8ed1ab_0",
+    "type": 1
+  }
+}

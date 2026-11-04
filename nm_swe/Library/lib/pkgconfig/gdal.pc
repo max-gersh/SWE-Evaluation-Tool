@@ -1,0 +1,17 @@
+CONFIG_VERSION=3.6.2
+CONFIG_INST_PREFIX=C:/Users/mgersh/nm_swe/nm_swe/Library
+CONFIG_INST_LIBS=-LIBPATH:C:/Users/mgersh/nm_swe/nm_swe/Library/lib gdal
+CONFIG_INST_CFLAGS=-IC:/Users/mgersh/nm_swe/nm_swe/Library/include
+CONFIG_INST_DATA=C:/Users/mgersh/nm_swe/nm_swe/Library/share/gdal
+prefix=${CONFIG_INST_PREFIX}
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${exec_prefix}/include
+datadir=${CONFIG_INST_DATA}
+
+Name: libgdal
+Description: Geospatial Data Abstraction Library
+Version: ${CONFIG_VERSION}
+Libs: ${CONFIG_INST_LIBS}
+Libs.private: C:/Users/mgersh/nm_swe/nm_swe/Library/lib/iconv.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/charset.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/libssl.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/libcrypto.lib crypt32 C:/Users/mgersh/nm_swe/nm_swe/Library/lib/liblzma.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/deflate.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/liblz4.lib wbemuuid C:/Users/mgersh/nm_swe/nm_swe/Library/lib/geotiff_i.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/tiff.lib ws2_32 C:/Users/mgersh/nm_swe/nm_swe/Library/lib/Lerc.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/zstd.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/jpeg.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/poppler.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/libpng.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/netcdf.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/hdf5_hl.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/zlib.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/zip.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/blosc.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/cfitsio.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/libcurl.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/libwebp.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/hdf.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/mfhdf.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/xdr.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/libkea.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/hdf5_cpp.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/hdf5.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/openjp2.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/tiledb.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/kmlbase.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/kmldom.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/kmlengine.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/minizip.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/uriparser.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/z.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/pcre2-8.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/spatialite_i.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/sqlite3.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/xerces-c_3.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/libpq.lib "C:/Program Files (x86)/Windows Kits/10/Lib/10.0.20348.0/um/x64/odbccp32.lib" "C:/Program Files (x86)/Windows Kits/10/Lib/10.0.20348.0/um/x64/WS2_32.Lib" legacy_stdio_definitions.lib odbccp32.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/freexl_i.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/libexpat.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/libxml2.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/geos_c.lib psapi C:/Users/mgersh/nm_swe/nm_swe/Library/lib/proj.lib
+Cflags: ${CONFIG_INST_CFLAGS}

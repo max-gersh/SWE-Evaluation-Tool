@@ -1,0 +1,12 @@
+prefix=C:/Users/mgersh/nm_swe/nm_swe/Library
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=${exec_prefix}/lib
+
+Name: GEOS
+Description: Geometry Engine, Open Source - C API
+Requires:
+Version: 3.10.6
+Cflags: -I${includedir}
+Libs: -L${libdir} -lgeos_c
+Libs.private: -lgeos -lstdc++

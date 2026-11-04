@@ -1,0 +1,15 @@
+prefix=C:/Users/mgersh/nm_swe/nm_swe/Library
+exec_prefix=${prefix}
+bindir=C:/Users/mgersh/nm_swe/nm_swe/Library/bin
+libdir=C:/Users/mgersh/nm_swe/nm_swe/Library/lib
+includedir=C:/Users/mgersh/nm_swe/nm_swe/Library/include
+
+zipcmp=C:/Users/mgersh/nm_swe/nm_swe/Library/bin/zipcmp
+
+Name: libzip
+Description: library for handling zip archives
+Version: 1.8.0
+Libs:  -L${libdir} -lzip
+Libs.private:  -ladvapi32 -lbz2 -llzma -lZstd::Zstd -lssl -lcrypto -lz
+Cflags: -I${includedir}
+

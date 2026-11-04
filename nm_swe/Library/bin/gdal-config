@@ -1,0 +1,74 @@
+#!/bin/sh
+CONFIG_LIBS="-LIBPATH:C:/Users/mgersh/nm_swe/nm_swe/Library/lib gdal"
+CONFIG_DEP_LIBS="C:/Users/mgersh/nm_swe/nm_swe/Library/lib/iconv.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/charset.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/libssl.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/libcrypto.lib crypt32 C:/Users/mgersh/nm_swe/nm_swe/Library/lib/liblzma.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/deflate.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/liblz4.lib wbemuuid C:/Users/mgersh/nm_swe/nm_swe/Library/lib/geotiff_i.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/tiff.lib ws2_32 C:/Users/mgersh/nm_swe/nm_swe/Library/lib/Lerc.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/zstd.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/jpeg.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/poppler.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/libpng.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/netcdf.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/hdf5_hl.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/zlib.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/zip.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/blosc.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/cfitsio.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/libcurl.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/libwebp.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/hdf.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/mfhdf.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/xdr.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/libkea.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/hdf5_cpp.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/hdf5.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/openjp2.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/tiledb.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/kmlbase.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/kmldom.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/kmlengine.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/minizip.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/uriparser.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/z.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/pcre2-8.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/spatialite_i.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/sqlite3.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/xerces-c_3.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/libpq.lib "C:/Program Files (x86)/Windows Kits/10/Lib/10.0.20348.0/um/x64/odbccp32.lib" "C:/Program Files (x86)/Windows Kits/10/Lib/10.0.20348.0/um/x64/WS2_32.Lib" legacy_stdio_definitions.lib odbccp32.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/freexl_i.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/libexpat.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/libxml2.lib C:/Users/mgersh/nm_swe/nm_swe/Library/lib/geos_c.lib psapi C:/Users/mgersh/nm_swe/nm_swe/Library/lib/proj.lib"
+CONFIG_PREFIX="C:/Users/mgersh/nm_swe/nm_swe/Library"
+CONFIG_CFLAGS="-IC:/Users/mgersh/nm_swe/nm_swe/Library/include"
+CONFIG_DATA="C:/Users/mgersh/nm_swe/nm_swe/Library/share/gdal"
+CONFIG_VERSION="3.6.2"
+CONFIG_GNM_ENABLED=yes
+CONFIG_FORMATS="JPEG raw GTIFF MEM vrt Derived HFA SDTS NITF GXF AAIGrid CEOS SAR_CEOS XPM DTED JDEM Envisat ELAS FIT L1B RS2 ILWIS RMF Leveller SGI SRTMHGT IDRISI GSG ERS PALSARJaxa DIMAP GFF COSAR PDS ADRG COASP TSX Terragen BLX MSGN TIL R northwood SAGA XYZ ESRIC HF2 KMLSUPEROVERLAY CTG ZMap NGSGEOID IRIS MAP CALS SAFE SENTINEL2 PRF MRF WMTS GRIB BMP TGA STACTA OGCAPI BSB AIGrid ARG USGSDEM AirSAR OZI PCIDSK SIGDEM RIK STACIT PDF PNG GIF WCS HTTP netCDF Zarr DAAS EEDA FITS HDF5 PLMOSAIC WMS WEBP HDF4 Rasterlite MBTiles PostGISRaster KEA JP2OpenJPEG TileDB PCRaster MEM geojson TAB Shape KML VRT AVC GML CSV DGN GMT NTF S57 Tiger Geoconcept GeoRSS DXF PGDump GPSBabel EDIGEO SXF OpenFileGDB WAsP Selafin JML VDV FlatGeobuf MapML SDTS GPX GMLAS SVG CSW LIBKML NAS PLSCENES WFS NGW Elastic Idrisi PDS SQLite GeoPackage OSM VFK MVT AmigoCloud Carto ILI PG MSSQLSpatial ODBC PGeo XLSX XLS CAD ODS LVBAG"
+usage()
+
+{
+	cat <<EOF
+Usage: gdal-config [OPTIONS]
+Options:
+	[--prefix[=DIR]]
+	[--libs]
+	[--dep-libs]
+	[--cflags]
+	[--datadir]
+	[--version]
+	[--ogr-enabled]
+	[--gnm-enabled]
+	[--formats]
+EOF
+	exit $1
+}
+
+if test $# -eq 0; then
+	usage 1 1>&2
+fi
+
+case $1 in
+  --libs)
+    echo $CONFIG_LIBS
+    ;;
+
+  --dep-libs)
+    echo $CONFIG_DEP_LIBS
+    ;;
+
+  --cflags)
+    echo $CONFIG_CFLAGS
+    ;;
+
+  --datadir)
+    echo $CONFIG_DATA
+    ;;
+
+  --prefix)
+    echo $CONFIG_PREFIX
+    ;;
+
+  --version)
+    echo $CONFIG_VERSION
+    ;;
+
+  --ogr-enabled)
+    echo yes
+    ;;
+
+  --gnm-enabled)
+    echo $CONFIG_GNM_ENABLED
+    ;;
+
+  --formats)
+    echo $CONFIG_FORMATS
+    ;;
+
+  *)
+    usage 1 1>&2
+    ;;
+
+esac

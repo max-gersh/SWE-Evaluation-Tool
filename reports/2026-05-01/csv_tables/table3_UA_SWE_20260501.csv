@@ -1,0 +1,113 @@
+HUC6 Basin,HUC8 Subbasin,Elevation Band (ft.),Median SWE (in.),Mean SWE (in.),Estimated Volume (af),Volume Change since 2026-04-26 (af)
+Rio Grande Headwaters,Rio Grande Headwaters,7000-8000',0.0,0.0,0.0,0.0
+Rio Grande Headwaters,Rio Grande Headwaters,8000-9000',0.0,0.0,0.0,0.0
+Rio Grande Headwaters,Rio Grande Headwaters,9000-10000',0.0,0.08691991120576859,1234.8635743769712,1178.827755114545
+Rio Grande Headwaters,Rio Grande Headwaters,10000-11000',0.43306562304496765,0.6812557578086853,14643.507670662508,9868.01045870368
+Rio Grande Headwaters,Rio Grande Headwaters,11000-12000',1.1810879707336426,2.9545657634735107,65610.6786220718,16633.812945040547
+Rio Grande Headwaters,Rio Grande Headwaters,12000-13000',8.18887710571289,8.4678955078125,51223.484885761776,5904.515900169172
+Rio Grande Headwaters,Rio Grande Headwaters,13000-14000',14.507697105407715,14.062820434570312,1853.3327095406187,135.93853492789162
+Rio Grande Headwaters,Alamosa-Trinchera,7000-8000',0.0,0.0,0.0,0.0
+Rio Grande Headwaters,Alamosa-Trinchera,8000-9000',0.0,0.0058354781940579414,190.4180180168139,190.4180180168139
+Rio Grande Headwaters,Alamosa-Trinchera,9000-10000',0.0,0.0642847865819931,1294.5312427112035,1294.5312427112035
+Rio Grande Headwaters,Alamosa-Trinchera,10000-11000',0.1574784219264984,0.22610510885715485,2714.6241219856,2699.058617333172
+Rio Grande Headwaters,Alamosa-Trinchera,11000-12000',0.47243523597717285,1.4738918542861938,12703.527598353307,4343.294830215211
+Rio Grande Headwaters,Alamosa-Trinchera,12000-13000',4.370025634765625,5.067726135253906,8882.715090691067,1034.5873445514708
+Rio Grande Headwaters,Alamosa-Trinchera,13000-14000',7.952659606933594,7.314871788024902,482.01182570073155,35.28184657500367
+Rio Grande Headwaters,San Luis,7000-8000',0.0,9.647048500482924e-06,0.5188502401796752,0.5188502401796752
+Rio Grande Headwaters,San Luis,8000-9000',0.0,0.03562493622303009,365.27053766541525,365.27053766541525
+Rio Grande Headwaters,San Luis,9000-10000',0.19684800505638123,0.24688021838665009,1874.086908459789,1874.086908459789
+Rio Grande Headwaters,San Luis,10000-11000',0.39369601011276245,0.48186662793159485,2889.4767296132145,2889.4767296132145
+Rio Grande Headwaters,San Luis,11000-12000',0.7086527943611145,1.1300621032714844,4929.595419572384,3324.2729337582314
+Rio Grande Headwaters,San Luis,12000-13000',4.566873550415039,4.876392841339111,11632.10208362176,2485.8111200148487
+Rio Grande Headwaters,San Luis,13000-14000',6.850310325622559,7.224321365356445,380.836010896767,52.403819369454936
+Rio Grande Headwaters,Saguache,7000-8000',0.0,0.0,0.0,0.0
+Rio Grande Headwaters,Saguache,8000-9000',0.0,0.0,0.0,0.0
+Rio Grande Headwaters,Saguache,9000-10000',0.0,0.01336370687931776,221.03020251292335,221.03020251292335
+Rio Grande Headwaters,Saguache,10000-11000',0.0787392109632492,0.13306845724582672,1716.8753498039812,1699.7532937436783
+Rio Grande Headwaters,Saguache,11000-12000',0.47243523597717285,0.4979359805583954,2309.921063864629,2084.74008692371
+Rio Grande Headwaters,Saguache,12000-13000',1.771632194519043,2.2845306396484375,2167.756229042009,607.0548888237877
+Rio Grande Headwaters,Saguache,13000-14000',11.614031791687012,11.469677925109863,453.4751038292027,33.20644679257538
+Rio Grande Headwaters,Conejos,7000-8000',0.0,0.0,0.0,0.0
+Rio Grande Headwaters,Conejos,8000-9000',0.0,0.0,0.0,0.0
+Rio Grande Headwaters,Conejos,9000-10000',0.0,0.00339474412612617,37.35721493635591,37.35721493635591
+Rio Grande Headwaters,Conejos,10000-11000',0.0787392109632492,0.34712329506874084,3275.501089144887,1821.163962639257
+Rio Grande Headwaters,Conejos,11000-12000',3.9566450119018555,4.5314412117004395,22693.469528718055,3825.4827353205073
+Rio Grande Headwaters,Conejos,12000-13000',9.842400550842285,10.476571083068848,5108.599228954629,522.4823225529717
+Upper Rio Grande,Upper Rio Grande,5000-6000',0.0,0.0,0.0,0.0
+Upper Rio Grande,Upper Rio Grande,6000-7000',0.0,0.0,0.0,0.0
+Upper Rio Grande,Upper Rio Grande,7000-8000',0.0,0.0,0.0,0.0
+Upper Rio Grande,Upper Rio Grande,8000-9000',0.0,0.0,0.0,0.0
+Upper Rio Grande,Upper Rio Grande,9000-10000',0.0,0.00356150115840137,86.12914124449817,86.12914124449817
+Upper Rio Grande,Upper Rio Grande,10000-11000',0.0393696054816246,0.07934489101171494,1291.418092763839,1124.3483348677744
+Upper Rio Grande,Upper Rio Grande,11000-12000',0.19684800505638123,0.6092752814292908,4641.115151457175,1640.604483210322
+Upper Rio Grande,Upper Rio Grande,12000-13000',0.5905439853668213,2.412604570388794,2829.8090612789824,379.7986629216052
+Upper Rio Grande,Rio Chama,5000-6000',0.0,0.0,0.0,0.0
+Upper Rio Grande,Rio Chama,6000-7000',0.0,0.0,0.0,0.0
+Upper Rio Grande,Rio Chama,7000-8000',0.0,0.0,0.0,0.0
+Upper Rio Grande,Rio Chama,8000-9000',0.0,0.0,0.0,0.0
+Upper Rio Grande,Rio Chama,9000-10000',0.0,0.000710734399035573,14.52780790332126,14.52780790332126
+Upper Rio Grande,Rio Chama,10000-11000',0.0,0.16556362807750702,1869.9359078000455,541.1606189524962
+Upper Rio Grande,Rio Chama,11000-12000',4.881830215454102,5.6066179275512695,4507.25111138472,474.2288000111557
+Upper Rio Grande,Rio Chama,12000-13000',12.20457649230957,11.338444709777832,896.57310819882,70.04476779381764
+Rio Grande-Elephant Butte,Rio Grande-Santa Fe,5000-6000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Grande-Santa Fe,6000-7000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Grande-Santa Fe,7000-8000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Grande-Santa Fe,8000-9000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Grande-Santa Fe,9000-10000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Grande-Santa Fe,10000-11000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Grande-Santa Fe,11000-12000',0.0,0.011248459108173847,1.0377004803593504,1.0377004803593504
+Rio Grande-Elephant Butte,Jemez,5000-6000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Jemez,6000-7000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Jemez,7000-8000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Jemez,8000-9000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Jemez,9000-10000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Jemez,10000-11000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Grande-Albuquerque,4000-5000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Grande-Albuquerque,5000-6000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Grande-Albuquerque,6000-7000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Grande-Albuquerque,7000-8000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Grande-Albuquerque,8000-9000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Grande-Albuquerque,9000-10000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Grande-Albuquerque,10000-11000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Arroyo Chico,5000-6000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Arroyo Chico,6000-7000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Arroyo Chico,7000-8000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Arroyo Chico,8000-9000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Arroyo Chico,9000-10000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Arroyo Chico,10000-11000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,North Plains,6000-7000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,North Plains,7000-8000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,North Plains,8000-9000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio San Jose,5000-6000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio San Jose,6000-7000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio San Jose,7000-8000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio San Jose,8000-9000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio San Jose,9000-10000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio San Jose,10000-11000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Plains of San Agustin,6000-7000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Plains of San Agustin,7000-8000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Plains of San Agustin,8000-9000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Plains of San Agustin,9000-10000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Salado,4000-5000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Salado,5000-6000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Salado,6000-7000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Salado,7000-8000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Salado,8000-9000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Salado,9000-10000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Jornada Del Muerto,4000-5000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Jornada Del Muerto,5000-6000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Jornada Del Muerto,6000-7000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Jornada Del Muerto,7000-8000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Elephant Butte Reservoir,4000-5000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Elephant Butte Reservoir,5000-6000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Elephant Butte Reservoir,6000-7000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Elephant Butte Reservoir,7000-8000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Elephant Butte Reservoir,8000-9000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Elephant Butte Reservoir,9000-10000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Puerco,4000-5000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Puerco,5000-6000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Puerco,6000-7000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Puerco,7000-8000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Puerco,8000-9000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Puerco,9000-10000',0.0,0.0,0.0,0.0
+Rio Grande-Elephant Butte,Rio Puerco,10000-11000',0.0,0.0,0.0,0.0

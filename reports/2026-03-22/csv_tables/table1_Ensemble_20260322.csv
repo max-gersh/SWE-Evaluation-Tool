@@ -1,0 +1,22 @@
+HUC6 Basin,HUC8 Basin,Ensemble Mean Vol. (af),Ensemble Median Vol. (af),Ensemble Min. Vol. (af),Ensemble Max. Vol. (af),Min. Source,Max. Source
+Rio Grande Headwaters,Rio Grande Headwaters,183431.48,177526.2,172794.23,199973.98,UA_SWE,CU_SWE
+Rio Grande Headwaters,Alamosa-Trinchera,37179.77,41349.76,21302.854,48886.688,SNODAS,CU_SWE
+Rio Grande Headwaters,San Luis,28814.062,28409.482,26011.863,32020.836,CU_SWE,UA_SWE
+Rio Grande Headwaters,Saguache,19131.756,15987.072,15489.232,25918.963,UA_SWE,CU_SWE
+Rio Grande Headwaters,Conejos,70157.27,73187.06,53057.098,84227.664,UA_SWE,CU_SWE
+Rio Grande Headwaters,Total,338714.34,316412.66,314711.16,385019.16,UA_SWE,CU_SWE
+Upper Rio Grande,Upper Rio Grande,27320.361,21757.465,11887.32,48316.305,CU_SWE,SNODAS
+Upper Rio Grande,Rio Chama,55819.8,61971.688,23703.15,81784.58,UA_SWE,SNODAS
+Upper Rio Grande,Total,83140.16,73859.0,45460.61,130100.87,UA_SWE,SNODAS
+Rio Grande-Elephant Butte,Rio Grande-Santa Fe,142.58339,39.228714,8.301604,380.21988,UA_SWE,SNODAS
+Rio Grande-Elephant Butte,Jemez,274.7785,11.349848,0.0,812.98566,UA_SWE,CU_SWE
+Rio Grande-Elephant Butte,Rio Grande-Albuquerque,0.0,0.0,0.0,0.0,"SNODAS, UA_SWE, CU_SWE","SNODAS, UA_SWE, CU_SWE"
+Rio Grande-Elephant Butte,Arroyo Chico,0.0,0.0,0.0,0.0,"SNODAS, UA_SWE, CU_SWE","SNODAS, UA_SWE, CU_SWE"
+Rio Grande-Elephant Butte,North Plains,0.0,0.0,0.0,0.0,"SNODAS, UA_SWE, CU_SWE","SNODAS, UA_SWE, CU_SWE"
+Rio Grande-Elephant Butte,Rio San Jose,0.0,0.0,0.0,0.0,"SNODAS, UA_SWE, CU_SWE","SNODAS, UA_SWE, CU_SWE"
+Rio Grande-Elephant Butte,Plains of San Agustin,0.0,0.0,0.0,0.0,"SNODAS, UA_SWE, CU_SWE","SNODAS, UA_SWE, CU_SWE"
+Rio Grande-Elephant Butte,Rio Salado,0.0,0.0,0.0,0.0,"SNODAS, UA_SWE, CU_SWE","SNODAS, UA_SWE, CU_SWE"
+Rio Grande-Elephant Butte,Jornada Del Muerto,0.0,0.0,0.0,0.0,"SNODAS, UA_SWE, CU_SWE","SNODAS, UA_SWE, CU_SWE"
+Rio Grande-Elephant Butte,Elephant Butte Reservoir,0.0,0.0,0.0,0.0,"SNODAS, UA_SWE, CU_SWE","SNODAS, UA_SWE, CU_SWE"
+Rio Grande-Elephant Butte,Rio Puerco,191.71602,0.0,0.0,575.1481,"SNODAS, UA_SWE",CU_SWE
+Rio Grande-Elephant Butte,Total,609.07794,391.5698,8.301604,1427.3625,UA_SWE,CU_SWE

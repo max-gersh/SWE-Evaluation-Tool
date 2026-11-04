@@ -1,0 +1,47 @@
+# NetCDF C Configuration Summary
+==============================
+
+# General
+-------
+NetCDF Version:		4.8.1
+Dispatch Version:       3
+Configured On:		Fri, Aug  4, 2023  1:09:01 PM
+Host System:		x86_64-MSYS_NT-10.0-2.5.0(0.297/5/3)
+Build Directory: 	C:/b/abs_28hd3mstyk/croot/libnetcdf_1691154391040/work/build
+Install Prefix:         C:/Users/mgersh/nm_swe/nm_swe/Library
+
+# Compiling Options
+-----------------
+C Compiler:		C:/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/VC/Tools/MSVC/14.16.27023/bin/Hostx86/x64/cl.exe
+CFLAGS:			-DH5_BUILT_AS_DYNAMIC_LIB /MD /O2 /Ob2 /DNDEBUG
+CPPFLAGS:		 
+LDFLAGS:		/machine:x64 /LARGEADDRESSAWARE /STACK:40000000 /INCREMENTAL:NO
+AM_CFLAGS:		
+AM_CPPFLAGS:		
+AM_LDFLAGS:		
+Shared Library:		yes
+Static Library:		no
+Extra libraries:	-lmfhdf -lhdf -lhdf5 -lhdf5_hl -lzlib -lcurl -lzip
+
+# Features
+--------
+NetCDF-2 API:		yes
+HDF4 Support:		yes
+HDF5 Support:		yes
+NetCDF-4 API:		yes
+NC-4 Parallel Support:	no
+PnetCDF Support:	no
+DAP2 Support:		yes
+DAP4 Support:		yes
+Byte-Range Support:	yes
+Diskless Support:	yes
+MMap Support:		no
+JNA Support:		no
+CDF5 Support:		yes
+ERANGE Fill Support:	yes
+Relaxed Boundary Check:	yes
+SZIP Support:           no
+SZIP Write Support:     no
+Parallel Filters:       yes
+NCZarr Support:		yes
+Multi-Filter Support:	yes
