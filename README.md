@@ -2,7 +2,7 @@
 
 **[➜ Open the live SWEET Explorer](https://max-gersh.github.io/SWE-Evaluation-Tool/)**
 
-SWEET produces near-real-time ensemble estimates of snow water equivalent (SWE) volume for New Mexico watersheds by combining three gridded SWE products. It was developed by the New Mexico Office of the State Engineer (OSE), Hydrology Bureau. The repository contains:
+SWEET produces near-real-time ensemble estimates of snow water equivalent (SWE) volume for New Mexico watersheds by combining three gridded SWE products. It was developed by the New Mexico Office of the State Engineer (OSE), Hydrology Bureau in collaboration with the University of Colorado, Boulder - Institute of Arctic and Alpine Research (INSTAAR). The repository contains:
 
 - **Statewide daily ensemble and the SWEET Explorer.** An interactive map and chart page covering every HUC8 that intersects New Mexico, plus the upstream Rio Grande and San Juan headwaters in Colorado.
 - **Weekly Rio Grande report.** Figures and tables for the northern Rio Grande Basin in Colorado and New Mexico; the original SWEET product.
