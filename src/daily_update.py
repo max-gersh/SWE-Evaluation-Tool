@@ -28,6 +28,22 @@ from datetime import date, datetime, timedelta
 
 import pandas as pd
 
+import subprocess
+
+def push_pages(pub_dir, label):
+    """Replace the single gh-pages commit so the branch never accumulates history."""
+    try:
+        git = lambda *a: subprocess.run(["git", "-C", str(pub_dir), *a],
+                                        check=True, capture_output=True, text=True)
+        git("add", "-A")
+        git("commit", "--amend", "-m", f"SWEET explorer {label}")
+        git("push", "--force", "origin", "gh-pages")
+        log.info("Published to GitHub Pages")
+    except subprocess.CalledProcessError as e:
+        log.warning(f"Pages push failed: {e.stderr}")
+
+        push_pages(C.PUBLISH_DIR, datetime.date.today().isoformat())
+
 from src import config as C
 from src import build_web, run_daily, sources
 from src.climatology import dowy

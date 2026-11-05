@@ -104,7 +104,8 @@ MIN_REPORT_AREA_KM2 = 2.0
 # ---------------------------------------------------------------------------
 LOOKBACK_DAYS = 10          # missing season days this far back are caught up/retried
 KEEP_RASTER_DAYS = 14       # daily agreement/ensemble rasters older than this are deleted
-PUBLISH_DIR = None          # e.g. Path(r"\\ose-web\drought\sweet"): pages are copied here
+PUBLISH_DIR = r"C:\Users\mgersh\nm_swe_web\sweet_pages"          
+			    # e.g. Path(r"\\ose-web\drought\sweet"): pages are copied here
                             # after each update (None = leave them in web/)
 
 # ---------------------------------------------------------------------------
