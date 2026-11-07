@@ -11,7 +11,9 @@ Each run:
      folder exists for the date) and daily rasters older than KEEP_RASTER_DAYS,
      so nothing accumulates but the small statistics tables;
   4. rebuilds web/sweet_explorer.html and web/sweet_explorer_offline.html and,
-     if PUBLISH_DIR is set, copies both there.
+     if PUBLISH_DIR is set, copies both there; if PUBLISH_DIR is a git clone of
+     the gh-pages branch, replaces its single commit and force-pushes it to
+     GitHub Pages.
 
 Log: data/logs/daily_update.log
 
@@ -21,28 +23,15 @@ Usage:
     python -m src.daily_update --rebuild-only   # just rebuild/publish the page
 """
 import argparse
+import os
 import shutil
+import subprocess
 import sys
 import traceback
 from datetime import date, datetime, timedelta
+from pathlib import Path
 
 import pandas as pd
-
-import subprocess
-
-def push_pages(pub_dir, label):
-    """Replace the single gh-pages commit so the branch never accumulates history."""
-    try:
-        git = lambda *a: subprocess.run(["git", "-C", str(pub_dir), *a],
-                                        check=True, capture_output=True, text=True)
-        git("add", "-A")
-        git("commit", "--amend", "-m", f"SWEET explorer {label}")
-        git("push", "--force", "origin", "gh-pages")
-        log.info("Published to GitHub Pages")
-    except subprocess.CalledProcessError as e:
-        log.warning(f"Pages push failed: {e.stderr}")
-
-        push_pages(C.PUBLISH_DIR, datetime.date.today().isoformat())
 
 from src import config as C
 from src import build_web, run_daily, sources
@@ -105,14 +94,36 @@ def cleanup(d):
                 shutil.rmtree(sub, ignore_errors=True)
 
 
+def push_pages(pub_dir, label):
+    """Replace the single gh-pages commit and force-push it, so the branch never
+    accumulates history. Failures are logged and never stop the daily update."""
+    if not (pub_dir / ".git").exists():
+        log(f"{pub_dir} is not a git clone; skipped GitHub Pages push")
+        return
+    env = {**os.environ, "GIT_TERMINAL_PROMPT": "0"}   # fail instead of waiting for a login prompt
+    try:
+        def git(*args):
+            return subprocess.run(["git", "-C", str(pub_dir), *args], check=True,
+                                  capture_output=True, text=True, env=env, timeout=600)
+        git("add", "-A")
+        git("commit", "--amend", "-m", f"SWEET explorer {label}")
+        git("push", "--force", "origin", "gh-pages")
+        log("published to GitHub Pages")
+    except subprocess.CalledProcessError as e:
+        log(f"GitHub Pages push failed: {(e.stderr or e.stdout).strip()}")
+    except (OSError, subprocess.TimeoutExpired) as e:
+        log(f"GitHub Pages push failed: {e}")
+
+
 def rebuild_and_publish(wy):
     build_web.build(wy, offline=True)
     if C.PUBLISH_DIR:
-        dest = C.PUBLISH_DIR
+        dest = Path(C.PUBLISH_DIR)
         dest.mkdir(parents=True, exist_ok=True)
         for name in ("sweet_explorer.html", "sweet_explorer_offline.html"):
             shutil.copy2(C.WEB_DIR / name, dest / name)
         log(f"published to {dest}")
+        push_pages(dest, date.today().isoformat())
 
 
 def update(since=None, keep_raw=False, rebuild_only=False):
